@@ -1,0 +1,6 @@
+# build artifacts - the LaTeX source is the deliverable, the PDF is not committed
+main.pdf
+*.aux
+*.log
+*.out
+*.synctex.gz

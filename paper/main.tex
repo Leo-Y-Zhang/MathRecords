@@ -1,0 +1,773 @@
+% Four new mixed van der Waerden numbers
+% LaTeX source; compiles with pdflatex, xelatex, or tectonic.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\seq}[1]{\texttt{#1}}
+
+\title{Four new mixed van der Waerden numbers}
+\author{Leo Y. Zhang}
+\date{August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We establish four previously unknown mixed van der Waerden numbers:
+$w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$ and
+$w(6;\,2^{4},4,5)=84$. Each extends by one term a sequence in the On-Line
+Encyclopedia of Integer Sequences (\seq{A217058}, \seq{A217005},
+\seq{A217007}, \seq{A217236}) whose published values, due to Ahmed, had stood
+since 2012. Every lower bound ships as an explicit colouring, checkable
+against the definition in milliseconds by a standalone program that uses only
+the Python standard library and never invokes a SAT solver. Every upper bound
+is a SAT refutation obtained by cube-and-conquer and re-derived along
+independent paths chosen so that they cannot share a mistake, including one
+engine that applies no symmetry breaking at all. For the first of the four
+values the refutation has additionally been reduced to formally checked proof
+objects: $4{,}487$ per-cube DRAT proofs, each replayed to \texttt{s VERIFIED}
+by \texttt{drat-trim} against a single formula, together with a checked proof
+that the cube set is exhaustive. The refutations behind the remaining three
+values are cross-checked but have not been reduced to proof objects. A fifth
+value, $w(11;\,2^{9},3,5)=74$, was computed but is deliberately withheld
+because one of our own validation gates for its family did not run to
+completion; we state this as policy. All code, certificates, proof-object
+tooling and result records are public.
+\end{abstract}
+
+\noindent\emph{2020 Mathematics Subject Classification:} 05D10; 68R05.
+
+\section{Introduction}\label{sec:intro}
+
+Van der Waerden's theorem \cite{vdw1927} states that for any positive
+integers $t_1,\dots,t_r$ there is a least $n$, the van der Waerden number
+$w(r;t_1,\dots,t_r)$, such that every $r$-colouring of $\{1,\dots,n\}$
+contains, for some $i$, a $t_i$-term arithmetic progression entirely in
+colour $i$. Exact values are notoriously scarce; see Landman and Robertson
+\cite{landmanrobertson} for background. The classical diagonal case
+$w(2;6,6)=1132$ was settled by Kouril and Paul \cite{kourilpaul}, and
+SAT-based methods have been the dominant tool for exact van der Waerden
+computations since Dransfield et al.\ \cite{dransfield} demonstrated their
+reach; see also Ahmed, Kullmann and Snevily \cite{aks} for the off-diagonal
+family $w(2;3,t)$.
+
+This paper concerns the \emph{mixed} numbers
+$w(j+r;\,2^j,t_1,\dots,t_r)$, in which $j$ of the colour classes have target
+$2$. A class with target $2$ can hold at most one element, since any two
+integers form a $2$-term progression, so these classes behave as a budget of
+$j$ \emph{wildcards}: positions excused from the problem at a cost of one
+budget unit each. Ahmed computed extensive tables of such numbers
+\cite{ahmed2009,ahmed2011,ahmed2013} and entered several families into the On-Line
+Encyclopedia of Integer Sequences in 2012 \cite{oeis}. The four families
+treated here --- \seq{A217058} $=w(j+2;\,2^j,3,4)$, \seq{A217005}
+$=w(j+2;\,2^j,3,3)$, \seq{A217007} $=w(j+2;\,2^j,4,4)$ and \seq{A217236}
+$=w(j+2;\,2^j,4,5)$ --- had received no new terms since then.
+
+\subsection{Results}
+
+We establish the next term of each of the four families.
+
+\begin{center}
+\begin{tabular}{llcl}
+\toprule
+sequence & new term & value & status \\
+\midrule
+\seq{A217058} & $a(12) = w(14;\,2^{12},3,4)$ & $57$ & approved by the OEIS, August 2026 \\
+\seq{A217005} & $a(19) = w(21;\,2^{19},3,3)$ & $52$ & submitted, under review \\
+\seq{A217007} & $a(7) \;\,= w(9;\,2^{7},4,4)$ & $68$ & submitted, under review \\
+\seq{A217236} & $a(4) \;\,= w(6;\,2^{4},4,5)$ & $84$ & submitted, under review \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A fifth value, $w(11;\,2^9,3,5)=74$ (the next term of \seq{A217059}), was
+computed by the same method and passes the same certificate checks, but is
+\emph{withheld} rather than claimed: the validation gate that reproduces the
+published adjacent term of that family as an independent check on the method
+was started and killed without a verdict. Section~\ref{sec:withheld} states
+the policy.
+
+\subsection{The certificate discipline}
+
+The two halves of each value have very different epistemic status, and the
+entire design of this computation follows from taking that seriously.
+
+A \emph{lower} bound asserts the existence of a finite object. We ship the
+object: an explicit colouring, printed in full in this paper, which anyone
+can check against the definition by hand or with a short standalone verifier
+(\texttt{vdw/verify\_certificate.py} in the repository) that uses only the
+Python standard library and shares no code with the search. The lower bounds
+require no trust in anything reported here.
+
+An \emph{upper} bound asserts the absence of an object, and a SAT solver's
+\textsc{unsat} answer is only as good as the claim that the formula given to
+the solver faithfully represents the problem, plus the solver itself. We
+address the first risk --- the far likelier one --- by proving, on every
+instance small enough to enumerate exhaustively, that the CNF accepts exactly
+the colourings the definition accepts, in both directions
+(Section~\ref{sec:verification}); and the second by re-deriving every
+refutation along independent paths, and, for the headline value, by reducing
+the refutation to DRAT proof objects checked by an independently built
+verifier (Section~\ref{sec:drat}).
+
+We are explicit throughout about which claims carry which kind of evidence.
+In particular: of the four new values, only the refutation behind
+$w(14;\,2^{12},3,4)=57$ has been reduced to formally checked proof objects;
+the other three rest on cross-checked solver verdicts, not on checked proofs.
+
+\section{Definitions and conventions}\label{sec:defs}
+
+Let $t_1,\dots,t_r \ge 2$ be integers. A colouring of $\{1,\dots,n\}$
+assigns each integer to one of $r$ classes. It is \emph{valid} for
+$(t_1,\dots,t_r)$ if class $i$ contains no $t_i$-term arithmetic progression,
+for every $i$. The van der Waerden number $w(r;t_1,\dots,t_r)$ is the least
+$n$ for which no valid colouring of $\{1,\dots,n\}$ exists; van der Waerden's
+theorem guarantees it is finite.
+
+Writing $2^j$ for $j$ classes of target $2$, the mixed numbers of interest
+are
+\[
+  w(j+r;\,2^j,t_1,\dots,t_r).
+\]
+Since a class with target $2$ holds at most one element, an equivalent
+formulation is
+\[
+  w(j+r;\,2^j,t_1,\dots,t_r) = 1 + \max\bigl\{ n : \{1,\dots,n\}
+  \text{ admits a valid colouring with at most } j \text{ wildcards} \bigr\},
+\]
+where a colouring with wildcards assigns each integer either to one of the
+$r$ real classes or to a wildcard position that belongs to no class. In
+certificates below, \texttt{.}\ denotes a wildcard and \texttt{1},
+\texttt{2} the two real classes.
+
+For a family with fixed targets we write $a(j) = w(j+2;\,2^j,t_1,t_2)$,
+following the OEIS entries, which index each family by the number of
+wildcards with offset $0$.
+
+\section{Method}\label{sec:method}
+
+\subsection{Encoding}\label{sec:encoding}
+
+For given $n$ and $j$, introduce Boolean variables $v(i,c)$ for
+$i \in \{1,\dots,n\}$ and $c \in \{0,1,\dots,r\}$, where $c=0$ means
+``wildcard'':
+\begin{itemize}
+\item exactly one class per position: one clause $\bigvee_c v(i,c)$ and
+  pairwise exclusions;
+\item no monochromatic progression: for each class $c$ with target $t_c$ and
+  each $t_c$-term arithmetic progression $A \subseteq \{1,\dots,n\}$, the
+  clause $\bigvee_{i \in A} \neg v(i,c)$;
+\item wildcard budget: a totalizer encoding \cite{totalizer} of
+  $\sum_i v(i,0) \le j$.
+\end{itemize}
+The formula is satisfiable exactly when a valid colouring exists, so $a(j)$
+is the least $n$ whose formula is unsatisfiable. Solving is done through
+PySAT \cite{pysat} with CaDiCaL~1.9.5 \cite{cadical} as the CDCL back end;
+proof-object generation (Section~\ref{sec:drat}) uses a standalone
+Kissat~4.0.1 \cite{cadical}, for reasons given there.
+
+\subsection{Monotonicity and a free lower bound}\label{sec:mono}
+
+If $\{1,\dots,n\}$ admits a valid colouring, so does $\{1,\dots,m\}$ for
+every $m<n$: restrict the colouring; no progression is created by deleting
+elements, and the wildcard count cannot increase. Satisfiability is therefore
+monotone decreasing in $n$ and $a(j)$ is the unique threshold. This licenses
+probing candidate values directly --- any \textsc{sat} answer raises the
+floor, any \textsc{unsat} answer caps the value --- rather than climbing one
+$n$ at a time, and it lets the two halves of a value run as independent
+concurrent computations.
+
+Monotonicity in $j$ gives a bound for nothing: $a(j+1) \ge a(j)+1$. A valid
+colouring of $\{1,\dots,a(j)-1\}$ with at most $j$ wildcards extends to
+$\{1,\dots,a(j)\}$ by making the new final position a wildcard; it uses at
+most $j+1$ wildcards and creates no monochromatic progression. Whether this
+free bound is tight varies by family, and we report its role honestly in
+each case: for \seq{A217007} it \emph{is} the lower bound
+(Section~\ref{sec:a217007}); for \seq{A217059} it was three short and for
+\seq{A217236} four short, so those witnesses are genuine search results.
+
+\subsection{Reversal symmetry}\label{sec:revsym}
+
+The map $i \mapsto n+1-i$ is an automorphism of the problem: it carries the
+$t$-term progression $a, a+d, \dots, a+(t-1)d$ to
+$n+1-a-(t-1)d, \dots, n+1-a$, again a progression with the same common
+difference; it fixes every class and the wildcard count. Requiring a
+colouring to be lexicographically no greater than its own reversal is
+therefore a sound lex-leader constraint, and it halves the search space.
+
+This matters more than it might appear. The pre-existing implementation broke
+only the symmetry between classes \emph{sharing} a target value. On
+distinct-target families such as $(3,4)$ that rule emits no clauses at all,
+so every search there had previously run with no symmetry breaking
+whatsoever. Adding reversal symmetry measured a $1.55\times$ speedup on the
+$n=45$, $j=8$ refutation, on the half of the problem that consumes
+essentially all the time. Because this constraint is the one piece of new
+mathematics in the engine, the verification programme of
+Sections~\ref{sec:verification} and~\ref{sec:drat} is arranged so that it is
+never assumed by its own check.
+
+\subsection{Cube-and-conquer and the crash-honest rule}\label{sec:cube}
+
+Refutations use cube-and-conquer \cite{cubeandconquer}: branch on all class
+assignments to the first $k$ positions, discard prefixes that already exceed
+the wildcard budget or already contain a monochromatic progression, and solve
+the residual formulas in parallel. At $k=4$ the four families yield $75$
+cubes for targets $(3,4)$, $36$ for $(3,3)$, $40$ for $(4,4)$ and $80$ for
+$(4,5)$. A measured comparison on $n=45$, $j=8$ put $k=4$ at $34.1$\,s
+against $k=6$ at $65.1$\,s, so the finer split was not used for search.
+
+One structural rule is worth stating because it is the difference between a
+theorem and a retraction: \textsc{unsat} is reported only when every cube has
+returned an explicit verdict. A worker killed by the operating system raises
+an error rather than being counted as an empty branch. Three earlier runs
+were lost to precisely that class of failure.
+
+\section{The four new terms}\label{sec:results}
+
+\subsection{$\seq{A217058}$: $w(14;\,2^{12},3,4)=57$}\label{sec:a217058}
+
+One class must avoid $3$-term progressions, the other $4$-term progressions.
+The published terms, due to Ahmed \cite{ahmed2009,ahmed2013}, are
+\[
+a(0..11) = 18,\,21,\,25,\,29,\,33,\,36,\,40,\,42,\,45,\,48,\,52,\,55 ,
+\]
+ending at $w(13;\,2^{11},3,4)=55$. The OEIS entry was queried directly on
+2026-07-28 and returned exactly these twelve terms with an auto-synthesised
+b-file, i.e.\ no extension had been contributed.
+
+\begin{theorem}\label{thm:a217058}
+$a(12) = w(14;\,2^{12},3,4) = 57$.
+\end{theorem}
+
+\emph{Lower bound.} The following colouring of $\{1,\dots,56\}$ uses exactly
+$12$ wildcards, has no $3$-term progression in class~\texttt{1} and no
+$4$-term progression in class~\texttt{2}, so $a(12) > 56$:
+
+\begin{center}\small
+\texttt{2.21221212.12.22211.112.2221.222.2.1..12221211212..22212}
+\end{center}
+
+\noindent Class~\texttt{1} occupies $16$ positions, class~\texttt{2} occupies
+$28$, and $12$ are wildcards. The standalone verifier checks it in
+milliseconds.
+
+\emph{Upper bound.} No valid colouring of $\{1,\dots,57\}$ with at most $12$
+wildcards exists. The refutation was established along paths chosen so that
+they cannot share a mistake:
+
+\begin{center}
+\begin{tabular}{lllclr}
+\toprule
+encoding & symmetry & solver & cubes & verdict & time \\
+\midrule
+vdw4 & reversal on & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $6257.1$\,s \\
+vdw2 & none at all & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $8036.6$\,s \\
+vdw4 & reversal off & CaDiCaL 3.0.0 & $k=5$ & (not completed) & --- \\
+vdw4 & reversal off & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $8317.4$\,s \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The second row is the one that matters: \texttt{vdw2}, an older and
+independently written engine, imposes no lex-leader constraint on this family
+and searches the full unreduced space, so it cannot inherit an error from the
+reversal-symmetry constraint. It agrees. The third row was started and
+stopped after $7.4$ hours without finishing; it is reported as incomplete
+rather than omitted. The same reversal-off question was settled in the
+configuration that suits this family (row four), and a second \texttt{vdw2}
+refutation on that pass agrees in $7259.8$\,s. Separately, a
+randomised-restart portfolio --- $8$ rounds $\times$ $5$ seeds $\times$
+$3{,}000{,}000$ conflicts, with initial phases drawn from the class
+distribution of real witnesses --- hunted for a witness at $n=57$ and found
+none. Section~\ref{sec:drat} reduces this refutation to checked proof
+objects.
+
+\begin{remark}
+$a(12)-a(11)=2$, while the published differences are
+$3,4,4,4,3,4,2,3,3,4,3$, so a naive extrapolation predicts $58$ or $59$;
+both were refuted before $57$ was reached. A step of $2$ already occurs at
+$a(6)=40 \to a(7)=42$. The disagreement with extrapolation was treated as
+grounds for additional verification rather than as a curiosity.
+\end{remark}
+
+\subsection{$\seq{A217005}$: $w(21;\,2^{19},3,3)=52$}\label{sec:a217005}
+
+Both classes must avoid $3$-term progressions. Published terms (offset $0$,
+last extended by Ahmed in December 2012, confirmed live against the OEIS API
+on 2026-07-29):
+\[
+a(0..18) = 9,\,14,\,17,\,20,\,21,\,24,\,25,\,28,\,31,\,33,\,35,\,37,\,39,\,42,\,44,\,46,\,48,\,50,\,51 .
+\]
+
+\begin{theorem}\label{thm:a217005}
+$a(19) = w(21;\,2^{19},3,3) = 52$.
+\end{theorem}
+
+\emph{Lower bound.} This colouring of $\{1,\dots,51\}$ uses exactly $19$
+wildcards and contains no $3$-term progression in either class, so
+$a(19) > 51$:
+
+\begin{center}\small
+\texttt{..11.1122.2211.1122.22.........11.1122.2211.1122.22}
+\end{center}
+
+\noindent It was found by search in $1520.1$\,s and accepted by the
+standalone verifier. Note also that the free bound of
+Section~\ref{sec:mono} gives $a(19) \ge 52$ independently of any solver, so
+the refutation at $n=52$ is the only computational input to the value.
+
+\emph{Upper bound.} $n=52$, $j=19$ is unsatisfiable: $4507.0$\,s, all $36$
+cubes reporting an explicit verdict. Cross-checks: \texttt{vdw2} refuted the
+same instance in $10650.4$\,s, the primary engine with reversal symmetry
+switched off in $11779.0$\,s, and \texttt{vdw2} additionally found and
+verified a witness of its own at $n=51$ ($1934.0$\,s).
+
+The targets here are equal, which switches on the colour-swap symmetry
+breaker --- a code path the first family never touches. On equal-target
+families the two breakers together are sound but \emph{not} canonical: they
+retain two representatives per orbit rather than one, because composing two
+independent lex-leader constraints does not canonicalise the group they
+generate. That costs time and cannot cost correctness, and the audit of
+Section~\ref{sec:verification} confirms zero orbits are lost. The family's
+full-scale gate was run before the extension was attempted: published
+$a(18)=51$ was reproduced exactly --- \textsc{sat} at $n=50$ with a verified
+witness and \textsc{unsat} at $n=51$, both at $j=18$, in $3469.4$\,s.
+
+\begin{remark}
+The witness is strikingly structured: the segment
+\texttt{11.1122.2211.1122.22} appears twice, separated by a block of nine
+consecutive wildcards. Whether the extremal colourings of this family are
+genuinely periodic is not something a single example can settle, and no claim
+is made here; it is recorded as the sort of structure worth examining if
+anyone pursues the family further.
+\end{remark}
+
+\subsection{$\seq{A217007}$: $w(9;\,2^{7},4,4)=68$}\label{sec:a217007}
+
+Both classes must avoid $4$-term progressions. Published terms (offset $0$,
+OEIS keyword \texttt{hard}, confirmed live against the OEIS API on
+2026-07-29):
+\[
+a(0..6) = 35,\,40,\,53,\,54,\,56,\,66,\,67 .
+\]
+
+\begin{theorem}\label{thm:a217007}
+$a(7) = w(9;\,2^{7},4,4) = 68$.
+\end{theorem}
+
+\emph{Lower bound.} This colouring of $\{1,\dots,67\}$ uses exactly $7$
+wildcards and contains no $4$-term progression in either class, so
+$a(7) > 67$:
+
+\begin{center}\small
+\texttt{..1112112111.2221221222.1112112111.2221221222.1112112111.2221221222}
+\end{center}
+
+An honest qualification: this certificate \emph{is} the free construction of
+Section~\ref{sec:mono} --- the family gate's $a(6)$ colouring with one
+further wildcard prepended. The solver, given $n=67$, $j=7$ cold,
+rediscovered that construction rather than finding a structurally different
+witness. It is reported as a verified confirmation, not as independent
+evidence, and the entire computational weight of the theorem sits on the
+refutation at $n=68$.
+
+\emph{Upper bound.} $n=68$, $j=7$ is unsatisfiable: $7269.0$\,s, all $40$
+cubes reporting an explicit verdict. Cross-checks: \texttt{vdw2}, which on
+this equal-target family breaks only the colour swap and carries no
+reversal-symmetry constraint, refuted the instance in $7375.6$\,s, and the
+primary engine with reversal symmetry switched off refuted it in
+$7285.2$\,s. The family gate passed first: published $a(6)=67$ was reproduced
+exactly --- \textsc{sat} at $n=66$ with a verified witness using all $6$
+wildcards and \textsc{unsat} at $n=67$, both at $j=6$, $1032.1$\,s for the
+pair.
+
+\begin{remark}
+The step $a(6)=67 \to a(7)=68$ is $+1$, the smallest possible; $+1$ already
+occurs twice in the published sequence, at $a(2)=53 \to a(3)=54$ and at
+$a(5)=66 \to a(6)=67$. The witness is conspicuously periodic --- the block
+\texttt{1112112111.2221221222} repeats three times, and the two classes are
+exact complements under $\texttt{1} \leftrightarrow \texttt{2}$ --- but
+since the certificate is inherited from the $a(6)$ gate rather than found
+independently, this says something about that colouring, not about extremal
+colourings of the family in general.
+\end{remark}
+
+\subsection{$\seq{A217236}$: $w(6;\,2^{4},4,5)=84$}\label{sec:a217236}
+
+Class~\texttt{1} must avoid $4$-term progressions, class~\texttt{2} must
+avoid $5$-term progressions. Published terms (offset $0$, OEIS keyword
+\texttt{hard}, contributed by Ahmed in September 2012 and confirmed live
+against the OEIS API on 2026-07-29):
+\[
+a(0..3) = 55,\,71,\,75,\,79 .
+\]
+Four terms is the shortest published list of the families treated here and
+$j=4$ the smallest wildcard budget, but $n$ is the largest: the refuted
+instance is $\{1,\dots,84\}$.
+
+\begin{theorem}\label{thm:a217236}
+$a(4) = w(6;\,2^{4},4,5) = 84$.
+\end{theorem}
+
+\emph{Lower bound.} This colouring of $\{1,\dots,83\}$ uses exactly $4$
+wildcards, with no $4$-term progression in class~\texttt{1} and no $5$-term
+progression in class~\texttt{2}, so $a(4) > 83$:
+
+\begin{center}\small
+\texttt{122121221221212221.212121221121222211121.221212222.2222.212211211122221211122212122}
+\end{center}
+
+\noindent Unlike the previous family's, this lower bound was earned rather
+than inherited: the free construction from $a(3)=79$ gives only
+$a(4) \ge 80$, four short of the truth. The witness above was found by
+search ($6469.7$\,s, cube $52$ of $80$) and is an independent object ---
+witnesses at $n=80$, $81$, $82$ were found in an earlier pass, and the
+$n=83$ colouring extends none of them, differing from all three already at
+the second position.
+
+\emph{Upper bound.} $n=84$, $j=4$ is unsatisfiable: $7965.0$\,s, all $80$
+cubes reporting an explicit verdict. The value was bracketed rather than
+climbed: a ceiling probe at $n=87$ refuted in $6688.4$\,s, capping the value;
+$n=83$ \textsc{sat} raised the floor to $84$; $n=85$ \textsc{unsat}
+($9061.5$\,s) dropped the ceiling to $85$; and $n=84$ \textsc{unsat} fixed
+the term. Monotonicity (Section~\ref{sec:mono}) is what licenses this. The
+refutation was established three ways:
+
+\begin{center}
+\begin{tabular}{lllclr}
+\toprule
+encoding & symmetry & solver & cubes & verdict & time \\
+\midrule
+vdw4 & reversal on & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $7965.0$\,s \\
+vdw2 & none at all & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $10959.3$\,s \\
+vdw4 & reversal off & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $16975.3$\,s \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent \texttt{vdw2} also re-ran the satisfiable side at $n=83$ from
+scratch and returned a verified witness of its own in $9892.7$\,s; it arrived
+at the same colouring as above. The family gate passed before the extension
+was attempted: published $a(3)=79$ reproduced exactly, \textsc{sat} at
+$n=78$ ($404.9$\,s) and \textsc{unsat} at $n=79$ ($377.7$\,s), both at $j=3$.
+
+The targets $4$ and $5$ are distinct, so as in Section~\ref{sec:a217058} the
+colour-swap breaker emits no clauses and reversal symmetry is the only
+breaking in force --- precisely the constraint the second and third rows
+above isolate. When this term was first written up, the exhaustive encoding
+audit did \emph{not} cover the target pair $(4,5)$; rather than rest on the
+argument that the clause generator is generic in the targets, the audit was
+extended to $(4,5)$ on 2026-07-31 and passes: the CNF accepts exactly the
+colourings the definition accepts ($538$ and $7631$ on the two audit
+instances, equal in both directions) and symmetry breaking loses no orbit.
+
+\begin{remark}
+The step $a(3)=79 \to a(4)=84$ is $+5$ against published differences
+$16,4,4$, so an extrapolation from the last two steps would have said $83$
+--- which the witness at $n=83$ refutes outright.
+\end{remark}
+
+\section{Verification of the encoding and engine}\label{sec:verification}
+
+The upper bounds are only as strong as the claim that the formula given to
+the solver represents the problem. Five independent guards were applied; all
+tooling named here is in the public repository.
+
+\subsection{The encoding equals the definition}
+
+On instances small enough to enumerate exhaustively, the set of colourings
+satisfying the CNF was compared against the set accepted by a direct
+transcription of the definition that never inspects a clause. They agreed
+exactly, in both directions, on all $11$ cases tested, spanning target shapes
+$(3,4)$, $(3,3)$, $(3,5)$, $(3,3,3)$, $(4,4)$ and $(4,5)$ --- one shape for
+every family claimed in this paper. Nothing invented, nothing lost.
+(\texttt{vdw/encoding\_audit.py})
+
+\subsection{Symmetry breaking loses nothing}
+
+The same audit checks that every orbit of the symmetry group --- generated by
+the reversal and by swaps of equal-target classes --- retains at least one
+representative. Losing an orbit is exactly how a satisfiable instance would
+be reported unsatisfiable. Zero orbits were lost in any case tested. On
+distinct-target families, including $(3,4)$, the breaking is additionally
+exactly canonical: $11{,}539$ orbits, $11{,}539$ survivors.
+
+\subsection{The engine reproduces what is already known}
+
+All twelve published terms of \seq{A217058} were re-derived by the same
+engine that produced the thirteenth: for each $a(j)=w$ this means finding a
+verified witness at $n=w-1$ \emph{and} refuting $n=w$. A further $29$
+published values across five families were reproduced with the
+reversal-symmetry constraint enabled. Each family's full-scale gate at the
+adjacent index was run before its extension was attempted
+(Sections~\ref{sec:a217005}--\ref{sec:a217236}); for \seq{A217058} the gate
+is $a(11)=55$ at $j=11$: \textsc{sat} at $n=54$ with a verified witness
+using all $11$ wildcards ($1872.5$\,s) and \textsc{unsat} at $n=55$
+($1239.2$\,s). This gate matters because every other replayed value tops out
+at $j=10$; a defect confined to large $j$ would have escaped the rest of the
+testing. It did not exist.
+
+\subsection{The cardinality constraint at full scale}
+
+The exhaustive audit reaches only $n \le 12$ and $j \le 3$, while the
+headline instance runs at $j=12$, and the totalizer's structure grows with
+the bound. Too strong a cardinality constraint would forbid legal colourings
+and produce precisely the kind of false refutation that matters. Tested
+directly at $n=55,\dots,58$ with $j=12$, from both sides: $240$ assignments
+at the limit were accepted and $240$ over the limit were rejected, and
+forcing $13$ wildcards inside the full formula is correctly unsatisfiable.
+(\texttt{vdw/scale\_test.py})
+
+\subsection{Independent refutation paths}
+
+Every established value's refutation was re-derived along disjoint paths ---
+in particular through \texttt{vdw2}, an older, independently written engine
+that carries no reversal-symmetry constraint --- with agreement in every
+case, as detailed per family above. The records are the
+\texttt{crosscheck\_*.json} files in the repository.
+
+\section{Formally checked proof objects for the headline
+refutation}\label{sec:drat}
+
+The guards of Section~\ref{sec:verification} target an encoding defect,
+which is by far the likelier failure. A defect in the solver itself is a
+different risk, and the standard remedy is a DRAT proof of unsatisfiability
+\cite{drattrim}: the solver logs its reasoning, and an independent checker
+replays the log against the formula. What remains to be trusted shrinks to
+the checker plus the encoding audit.
+
+\subsection{Scope: what is and is not certified}
+
+We state the perimeter plainly. The refutations behind the published rungs
+$a(0)$ through $a(6)$ of \seq{A217058}, and the first rungs of the other
+three families, are replayed under \texttt{drat-trim} on every run of the
+repository's verification gate and come back \texttt{s VERIFIED}. The
+headline refutation $n=57$, $j=12$ is certified by the cube-level route
+described below. The refutations behind the other three new values ---
+$w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$ and $w(6;\,2^{4},4,5)=84$ ---
+have \emph{not} been reduced to proof objects; those upper bounds rest on
+the cross-checked solver verdicts of
+Sections~\ref{sec:a217005}--\ref{sec:a217236}, not on checked proofs.
+
+In all certified refutations, symmetry breaking is switched off: a proof of
+a symmetry-broken formula does not prove the original statement, and the
+reversal lex-leader constraint --- the one piece of new mathematics in the
+engine --- must not be assumed by the thing meant to check it. What is
+certified is the raw encoding. Proofs are generated by a standalone
+Kissat~4.0.1, because the PySAT interface returns truncated proofs from
+every bundled solver (the refutation never closes), and checked by
+\texttt{drat-trim} \cite{drattrim} built from byte-identical upstream
+source. Only the checker's literal \texttt{s VERIFIED} line counts as a
+pass; every other outcome, including a parse failure, fails the gate.
+
+\subsection{Certifying $n=57$, $j=12$ by cubes}
+
+Proof size grows about $2.4\times$ per rung in this family, which puts a
+single-shot proof of the headline instance at order $6$--$17$ hours and
+$30$--$150$\,GB. Instead the search space was split at depth $k=8$ into
+$4{,}487$ cubes. Each cube's refutation was produced with symmetry breaking
+off and replayed to \texttt{s VERIFIED} under \texttt{drat-trim}, and all
+$4{,}487$ records carry the same formula SHA-256, so they refute one formula
+rather than several. The largest individual proof was under $200$\,MB.
+
+Exhaustiveness of the cube set is proved rather than assumed
+(\texttt{vdw/cube\_exhaustive.py}). The checker does not trust the cube
+generator: it walks the full ternary prefix tree, and for every prefix
+\emph{not} in the cube set it exhibits the clause of the formula that
+refutes it --- for targets $(3,4)$ all $662$ dropped prefixes are refuted by
+a monochromatic-progression clause already present, and no prefix is dropped
+by the colour-symmetry rule, which for distinct targets emits nothing at
+all. The resulting $3{,}236$ tail lemmas are themselves replayed by
+\texttt{drat-trim} and come back \texttt{s VERIFIED}. Hence $F$ and
+$F \cup \{\neg C : C \in \text{cubes}\}$ have identical models, every cube
+is refuted, and the empty clause follows. This is the same compositional
+pattern used at much larger scale for the Boolean Pythagorean triples
+problem \cite{pythagorean}.
+
+The pipeline is fail-closed by construction: a prefix wrongly dropped yields
+a tail lemma that is not RUP, which \texttt{drat-trim} rejects; a missing
+cube clause leaves an internal lemma underivable. Both failure modes were
+observed failing before any positive result was believed, alongside a proof
+truncated to half, a proof of a different formula, a real proof checked
+against a satisfiable formula, and, for each of several published rungs, the
+instance one below the published term --- which is satisfiable and must
+report \textsc{sat}, never \texttt{VERIFIED}, and does.
+
+\section{The withheld fifth value}\label{sec:withheld}
+
+The same method produced $w(11;\,2^9,3,5) = 74$, the next term of
+\seq{A217059}: a verified witness at $n=73$ found by search (the free bound
+was three short, and explicit witnesses were found and verified at $n=71$,
+$72$, $73$ in turn), a refutation at $n=74$ with all $76$ cubes reporting,
+and cross-checks along the same disjoint paths as the other families, which
+agree.
+
+We nevertheless \emph{withhold} this value rather than claim it. Our
+discipline requires every family's validation gate --- reproducing the
+published adjacent term, here $a(8)=70$, as an independent check on the
+method in that family --- to run to completion before an extension is
+claimed, and for this family the gate was started and killed without a
+verdict. Every other family in this paper passed its gate before its
+extension was claimed. The computed value and its artifacts are on disk in
+the public repository, marked withheld; the value has not been submitted to
+the OEIS and should not be quoted as established until the gate completes.
+We state this as policy: a verification step that was defined and then not
+finished does not get waived retroactively because the answer looks right.
+
+\section{Limitations}\label{sec:limitations}
+
+These are finite, checkable extensions of tracked sequences by one term
+each. They are not structural results: they say nothing about the growth of
+the families and provide no new proof technique. The exhaustive
+encoding-equals-definition audit reaches only instances small enough to
+enumerate ($n \le 12$, $j \le 3$); beyond that scale its guarantee is
+extended by the scale tests of Section~\ref{sec:verification} and by replay
+of known values, not by exhaustion. Three of the four upper bounds are not
+reduced to checked proof objects. All computations ran on a single 8-core
+desktop machine; per-instance solver times are reported so that the scale of
+the computation is not overstated.
+
+\section{Methods and authorship}\label{sec:authorship}
+
+The search and verification tooling, the computations, and the drafting of
+this paper were carried out with substantial AI assistance, directed and
+reviewed by the author. This is stated plainly because the reader is
+entitled to weigh it. The verification programme of
+Sections~\ref{sec:verification} and~\ref{sec:drat} is designed precisely so
+that no trust in any tool, human, or model is required: every lower bound is
+a printed colouring checkable against the definition by hand or by a
+standard-library script that shares no code with the search; every certified
+upper bound is a DRAT proof replayed by an independently built checker whose
+own failure modes were tested first; and the remaining upper bounds are
+labelled as what they are --- cross-checked solver verdicts. Nothing in this
+paper asks to be believed on the strength of the process that produced it.
+
+\section{Reproducibility}\label{sec:repro}
+
+All code, certificates, result records and proof-object tooling are public
+at \url{https://github.com/Leo-Y-Zhang/MathRecords}. The lower-bound
+certificates check in milliseconds with no solver installed:
+
+\begin{center}\small
+\texttt{python vdw/verify\_certificate.py "<colouring>" <j> <t1> <t2>}
+\end{center}
+
+\noindent The encoding audit (\texttt{vdw/encoding\_audit.py}), the scale
+test (\texttt{vdw/scale\_test.py}), the published-value replays
+(\texttt{vdw/vdw\_validate.py}) and the refutations
+(\texttt{vdw/vdw\_probe.py}) run with Python and PySAT; the repository's
+\texttt{verify\_all.py} gate runs the full battery, including the DRAT
+ladder when \texttt{kissat} and \texttt{drat-trim} binaries are present.
+The headline proof-object certification is reproduced by
+\texttt{vdw/cube\_certify.py} and \texttt{vdw/cube\_exhaustive.py} (about
+four hours on four cores, resumable). Build notes for the two binaries,
+including two silent Windows-specific pitfalls that produce wrong results
+rather than errors, are in \texttt{vdw/DRAT.md}.
+
+\begin{thebibliography}{99}
+
+\bibitem{ahmed2009}
+T.~Ahmed,
+\emph{Some new van der Waerden numbers and some van der Waerden-type numbers},
+Integers \textbf{9} (2009), A06, 65--76.
+
+\bibitem{ahmed2011}
+T.~Ahmed,
+\emph{On computation of exact van der Waerden numbers},
+Integers \textbf{11} (2011), \#A71.
+
+\bibitem{ahmed2013}
+T.~Ahmed,
+\emph{Some more van der Waerden numbers},
+Journal of Integer Sequences \textbf{16} (2013), Article 13.4.4.
+
+\bibitem{aks}
+T.~Ahmed, O.~Kullmann and H.~Snevily,
+\emph{On the van der Waerden numbers $w(2;3,t)$},
+Discrete Applied Mathematics \textbf{174} (2014), 27--51.
+
+\bibitem{totalizer}
+O.~Bailleux and Y.~Boufkhad,
+\emph{Efficient CNF encoding of Boolean cardinality constraints},
+in: Principles and Practice of Constraint Programming (CP 2003),
+Lecture Notes in Computer Science \textbf{2833}, Springer, 2003, 108--122.
+
+\bibitem{cadical}
+A.~Biere, K.~Fazekas, M.~Fleury and M.~Heisinger,
+\emph{CaDiCaL, Kissat, Paracooba, Plingeling and Treengeling entering the
+SAT Competition 2020},
+in: Proc.\ of SAT Competition 2020 -- Solver and Benchmark Descriptions,
+Department of Computer Science Report Series B, vol.\ B-2020-1,
+University of Helsinki, 2020, 50--53.
+
+\bibitem{dransfield}
+M.~R.~Dransfield, L.~Liu, V.~W.~Marek and M.~Truszczy\'nski,
+\emph{Satisfiability and computing van der Waerden numbers},
+The Electronic Journal of Combinatorics \textbf{11}(1) (2004), \#R41.
+
+\bibitem{cubeandconquer}
+M.~J.~H.~Heule, O.~Kullmann, S.~Wieringa and A.~Biere,
+\emph{Cube and conquer: guiding CDCL SAT solvers by lookaheads},
+in: Hardware and Software: Verification and Testing (HVC 2011),
+Lecture Notes in Computer Science \textbf{7261}, Springer, 2012, 50--65.
+
+\bibitem{pythagorean}
+M.~J.~H.~Heule, O.~Kullmann and V.~W.~Marek,
+\emph{Solving and verifying the Boolean Pythagorean triples problem via
+cube-and-conquer},
+in: Theory and Applications of Satisfiability Testing (SAT 2016),
+Lecture Notes in Computer Science \textbf{9710}, Springer, 2016, 228--245.
+
+\bibitem{pysat}
+A.~Ignatiev, A.~Morgado and J.~Marques-Silva,
+\emph{PySAT: a Python toolkit for prototyping with SAT oracles},
+in: Theory and Applications of Satisfiability Testing (SAT 2018),
+Lecture Notes in Computer Science \textbf{10929}, Springer, 2018, 428--437.
+
+\bibitem{kourilpaul}
+M.~Kouril and J.~L.~Paul,
+\emph{The van der Waerden number $W(2,6)$ is 1132},
+Experimental Mathematics \textbf{17} (2008), no.~1, 53--61.
+
+\bibitem{landmanrobertson}
+B.~M.~Landman and A.~Robertson,
+\emph{Ramsey Theory on the Integers}, 2nd edition,
+Student Mathematical Library \textbf{73}, American Mathematical Society,
+2014.
+
+\bibitem{oeis}
+OEIS Foundation Inc.,
+\emph{The On-Line Encyclopedia of Integer Sequences},
+\url{https://oeis.org}, 2026. Sequences
+\href{https://oeis.org/A217005}{A217005},
+\href{https://oeis.org/A217007}{A217007},
+\href{https://oeis.org/A217058}{A217058},
+\href{https://oeis.org/A217059}{A217059},
+\href{https://oeis.org/A217236}{A217236}.
+
+\bibitem{vdw1927}
+B.~L.~van der Waerden,
+\emph{Beweis einer Baudetschen Vermutung},
+Nieuw Archief voor Wiskunde \textbf{15} (1927), 212--216.
+
+\bibitem{drattrim}
+N.~Wetzler, M.~J.~H.~Heule and W.~A.~Hunt, Jr.,
+\emph{DRAT-trim: efficient checking and trimming using expressive clausal
+proofs},
+in: Theory and Applications of Satisfiability Testing (SAT 2014),
+Lecture Notes in Computer Science \textbf{8561}, Springer, 2014, 422--429.
+Tool at \url{https://github.com/marijnheule/drat-trim}.
+
+\end{thebibliography}
+
+\end{document}
