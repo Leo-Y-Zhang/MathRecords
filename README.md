@@ -3,15 +3,24 @@
 Extending tracked combinatorial records by computation, in a form where nobody
 has to take the computation's word for it.
 
-Four new terms have been established, in four different families of mixed van
+Five new terms have been established, in five different families of mixed van
 der Waerden numbers whose published lists had all stood since 2012:
 **[A217058](https://oeis.org/A217058)(12) = 57**,
 **[A217005](https://oeis.org/A217005)(19) = 52**,
-**[A217007](https://oeis.org/A217007)(7) = 68** and
-**[A217236](https://oeis.org/A217236)(4) = 84**. Each ships a certificate you
+**[A217007](https://oeis.org/A217007)(7) = 68**,
+**[A217236](https://oeis.org/A217236)(4) = 84** and
+**[A217059](https://oeis.org/A217059)(9) = 74**. Each ships a certificate you
 can check without running a solver.
 
-A fifth is withheld. A217059 a(9) = 74 is COMPUTED but WITHHELD, not established: its refutation and verified witness are on disk, but the family gate that reproduces the published a(8) = 70 as an independent check on the method was started and killed without a verdict (`logs/validate_gate59.log` holds its two header lines and no result). It is excluded from the submission pack until that gate runs to completion.
+The fifth was withheld for nearly two weeks, and the reason is worth keeping. A217059
+a(9) = 74 was computed and cross-checked alongside the others, but the family
+gate that reproduces the published a(8) = 70 as an independent check on the
+method was started and killed without a verdict, so the term sat on disk marked
+withheld rather than claimed. The gate was run to completion on 2026-08-11 and
+passed: SAT at n = 69 with a verified witness, UNSAT at n = 70, both at j = 8,
+978.8 s for the pair (`vdw/validate_gate59.json`). A verification step that was
+defined and then not finished does not get waived retroactively because the
+answer looks right.
 
 ---
 
@@ -58,7 +67,7 @@ python vdw/verify_certificate.py --selftest     # controls, incl. negative ones
 ## Why the upper bound is believable
 
 "No colouring exists" asserts an *absence*, so it is only as good as the claim
-that the CNF handed to the solver really is the problem. Four independent
+that the CNF handed to the solver really is the problem. Five independent
 guards:
 
 1. **`encoding_audit.py` — the CNF is exactly the definition.** On instances
@@ -76,6 +85,11 @@ guards:
 4. **`cross_check.py` — a second, disjoint derivation.** The answer is
    re-established with the older engine that has no reversal-symmetry
    constraint, a different CDCL solver, and a different cube depth.
+5. **`scale_test.py` — the wildcard budget at exact scale.** The exhaustive
+   audit reaches only small instances, so the totalizer is tested directly at
+   `n = 55..58`, `j = 12`, from both sides: 240 at-limit assignments accepted,
+   240 over-limit rejected, and forcing 13 wildcards inside the full formula
+   is correctly UNSAT.
 
 Plus a structural rule in the runner: **UNSAT is reported only when every cube
 has returned an explicit verdict.** A worker killed by the OS raises; it is
@@ -124,14 +138,14 @@ Five new terms, in five different families, all published lists standing since
 | A217058 | `a(12) = w(14; 2^12, 3, 4)` | **57** | 12 terms |
 | A217005 | `a(19) = w(21; 2^19, 3, 3)` | **52** | 19 terms |
 | A217007 | `a(7) = w(9; 2^7, 4, 4)` | **68** | 7 terms |
-| A217059 | `a(9) = w(11; 2^9, 3, 5)` | 74 — **WITHHELD** | 9 terms |
+| A217059 | `a(9) = w(11; 2^9, 3, 5)` | **74** | 9 terms |
 | A217236 | `a(4) = w(6; 2^4, 4, 5)` | **84** | 4 terms |
 
 ```
 A217058:  18, 21, 25, 29, 33, 36, 40, 42, 45, 48, 52, 55, 57
 A217005:  9, 14, 17, 20, 21, 24, 25, 28, 31, 33, 35, 37, 39, 42, 44, 46, 48, 50, 51, 52
 A217007:  35, 40, 53, 54, 56, 66, 67, 68
-A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74   <- 74 WITHHELD, not established
+A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74
 A217236:  55, 71, 75, 79, 84
 ```
 
@@ -309,8 +323,8 @@ strong prior either way.
 
 Each `SUBMISSION_*.md` is generated mechanically from the result files — the
 number cannot drift from what was computed, and the generator re-runs the
-verifier before writing. **A217058(12) = 57 has been submitted to the OEIS and
-is under review; the other four have not been submitted, and nothing has been
-accepted.**
+verifier before writing. **A217058(12) = 57 was approved by the OEIS in August
+2026 and is live in the entry. A217005(19), A217007(7) and A217236(4) are
+submitted and under review; A217059(9) has not yet been submitted.**
 
 See `SESSION_HANDOFF.md` for live state.

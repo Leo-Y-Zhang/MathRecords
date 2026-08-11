@@ -204,6 +204,22 @@ def main():
                   f'{seq} is blocked (its evidence is incomplete) but this document '
                   f'states its extended sequence as a result with no withheld marker')
 
+        # The reverse must hold once a term's evidence is complete: a leftover
+        # withheld marker beside it asserts the opposite of the evidence. This
+        # happened -- A217059's gate finally ran and SUBMIT.md was regenerated,
+        # but both prose files kept calling the term WITHHELD. Scoped to lines
+        # that name the sequence and to the uppercase marker convention these
+        # documents use, so running prose may still tell the history in
+        # lowercase ("was withheld until the gate completed").
+        for seq, _j, value in ready:
+            stale = [ln for ln in text.splitlines()
+                     if seq in ln and any(w in ln for w in
+                        ('WITHHELD', 'not established', 'NOT established'))]
+            check(f'{doc}: does not mark established {seq} as withheld',
+                  not stale, '',
+                  f'a line still carries a withheld marker beside {seq}: '
+                  f'"{stale[0][:70] if stale else ""}..."')
+
 
     # SUBMIT.md is the file whose contents are actually pasted into OEIS, and
     # until now nothing here opened it. The gate could therefore print "EVERY
@@ -344,7 +360,8 @@ def main():
     # Two binaries this repository does not ship. A clean clone and a CI runner
     # both lack them, and neither is a failure: the section skips, loudly.
     ladder = {'A217058': '0-3' if fast else '0-6',
-              'A217005': '0-1', 'A217007': '0-1', 'A217236': '0-1'}
+              'A217005': '0-1', 'A217007': '0-1', 'A217236': '0-1',
+              'A217059': '0-1'}
     started = False
     for seq, spec in ladder.items():
         rc, out = run([PY, 'drat_certify.py', '--seq', seq, '--ladder', spec,

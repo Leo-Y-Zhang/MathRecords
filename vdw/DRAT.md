@@ -26,7 +26,7 @@ python vdw/drat_certify.py --seq A217236 --ladder 0-1
 python vdw/drat_certify.py --n 42 --j 7 --targets 3 4
 ```
 
-`verify_all.py` runs a short ladder across all four families. **If the binaries
+`verify_all.py` runs a short ladder across all five families. **If the binaries
 are absent it skips rather than fails** — a clean clone and a CI runner both land
 there, and a missing tool is not a broken claim.
 

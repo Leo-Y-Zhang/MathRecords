@@ -1,11 +1,20 @@
-# Four established new terms for mixed van der Waerden numbers
+# Five established new terms for mixed van der Waerden numbers
 
 Leo Y. Zhang, August 2026.
 
-**Results.** Four previously uncomputed values, established in four different
-families whose published lists have all stood since 2012, and a fifth withheld.
+**Results.** Five previously uncomputed values, established in five different
+families whose published lists have all stood since 2012 — one of them,
+A217059, withheld until its family gate had run to completion.
 
-> **Withheld.** A217059 a(9) = 74 is COMPUTED but WITHHELD, not established: its refutation and verified witness are on disk, but the family gate that reproduces the published a(8) = 70 as an independent check on the method was started and killed without a verdict (`logs/validate_gate59.log` holds its two header lines and no result). It is excluded from the submission pack until that gate runs to completion.
+> **Formerly withheld.** A217059 a(9) = 74 was computed and cross-checked
+> alongside the others, but the family gate that reproduces the published
+> a(8) = 70 as an independent check on the method was started and killed
+> without a verdict, so the term was withheld rather than claimed — this file
+> said so for as long as that was true. The gate was run to completion on
+> 2026-08-11 and passed: SAT at n = 69 with a verified witness using all 8
+> wildcards (341.3 s), UNSAT at n = 70 (637.4 s), both at j = 8
+> (`vdw/validate_gate59.json`). The term is established; section 10.5 has the
+> detail.
 
 
 | sequence | new term | value |
@@ -13,20 +22,20 @@ families whose published lists have all stood since 2012, and a fifth withheld.
 | [A217058](https://oeis.org/A217058) | `a(12) = w(14; 2^12, 3, 4)` | **57** |
 | [A217005](https://oeis.org/A217005) | `a(19) = w(21; 2^19, 3, 3)` | **52** |
 | [A217007](https://oeis.org/A217007) | `a(7) = w(9; 2^7, 4, 4)` | **68** |
-| [A217059](https://oeis.org/A217059) | `a(9) = w(11; 2^9, 3, 5)` | 74 — **WITHHELD**, see above |
+| [A217059](https://oeis.org/A217059) | `a(9) = w(11; 2^9, 3, 5)` | **74** |
 | [A217236](https://oeis.org/A217236) | `a(4) = w(6; 2^4, 4, 5)` | **84** |
 
 ```
 A217058:  18, 21, 25, 29, 33, 36, 40, 42, 45, 48, 52, 55, 57
 A217005:  9, 14, 17, 20, 21, 24, 25, 28, 31, 33, 35, 37, 39, 42, 44, 46, 48, 50, 51, 52
 A217007:  35, 40, 53, 54, 56, 66, 67, 68
-A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74   <- 74 WITHHELD, not established
+A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74
 A217236:  55, 71, 75, 79, 84
 ```
 
-Nothing here has been accepted by the OEIS. `A217058(12) = 57` has been
-submitted and is under review (status *proposed*); the other four have not been
-submitted.
+OEIS status: `A217058(12) = 57` was approved in August 2026 and is live in the
+entry. `A217005(19)`, `A217007(7)` and `A217236(4)` are submitted and under
+review (status *proposed*). `A217059(9)` has not yet been submitted.
 
 Each is established by a pair: an explicit colouring (checkable against the
 definition by a program that never invokes a solver) and a machine refutation
@@ -309,8 +318,8 @@ this section said it had not; that is what changed.
 
 DRAT certification is implemented and gated (`vdw/drat_certify.py`,
 `vdw/DRAT.md`). The refutations behind the *published* rungs `a(0)` to `a(6)` of
-this family, and the first rungs of the other three families, are replayed under
-`drat-trim` on every run of `verify_all.py` and come back `s VERIFIED` — with
+this family, and the first rungs of the other four families, are replayed under
+`drat-trim` on every full run of `verify_all.py` and come back `s VERIFIED` — with
 symmetry breaking switched off, so what is certified is the raw encoding and the
 reversal lex-leader argument stays outside the trusted base. The checker was
 validated against negative controls first: a proof truncated to half, a proof of
@@ -401,7 +410,7 @@ audit confirms zero orbits are lost.
 
 ### 8.2 Validation
 
-The full-scale gate was run before the extension was attempted: published
+The full-scale gate passed before the extension was claimed: published
 `a(18) = 51` was reproduced exactly -- SAT at `n = 50` with a verified witness
 and UNSAT at `n = 51`, both at `j = 18`, in 3469.4 s.  The free lower bound of
 section 4.3 gives `a(19) >= 52` independently of any solver, so the refutation
@@ -457,13 +466,13 @@ The targets are also equal, so as in section 8 the colour-swap breaker is live
 alongside the reversal one.  Cube-and-conquer at `k = 4` yields 40 cubes for
 `[4,4]`, against 75 for `[3,4]` and 36 for `[3,3]`.
 
-The encoding audit of section 5.1 already covered `[4,4]` among its five target
+The encoding audit of section 5.1 already covered `[4,4]` among its target
 shapes, so the CNF-equals-definition and no-orbit-lost guarantees apply to this
 family without extension.
 
 ### 9.2 Validation
 
-The full-scale gate was run before the extension was attempted, and passed:
+The full-scale gate passed before the extension was claimed:
 published `a(6) = 67` was reproduced exactly -- SAT at `n = 66` with a verified
 witness using all 6 wildcards and UNSAT at `n = 67`, both at `j = 6`, 1032.1 s
 for the pair.  A separate family survey had independently refuted `n = 67` at
@@ -544,7 +553,7 @@ did most of the work of locating this term.
 
 ### 10.2 Bracketing beat climbing
 
-Walking `n` upward cost 1000-3500 s per step and yielded no upper bound, so the
+Walking `n` upward cost 974-3464 s per step and yielded no upper bound, so the
 remaining interval was attacked from both ends at once: one probe at `n=75`
 refuted, capping the value at 75, while the climb had raised the floor to 74. That
 left a single undecided instance. Monotonicity (section 4.2) is what licenses
@@ -577,6 +586,21 @@ than the primary engine alone, on top of the shared machinery that always applie
 an encoding audited against the definition on this target shape, symmetry breaking
 proven to lose no orbit, the crash-honest rule that every cube must report
 explicitly (all 76 did), and the family's own validation gate.
+
+### 10.5 The family gate, and why this term waited
+
+This family's gate has a history the other four do not. It was started and
+killed without a verdict, and for as long as that was true this term was
+withheld: excluded from the submission pack, marked withheld in this file, and
+kept out of the paper. The discipline is that reproducing the published
+adjacent term — here `a(8) = 70` — must run to completion before an extension
+is claimed, and a gate that was defined and then not finished does not get
+waived retroactively because the answer looks right.
+
+The gate was run to completion on 2026-08-11 and passed: published `a(8) = 70`
+reproduced exactly — SAT at `n = 69` with a verified witness using all 8
+wildcards (341.3 s) and UNSAT at `n = 70` (637.4 s), both at `j = 8`, 978.8 s
+for the pair. (`vdw/validate_gate59.json`, `logs/validate_gate59.log`)
 
 ## 11. The fifth term: A217236(4) = 84
 

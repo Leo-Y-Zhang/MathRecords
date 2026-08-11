@@ -103,10 +103,12 @@ def family_gate(seq, targets, published, j):
     The Never list below forbids claiming a term whose family gate did not
     reproduce the published value, but the sentence asserting it had been
     unconditional prose: it printed for every term while every other quantity on
-    the same line was read from JSON. A217059 is exactly the case that catches --
-    logs/validate_gate59.log contains its two header lines and no result row, and
-    no vdw/validate_gate59.json was ever written, so the gate was started and
-    killed without a verdict. The claim is now looked up like everything else.
+    the same line was read from JSON. A217059 was exactly the case that caught
+    it -- at the time, logs/validate_gate59.log held only its two header lines
+    with no result row and no vdw/validate_gate59.json existed, because the
+    gate had been started and killed without a verdict. (That gate was later
+    run to completion, 2026-08-11, and passed.) The claim is looked up like
+    everything else, so a term with no gate evidence blocks itself.
 
     Two shapes count as a gate, and both assert the same thing -- SAT at w-1 and
     UNSAT at w for the previous term's parameters:

@@ -1,4 +1,4 @@
-% Four new mixed van der Waerden numbers
+% Five new mixed van der Waerden numbers
 % LaTeX source; compiles with pdflatex, xelatex, or tectonic.
 \documentclass[11pt]{article}
 
@@ -14,7 +14,7 @@
 
 \newcommand{\seq}[1]{\texttt{#1}}
 
-\title{Four new mixed van der Waerden numbers}
+\title{Five new mixed van der Waerden numbers}
 \author{Leo Y. Zhang}
 \date{August 2026}
 
@@ -23,26 +23,28 @@
 \maketitle
 
 \begin{abstract}
-We establish four previously unknown mixed van der Waerden numbers:
-$w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$ and
-$w(6;\,2^{4},4,5)=84$. Each extends by one term a sequence in the On-Line
-Encyclopedia of Integer Sequences (\seq{A217058}, \seq{A217005},
-\seq{A217007}, \seq{A217236}) whose published values, due to Ahmed, had stood
-since 2012. Every lower bound ships as an explicit colouring, checkable
+We establish five previously unknown mixed van der Waerden numbers:
+$w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$,
+$w(6;\,2^{4},4,5)=84$ and $w(11;\,2^{9},3,5)=74$. Each extends by one term a
+sequence in the On-Line Encyclopedia of Integer Sequences (\seq{A217058},
+\seq{A217005}, \seq{A217007}, \seq{A217236}, \seq{A217059}) whose published
+values, due to Ahmed, had stood since 2012. Every lower bound ships as an explicit colouring, checkable
 against the definition in milliseconds by a standalone program that uses only
 the Python standard library and never invokes a SAT solver. Every upper bound
 is a SAT refutation obtained by cube-and-conquer and re-derived along
 independent paths chosen so that they cannot share a mistake, including one
-engine that applies no symmetry breaking at all. For the first of the four
+engine that applies no symmetry breaking at all. For the first of the five
 values the refutation has additionally been reduced to formally checked proof
 objects: $4{,}487$ per-cube DRAT proofs, each replayed to \texttt{s VERIFIED}
 by \texttt{drat-trim} against a single formula, together with a checked proof
-that the cube set is exhaustive. The refutations behind the remaining three
-values are cross-checked but have not been reduced to proof objects. A fifth
-value, $w(11;\,2^{9},3,5)=74$, was computed but is deliberately withheld
-because one of our own validation gates for its family did not run to
-completion; we state this as policy. All code, certificates, proof-object
-tooling and result records are public.
+that the cube set is exhaustive. The refutations behind the remaining four
+values are cross-checked but have not been reduced to proof objects. The
+fifth value was computed alongside the others but was withheld from an
+earlier draft of this paper because one of our own validation gates for its
+family had been started and killed without a verdict; it is claimed here only
+because that gate has since been run to completion, and we record the episode
+because the policy is the point. All code, certificates, proof-object tooling
+and result records are public.
 \end{abstract}
 
 \noindent\emph{2020 Mathematics Subject Classification:} 05D10; 68R05.
@@ -68,14 +70,15 @@ integers form a $2$-term progression, so these classes behave as a budget of
 $j$ \emph{wildcards}: positions excused from the problem at a cost of one
 budget unit each. Ahmed computed extensive tables of such numbers
 \cite{ahmed2009,ahmed2011,ahmed2013} and entered several families into the On-Line
-Encyclopedia of Integer Sequences in 2012 \cite{oeis}. The four families
+Encyclopedia of Integer Sequences in 2012 \cite{oeis}. The five families
 treated here --- \seq{A217058} $=w(j+2;\,2^j,3,4)$, \seq{A217005}
-$=w(j+2;\,2^j,3,3)$, \seq{A217007} $=w(j+2;\,2^j,4,4)$ and \seq{A217236}
-$=w(j+2;\,2^j,4,5)$ --- had received no new terms since then.
+$=w(j+2;\,2^j,3,3)$, \seq{A217007} $=w(j+2;\,2^j,4,4)$, \seq{A217236}
+$=w(j+2;\,2^j,4,5)$ and \seq{A217059} $=w(j+2;\,2^j,3,5)$ --- had received no
+new terms since then.
 
 \subsection{Results}
 
-We establish the next term of each of the four families.
+We establish the next term of each of the five families.
 
 \begin{center}
 \begin{tabular}{llcl}
@@ -86,16 +89,18 @@ sequence & new term & value & status \\
 \seq{A217005} & $a(19) = w(21;\,2^{19},3,3)$ & $52$ & submitted, under review \\
 \seq{A217007} & $a(7) \;\,= w(9;\,2^{7},4,4)$ & $68$ & submitted, under review \\
 \seq{A217236} & $a(4) \;\,= w(6;\,2^{4},4,5)$ & $84$ & submitted, under review \\
+\seq{A217059} & $a(9) \;\,= w(11;\,2^{9},3,5)$ & $74$ & not yet submitted \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-A fifth value, $w(11;\,2^9,3,5)=74$ (the next term of \seq{A217059}), was
-computed by the same method and passes the same certificate checks, but is
-\emph{withheld} rather than claimed: the validation gate that reproduces the
-published adjacent term of that family as an independent check on the method
-was started and killed without a verdict. Section~\ref{sec:withheld} states
-the policy.
+The fifth value was computed by the same method and at the same time as the
+others, but was withheld from an earlier draft of this paper: the validation
+gate that reproduces the published adjacent term of its family as an
+independent check on the method had been started and killed without a
+verdict, and our discipline does not claim an extension past an unfinished
+gate. That gate has since been run to completion and passed;
+Section~\ref{sec:a217059} records the value together with the history.
 
 \subsection{The certificate discipline}
 
@@ -121,9 +126,9 @@ the refutation to DRAT proof objects checked by an independently built
 verifier (Section~\ref{sec:drat}).
 
 We are explicit throughout about which claims carry which kind of evidence.
-In particular: of the four new values, only the refutation behind
+In particular: of the five new values, only the refutation behind
 $w(14;\,2^{12},3,4)=57$ has been reduced to formally checked proof objects;
-the other three rest on cross-checked solver verdicts, not on checked proofs.
+the other four rest on cross-checked solver verdicts, not on checked proofs.
 
 \section{Definitions and conventions}\label{sec:defs}
 
@@ -221,9 +226,9 @@ never assumed by its own check.
 Refutations use cube-and-conquer \cite{cubeandconquer}: branch on all class
 assignments to the first $k$ positions, discard prefixes that already exceed
 the wildcard budget or already contain a monochromatic progression, and solve
-the residual formulas in parallel. At $k=4$ the four families yield $75$
-cubes for targets $(3,4)$, $36$ for $(3,3)$, $40$ for $(4,4)$ and $80$ for
-$(4,5)$. A measured comparison on $n=45$, $j=8$ put $k=4$ at $34.1$\,s
+the residual formulas in parallel. At $k=4$ the five families yield $75$
+cubes for targets $(3,4)$, $36$ for $(3,3)$, $40$ for $(4,4)$, $80$ for
+$(4,5)$ and $76$ for $(3,5)$. A measured comparison on $n=45$, $j=8$ put $k=4$ at $34.1$\,s
 against $k=6$ at $65.1$\,s, so the finer split was not used for search.
 
 One structural rule is worth stating because it is the difference between a
@@ -232,7 +237,7 @@ returned an explicit verdict. A worker killed by the operating system raises
 an error rather than being counted as an empty branch. Three earlier runs
 were lost to precisely that class of failure.
 
-\section{The four new terms}\label{sec:results}
+\section{The five new terms}\label{sec:results}
 
 \subsection{$\seq{A217058}$: $w(14;\,2^{12},3,4)=57$}\label{sec:a217058}
 
@@ -339,7 +344,7 @@ retain two representatives per orbit rather than one, because composing two
 independent lex-leader constraints does not canonicalise the group they
 generate. That costs time and cannot cost correctness, and the audit of
 Section~\ref{sec:verification} confirms zero orbits are lost. The family's
-full-scale gate was run before the extension was attempted: published
+full-scale gate passed before the extension was claimed: published
 $a(18)=51$ was reproduced exactly --- \textsc{sat} at $n=50$ with a verified
 witness and \textsc{unsat} at $n=51$, both at $j=18$, in $3469.4$\,s.
 
@@ -386,7 +391,8 @@ cubes reporting an explicit verdict. Cross-checks: \texttt{vdw2}, which on
 this equal-target family breaks only the colour swap and carries no
 reversal-symmetry constraint, refuted the instance in $7375.6$\,s, and the
 primary engine with reversal symmetry switched off refuted it in
-$7285.2$\,s. The family gate passed first: published $a(6)=67$ was reproduced
+$7285.2$\,s. The family gate passed before the extension was claimed:
+published $a(6)=67$ was reproduced
 exactly --- \textsc{sat} at $n=66$ with a verified witness using all $6$
 wildcards and \textsc{unsat} at $n=67$, both at $j=6$, $1032.1$\,s for the
 pair.
@@ -477,6 +483,88 @@ $16,4,4$, so an extrapolation from the last two steps would have said $83$
 --- which the witness at $n=83$ refutes outright.
 \end{remark}
 
+\subsection{$\seq{A217059}$: $w(11;\,2^{9},3,5)=74$}\label{sec:a217059}
+
+Class~\texttt{1} must avoid $3$-term progressions, class~\texttt{2} must
+avoid $5$-term progressions. Published terms (offset $0$, OEIS keyword
+\texttt{hard}, confirmed live against the OEIS API on 2026-07-29):
+\[
+a(0..8) = 22,\,32,\,43,\,44,\,50,\,55,\,61,\,65,\,70 .
+\]
+
+This value has a history the other four do not, which is why it appears
+last. It was computed and cross-checked in July alongside the others, but
+the family gate --- reproducing the published $a(8)=70$ as an independent
+check on the method in this family --- had been started and killed without a
+verdict, and our discipline requires that gate to run to completion before
+an extension is claimed. The value was therefore withheld: excluded from an
+earlier draft of this paper, marked withheld in the public repository, and
+not submitted to the OEIS. The gate was run to completion on 2026-08-11 and
+passed: published $a(8)=70$ reproduced exactly --- \textsc{sat} at $n=69$
+with a verified witness using all $8$ wildcards and \textsc{unsat} at
+$n=70$, both at $j=8$, $978.8$\,s for the pair. A verification step that was
+defined and then not finished does not get waived retroactively because the
+answer looks right; this subsection exists because the gate ran, not because
+the answer stopped being in doubt --- by the evidence below it never was.
+
+\begin{theorem}\label{thm:a217059}
+$a(9) = w(11;\,2^{9},3,5) = 74$.
+\end{theorem}
+
+\emph{Lower bound.} This colouring of $\{1,\dots,73\}$ uses exactly $9$
+wildcards, with no $3$-term progression in class~\texttt{1} and no $5$-term
+progression in class~\texttt{2}, so $a(9) > 73$:
+
+\begin{center}\small
+\texttt{21121222212222.22221122112..2.2222.2222.2122..2211221212222.2222121221122}
+\end{center}
+
+\noindent Class~\texttt{1} occupies $17$ positions, class~\texttt{2}
+occupies $47$, and $9$ are wildcards. The bound was earned rather than
+inherited: the free construction of Section~\ref{sec:mono} applied to
+$a(8)=70$ gives only $a(9) \ge 71$, three short of the truth. Witnesses were
+found by search and verified at $n=71$, $72$ and $73$ in turn ($1505.6$\,s,
+$974.4$\,s, $3464.0$\,s). A \textsc{sat} answer to a probe launched hoping
+for a refutation is easy to discard as a failed run; it is not --- each one
+raises the floor, and three of them did most of the work of locating this
+term.
+
+\emph{Upper bound.} $n=74$, $j=9$ is unsatisfiable: $3859.9$\,s, all $76$
+cubes reporting an explicit verdict. As in the previous family the value was
+bracketed rather than climbed: a probe at $n=75$ refuted in $3484.7$\,s,
+capping the value, while the witness at $n=73$ raised the floor to $74$,
+leaving $n=74$ the single undecided instance. The refutation was established
+three ways:
+
+\begin{center}
+\begin{tabular}{lllclr}
+\toprule
+encoding & symmetry & solver & cubes & verdict & time \\
+\midrule
+vdw4 & reversal on & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $3859.9$\,s \\
+vdw2 & none at all & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $3452.9$\,s \\
+vdw4 & reversal off & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $3460.0$\,s \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The targets are distinct, so as in
+Sections~\ref{sec:a217058} and~\ref{sec:a217236} the colour-swap breaker
+emits no clauses and \texttt{vdw2} searches the full unreduced space.
+\texttt{vdw2} also re-ran the satisfiable side at $n=73$ from scratch and
+found a verified witness of its own in $2416.4$\,s --- and unlike the
+previous family's, it is a \emph{different} colouring, diverging from the
+one printed above at position $5$, so the satisfiability of $n=73$ is
+certified by two independent objects.
+
+\begin{remark}
+$a(9)-a(8)=4$ against published differences $10,11,1,6,5,6,4,5$; a step of
+$4$ already occurs at $a(6)=61 \to a(7)=65$. The differences of this family
+are erratic --- an $11$ and a $1$ sit adjacent --- which is precisely why
+the free bound was a poor predictor and the value had to be cornered rather
+than extrapolated.
+\end{remark}
+
 \section{Verification of the encoding and engine}\label{sec:verification}
 
 The upper bounds are only as strong as the claim that the formula given to
@@ -509,8 +597,10 @@ engine that produced the thirteenth: for each $a(j)=w$ this means finding a
 verified witness at $n=w-1$ \emph{and} refuting $n=w$. A further $29$
 published values across five families were reproduced with the
 reversal-symmetry constraint enabled. Each family's full-scale gate at the
-adjacent index was run before its extension was attempted
-(Sections~\ref{sec:a217005}--\ref{sec:a217236}); for \seq{A217058} the gate
+adjacent index was run to completion before its extension was
+\emph{claimed}; for \seq{A217059} the gate was finished only after the
+computation itself, which is why that value spent nearly two weeks withheld
+(Sections~\ref{sec:a217005}--\ref{sec:a217059}); for \seq{A217058} the gate
 is $a(11)=55$ at $j=11$: \textsc{sat} at $n=54$ with a verified witness
 using all $11$ wildcards ($1872.5$\,s) and \textsc{unsat} at $n=55$
 ($1239.2$\,s). This gate matters because every other replayed value tops out
@@ -550,14 +640,15 @@ the checker plus the encoding audit.
 
 We state the perimeter plainly. The refutations behind the published rungs
 $a(0)$ through $a(6)$ of \seq{A217058}, and the first rungs of the other
-three families, are replayed under \texttt{drat-trim} on every run of the
-repository's verification gate and come back \texttt{s VERIFIED}. The
+four families, are replayed under \texttt{drat-trim} on every full run of
+the repository's verification gate and come back \texttt{s VERIFIED}. The
 headline refutation $n=57$, $j=12$ is certified by the cube-level route
-described below. The refutations behind the other three new values ---
-$w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$ and $w(6;\,2^{4},4,5)=84$ ---
+described below. The refutations behind the other four new values ---
+$w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$, $w(6;\,2^{4},4,5)=84$ and
+$w(11;\,2^{9},3,5)=74$ ---
 have \emph{not} been reduced to proof objects; those upper bounds rest on
 the cross-checked solver verdicts of
-Sections~\ref{sec:a217005}--\ref{sec:a217236}, not on checked proofs.
+Sections~\ref{sec:a217005}--\ref{sec:a217059}, not on checked proofs.
 
 In all certified refutations, symmetry breaking is switched off: a proof of
 a symmetry-broken formula does not prove the original statement, and the
@@ -603,27 +694,6 @@ against a satisfiable formula, and, for each of several published rungs, the
 instance one below the published term --- which is satisfiable and must
 report \textsc{sat}, never \texttt{VERIFIED}, and does.
 
-\section{The withheld fifth value}\label{sec:withheld}
-
-The same method produced $w(11;\,2^9,3,5) = 74$, the next term of
-\seq{A217059}: a verified witness at $n=73$ found by search (the free bound
-was three short, and explicit witnesses were found and verified at $n=71$,
-$72$, $73$ in turn), a refutation at $n=74$ with all $76$ cubes reporting,
-and cross-checks along the same disjoint paths as the other families, which
-agree.
-
-We nevertheless \emph{withhold} this value rather than claim it. Our
-discipline requires every family's validation gate --- reproducing the
-published adjacent term, here $a(8)=70$, as an independent check on the
-method in that family --- to run to completion before an extension is
-claimed, and for this family the gate was started and killed without a
-verdict. Every other family in this paper passed its gate before its
-extension was claimed. The computed value and its artifacts are on disk in
-the public repository, marked withheld; the value has not been submitted to
-the OEIS and should not be quoted as established until the gate completes.
-We state this as policy: a verification step that was defined and then not
-finished does not get waived retroactively because the answer looks right.
-
 \section{Limitations}\label{sec:limitations}
 
 These are finite, checkable extensions of tracked sequences by one term
@@ -632,7 +702,7 @@ the families and provide no new proof technique. The exhaustive
 encoding-equals-definition audit reaches only instances small enough to
 enumerate ($n \le 12$, $j \le 3$); beyond that scale its guarantee is
 extended by the scale tests of Section~\ref{sec:verification} and by replay
-of known values, not by exhaustion. Three of the four upper bounds are not
+of known values, not by exhaustion. Four of the five upper bounds are not
 reduced to checked proof objects. All computations ran on a single 8-core
 desktop machine; per-instance solver times are reported so that the scale of
 the computation is not overstated.
