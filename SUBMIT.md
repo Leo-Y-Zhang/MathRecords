@@ -58,12 +58,12 @@ Cross-check: **AGREES** — the refutation was re-derived through `vdw2`, which 
 
 ### 3. EXTENSIONS — ADD this line; never alter the lines already there
 ```
-a(12) from _Leo Y. Zhang_, Aug 11 2026
+a(12) from _Leo Y. Zhang_, Aug 13 2026
 ```
 
 ### 4. COMMENT — paste verbatim, including the wrapper lines
 ```
-From _Leo Y. Zhang_, Aug 11 2026: (Start)
+From _Leo Y. Zhang_, Aug 13 2026: (Start)
 a(12) = 57 was computed with a SAT solver.
 
 Written out, a(12) is the least n such that every partition of [1,n] into 12+2 classes contains two elements in one of the first 12 classes, a 3-term arithmetic progression in the next, or a 4-term one in the last.
@@ -99,12 +99,12 @@ Cross-check: **AGREES** — the refutation was re-derived through `vdw2`, which 
 
 ### 3. EXTENSIONS — ADD this line; never alter the lines already there
 ```
-a(9) from _Leo Y. Zhang_, Aug 11 2026
+a(9) from _Leo Y. Zhang_, Aug 13 2026
 ```
 
 ### 4. COMMENT — paste verbatim, including the wrapper lines
 ```
-From _Leo Y. Zhang_, Aug 11 2026: (Start)
+From _Leo Y. Zhang_, Aug 13 2026: (Start)
 a(9) = 74 was computed with a SAT solver.
 
 Written out, a(9) is the least n such that every partition of [1,n] into 9+2 classes contains two elements in one of the first 9 classes, a 3-term arithmetic progression in the next, or a 5-term one in the last.
@@ -140,12 +140,12 @@ Cross-check: **AGREES** — the refutation was re-derived through `vdw2`, which 
 
 ### 3. EXTENSIONS — ADD this line; never alter the lines already there
 ```
-a(4) from _Leo Y. Zhang_, Aug 11 2026
+a(4) from _Leo Y. Zhang_, Aug 13 2026
 ```
 
 ### 4. COMMENT — paste verbatim, including the wrapper lines
 ```
-From _Leo Y. Zhang_, Aug 11 2026: (Start)
+From _Leo Y. Zhang_, Aug 13 2026: (Start)
 a(4) = 84 was computed with a SAT solver.
 
 Written out, a(4) is the least n such that every partition of [1,n] into 4+2 classes contains two elements in one of the first 4 classes, a 4-term arithmetic progression in the next, or a 5-term one in the last.
@@ -181,12 +181,12 @@ Cross-check: **AGREES** — the refutation was re-derived through `vdw2`, which 
 
 ### 3. EXTENSIONS — ADD this line; never alter the lines already there
 ```
-a(19) from _Leo Y. Zhang_, Aug 11 2026
+a(19) from _Leo Y. Zhang_, Aug 13 2026
 ```
 
 ### 4. COMMENT — paste verbatim, including the wrapper lines
 ```
-From _Leo Y. Zhang_, Aug 11 2026: (Start)
+From _Leo Y. Zhang_, Aug 13 2026: (Start)
 a(19) = 52 was computed with a SAT solver.
 
 Written out, a(19) is the least n such that every partition of [1,n] into 19+2 classes contains two elements in one of the first 19 classes, or a 3-term arithmetic progression in either of the last two.
@@ -222,12 +222,12 @@ Cross-check: **AGREES** — the refutation was re-derived through `vdw2`, which 
 
 ### 3. EXTENSIONS — ADD this line; never alter the lines already there
 ```
-a(7) from _Leo Y. Zhang_, Aug 11 2026
+a(7) from _Leo Y. Zhang_, Aug 13 2026
 ```
 
 ### 4. COMMENT — paste verbatim, including the wrapper lines
 ```
-From _Leo Y. Zhang_, Aug 11 2026: (Start)
+From _Leo Y. Zhang_, Aug 13 2026: (Start)
 a(7) = 68 was computed with a SAT solver.
 
 Written out, a(7) is the least n such that every partition of [1,n] into 7+2 classes contains two elements in one of the first 7 classes, or a 4-term arithmetic progression in either of the last two.
