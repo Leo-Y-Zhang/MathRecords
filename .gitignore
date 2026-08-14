@@ -32,3 +32,11 @@ ci_watcher.py
 overnight.py
 finisher.py
 cleanup_stray_solvers.ps1
+
+# OEIS submission staging: b-files with LF endings, per-sequence COMMENT text to
+# paste by hand, and the approval watch log. It is a workbench for one person at
+# one keyboard, not part of the artefact, and its contents go stale the moment an
+# editor acts -- the watch log still reads "APPROVED : (none yet)" for a campaign
+# that is now complete. Publishing it would assert the opposite of the truth.
+# Archived instead in the private tooling repo so it survives this machine.
+OEIS-upload/
