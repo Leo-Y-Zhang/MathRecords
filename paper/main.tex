@@ -69,7 +69,7 @@ $2$. A class with target $2$ can hold at most one element, since any two
 integers form a $2$-term progression, so these classes behave as a budget of
 $j$ \emph{wildcards}: positions excused from the problem at a cost of one
 budget unit each. Ahmed computed extensive tables of such numbers
-\cite{ahmed2009,ahmed2011,ahmed2013} and entered several families into the On-Line
+\cite{ahmed2009,ahmed2010,ahmed2011,ahmed2013} and entered several families into the On-Line
 Encyclopedia of Integer Sequences in 2012 \cite{oeis}. The five families
 treated here --- \seq{A217058} $=w(j+2;\,2^j,3,4)$, \seq{A217005}
 $=w(j+2;\,2^j,3,3)$, \seq{A217007} $=w(j+2;\,2^j,4,4)$, \seq{A217236}
@@ -226,7 +226,9 @@ never assumed by its own check.
 Refutations use cube-and-conquer \cite{cubeandconquer}: branch on all class
 assignments to the first $k$ positions, discard prefixes that already exceed
 the wildcard budget or already contain a monochromatic progression, and solve
-the residual formulas in parallel. At $k=4$ the five families yield $75$
+the residual formulas in parallel. The same division of labour --- separate
+branches of one search tree, solved independently --- is what Ahmed used to
+settle $w(2;3,17)$ and $w(2;3,18)$ \cite{ahmed2010}. At $k=4$ the five families yield $75$
 cubes for targets $(3,4)$, $36$ for $(3,3)$, $40$ for $(4,4)$, $80$ for
 $(4,5)$ and $76$ for $(3,5)$. A measured comparison on $n=45$, $j=8$ put $k=4$ at $34.1$\,s
 against $k=6$ at $65.1$\,s, so the finer split was not used for search.
@@ -750,6 +752,11 @@ rather than errors, are in \texttt{vdw/DRAT.md}.
 T.~Ahmed,
 \emph{Some new van der Waerden numbers and some van der Waerden-type numbers},
 Integers \textbf{9} (2009), A06, 65--76.
+
+\bibitem{ahmed2010}
+T.~Ahmed,
+\emph{Two new van der Waerden numbers: $w(2;3,17)$ and $w(2;3,18)$},
+Integers \textbf{10} (2010), \#A32, 369--377.
 
 \bibitem{ahmed2011}
 T.~Ahmed,
