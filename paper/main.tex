@@ -38,13 +38,10 @@ values the refutation has additionally been reduced to formally checked proof
 objects: $4{,}487$ per-cube DRAT proofs, each replayed to \texttt{s VERIFIED}
 by \texttt{drat-trim} against a single formula, together with a checked proof
 that the cube set is exhaustive. The refutations behind the remaining four
-values are cross-checked but have not been reduced to proof objects. The
-fifth value was computed alongside the others but was withheld from an
-earlier draft of this paper because one of our own validation gates for its
-family had been started and killed without a verdict; it is claimed here only
-because that gate has since been run to completion, and we record the episode
-because the policy is the point. All code, certificates, proof-object tooling
-and result records are public.
+values are cross-checked but have not been reduced to proof objects. For every
+family, the validation gate that reproduces the published adjacent term was
+run to completion before the extension was claimed. All code, certificates,
+proof-object tooling and result records are public.
 \end{abstract}
 
 \noindent\emph{2020 Mathematics Subject Classification:} 05D10; 68R05.
@@ -94,13 +91,12 @@ sequence & new term & value & status \\
 \end{tabular}
 \end{center}
 
-The fifth value was computed by the same method and at the same time as the
-others, but was withheld from an earlier draft of this paper: the validation
-gate that reproduces the published adjacent term of its family as an
-independent check on the method had been started and killed without a
-verdict, and our discipline does not claim an extension past an unfinished
-gate. That gate has since been run to completion and passed;
-Section~\ref{sec:a217059} records the value together with the history.
+Each family carries a validation gate: the published adjacent term is
+re-derived by the same machinery, as an independent check on the method in
+that family, before an extension is claimed. For \seq{A217059} that gate was
+finished after the computation rather than before it, so the value was held
+back until it had run; Section~\ref{sec:a217059} gives the timings and the
+verdicts.
 
 \subsection{The certificate discipline}
 
@@ -196,7 +192,7 @@ Monotonicity in $j$ gives a bound for nothing: $a(j+1) \ge a(j)+1$. A valid
 colouring of $\{1,\dots,a(j)-1\}$ with at most $j$ wildcards extends to
 $\{1,\dots,a(j)\}$ by making the new final position a wildcard; it uses at
 most $j+1$ wildcards and creates no monochromatic progression. Whether this
-free bound is tight varies by family, and we report its role honestly in
+free bound is tight varies by family, and its role is reported in
 each case: for \seq{A217007} it \emph{is} the lower bound
 (Section~\ref{sec:a217007}); for \seq{A217059} it was three short and for
 \seq{A217236} four short, so those witnesses are genuine search results.
@@ -221,7 +217,7 @@ mathematics in the engine, the verification programme of
 Sections~\ref{sec:verification} and~\ref{sec:drat} is arranged so that it is
 never assumed by its own check.
 
-\subsection{Cube-and-conquer and the crash-honest rule}\label{sec:cube}
+\subsection{Cube-and-conquer and the completeness of the cube set}\label{sec:cube}
 
 Refutations use cube-and-conquer \cite{cubeandconquer}: branch on all class
 assignments to the first $k$ positions, discard prefixes that already exceed
@@ -236,8 +232,9 @@ against $k=6$ at $65.1$\,s, so the finer split was not used for search.
 One structural rule is worth stating because it is the difference between a
 theorem and a retraction: \textsc{unsat} is reported only when every cube has
 returned an explicit verdict. A worker killed by the operating system raises
-an error rather than being counted as an empty branch. Three earlier runs
-were lost to precisely that class of failure.
+an error rather than being counted as an empty branch. That failure mode was observed
+during development, which is why the rule is enforced in code rather than
+assumed.
 
 \section{The five new terms}\label{sec:results}
 
@@ -380,7 +377,7 @@ $a(7) > 67$:
 \texttt{..1112112111.2221221222.1112112111.2221221222.1112112111.2221221222}
 \end{center}
 
-An honest qualification: this certificate \emph{is} the free construction of
+A qualification: this certificate \emph{is} the free construction of
 Section~\ref{sec:mono} --- the family gate's $a(6)$ colouring with one
 further wildcard prepended. The solver, given $n=67$, $j=7$ cold,
 rediscovered that construction rather than finding a structurally different
@@ -499,14 +496,14 @@ last. It was computed and cross-checked in July alongside the others, but
 the family gate --- reproducing the published $a(8)=70$ as an independent
 check on the method in this family --- had been started and killed without a
 verdict, and our discipline requires that gate to run to completion before
-an extension is claimed. The value was therefore withheld: excluded from an
-earlier draft of this paper, marked withheld in the public repository, and
-not submitted to the OEIS. The gate was run to completion on 2026-08-11 and
+an extension is claimed. The value was therefore not claimed: it was marked
+withheld in the public repository and kept out of the OEIS until the gate had
+finished. The gate was run to completion on 2026-08-11 and
 passed: published $a(8)=70$ reproduced exactly --- \textsc{sat} at $n=69$
 with a verified witness using all $8$ wildcards and \textsc{unsat} at
 $n=70$, both at $j=8$, $978.8$\,s for the pair. A verification step that was
 defined and then not finished does not get waived retroactively because the
-answer looks right; this subsection exists because the gate ran, not because
+answer looks right; the value is stated here because the gate ran, not because
 the answer stopped being in doubt --- by the evidence below it never was.
 
 \begin{theorem}\label{thm:a217059}
