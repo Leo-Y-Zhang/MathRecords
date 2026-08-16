@@ -33,9 +33,9 @@ A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74
 A217236:  55, 71, 75, 79, 84
 ```
 
-OEIS status: `A217058(12) = 57` was approved in August 2026 and is live in the
-entry. `A217005(19)`, `A217007(7)` and `A217236(4)` are submitted and under
-review (status *proposed*). `A217059(9)` has not yet been submitted.
+OEIS status: all five are approved and live in their entries — `A217058(12)`
+on 30 July 2026, `A217005(19)`, `A217007(7)` and `A217236(4)` on 7 August,
+and `A217059(9)` on 13 August — each credited in the entry's extensions line.
 
 Each is established by a pair: an explicit colouring (checkable against the
 definition by a program that never invokes a solver) and a machine refutation

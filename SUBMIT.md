@@ -25,7 +25,8 @@ Ranked by evidence actually on disk, strongest first:
 **Submit A217058 first, and alone**, then wait for it to be ACCEPTED before
 sending the next. One round-trip teaches more than any amount of preparation,
 and a question about your strongest result is better answered once than five
-times. `A217058` was submitted on Jul 30 2026 and is under review.
+times. The campaign is closed: all five terms were approved between Jul 30 and
+Aug 13 2026, and this pack is kept for the record rather than for sending.
 
 ## Never
 

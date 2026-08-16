@@ -108,7 +108,8 @@ vdw/vdw_validate.py       replays published values through the engine
 vdw/verify_certificate.py standalone checker, stdlib only, trusts nothing
 vdw/cross_check.py        independent re-derivation through a disjoint path
 vdw/vdw2.py               earlier engine, kept as the cross-check's second opinion
-maxvol/                   closed thread, see SESSION_HANDOFF.md
+maxvol/                   closed thread, kept for the record; nothing below
+                          depends on it
 ```
 
 ## Reproducing
@@ -323,8 +324,10 @@ strong prior either way.
 
 Each `SUBMISSION_*.md` is generated mechanically from the result files — the
 number cannot drift from what was computed, and the generator re-runs the
-verifier before writing. **A217058(12) = 57 was approved by the OEIS in August
-2026 and is live in the entry. A217005(19), A217007(7) and A217236(4) are
-submitted and under review; A217059(9) has not yet been submitted.**
+verifier before writing. **All five are now approved and live in the OEIS**:
+A217058(12) on 30 July 2026, A217005(19), A217007(7) and A217236(4) on 7 August,
+and A217059(9) on 13 August, each credited in the entry's extensions line.
 
-See `SESSION_HANDOFF.md` for live state.
+The entries themselves are the live state; this paragraph is checked against
+them rather than remembered, and the way to check it is to search OEIS for the
+author name rather than to list the sequence ids from memory.

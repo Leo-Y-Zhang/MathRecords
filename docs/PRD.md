@@ -74,8 +74,8 @@ it.
   night.
 
 Two obvious extensions are deliberately not taken. The engine is not packaged
-as a reusable library, and no further terms are chased once four are
-established and one is under review.
+as a reusable library, and no further terms are chased once the five are
+established. All five are now approved; the family is closed.
 
 ## What is not claimed
 
