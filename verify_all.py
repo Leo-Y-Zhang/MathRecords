@@ -256,6 +256,46 @@ def main():
                   fail_detail='evidence supports it but the pack is stale — '
                               'run make_submit_pack.py')
 
+    # The five b-files committed at the repository root are the copies anyone
+    # actually gets: SUBMIT.md names them to an editor ("b217058.txt (13 rows,
+    # 0 to 12) is in this repository if an editor ever asks for one"), and they
+    # are the only b-files a clone or a CI runner has at all. Nothing opened
+    # them. The staged copies checked below live outside the repository, so that
+    # section skips on every machine but the one holding the staging folder --
+    # which meant that in practice no b-file content was ever checked anywhere.
+    # Measured: rewriting the last row of b217058.txt to "12 58" left the gate
+    # at 0 failed, still printing that every claim is supported.
+    section('committed b-files match the claims')
+    ready_seqs = {seq for seq, _j, _v in ready}
+    for seq, (targets, published, jnew, value, wf, rf) in CLAIMS.items():
+        bpath = os.path.join(ROOT, f'b{seq[1:]}.txt')
+        if not check(f'{seq}: b{seq[1:]}.txt is committed', os.path.exists(bpath),
+                     fail_detail=f'missing {bpath}'):
+            continue
+        rows = [r.split() for r in
+                open(bpath, encoding='ascii').read().split('\n') if r.strip()]
+        try:
+            got = [(int(a), int(b)) for a, b in rows]
+        except ValueError:
+            check(f'{seq}: b-file rows are "index value" pairs', False,
+                  fail_detail=f'unparseable rows in b{seq[1:]}.txt: {rows[:3]}')
+            continue
+
+        if seq not in ready_seqs:
+            check(f'{seq}: committed b-file does not carry the withheld a({jnew})',
+                  not got or got[-1] != (jnew, value), 'withheld term absent',
+                  fail_detail=f'{seq} is blocked (its evidence is incomplete) but '
+                              f'b{seq[1:]}.txt ends a({jnew})={value}, ready to hand '
+                              f'to an editor')
+            continue
+
+        want = list(enumerate(published + [value], start=jnew - len(published)))
+        check(f'{seq}: b-file rows equal the claimed sequence',
+              got == want, f'{len(got)} rows, last a({got[-1][0]})={got[-1][1]}'
+              if got else 'empty',
+              fail_detail=f'b{seq[1:]}.txt disagrees with CLAIMS: got '
+                          f'{got[:3]}...{got[-1:]} want {want[:3]}...{want[-1:]}')
+
     # The b-file is the DATA that is uploaded to OEIS. The gate checked
     # certificates, prose and SUBMIT.md and never opened one, so the only
     # artifact whose contents literally become the public record was the one
