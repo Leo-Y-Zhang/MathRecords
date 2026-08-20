@@ -23,8 +23,8 @@ currently wrong.
 
 ## From finished mathematics to a pasted term
 
-The state this project is actually in: four terms ready, one submitted and under
-review, nothing computing. The path begins when the OEIS approves the open one.
+The state this project is actually in: all five terms approved and live in the
+OEIS, nothing computing. The path below is the one that was walked five times.
 
 1. **An approval file appears.** The watcher writes it, names the approved
    sequence, and names the next one to submit. It keeps running for the rest.
