@@ -137,11 +137,14 @@ inside `python-sat`, so no solver has to be installed separately. Note that
 pysat's `Kissat404` hard-crashes the interpreter on this platform — a native
 abort with no Python exception — so it is excluded.
 
-Two of the gate's sections need external binaries and announce themselves as
-skipped without them: the DRAT refutation replays want `kissat` and `drat-trim`
-on `PATH` (`vdw/DRAT.md` has the build), and the staging-folder sections want a
-local `~/OEIS-upload`, which is machine-local and deliberately never committed.
-Everything else runs from a bare clone.
+Two of the gate's sections skip rather than fail when what they need is absent,
+and say so in their own heading. The DRAT refutation replays want the `kissat`
+and `drat-trim` binaries, found on `PATH`, through `KISSAT` / `DRAT_TRIM`, or by
+flag — `vdw/DRAT.md` builds both without administrator rights and explains the
+Windows text-mode trap that silently truncates a proof. The staging-folder
+sections want a local `OEIS-upload` directory, which is a one-person workbench,
+deliberately never committed, and absent on a CI runner by design. Everything
+else runs from a bare clone.
 
 The individual pieces, if you want them one at a time rather than through the
 gate:
