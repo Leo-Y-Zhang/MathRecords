@@ -114,9 +114,37 @@ maxvol/                   closed thread, kept for the record; nothing below
 
 ## Reproducing
 
-Needs `python-sat` (CaDiCaL ships with it). Note that pysat's `Kissat404`
-hard-crashes the interpreter on this platform — a native abort with no Python
-exception — so it is excluded.
+Needs **Python 3.13**, which is what CI runs, and one third-party package. There
+is nothing to build and nothing to install from this repository: it is a set of
+scripts and evidence files, not a package.
+
+```bash
+pip install python-sat==1.9.dev7
+python verify_all.py
+```
+
+That second line is the whole thing. It re-checks every claim in this repository
+against the evidence committed beside it and prints `EVERY CLAIM IN THIS
+REPOSITORY IS SUPPORTED BY EVIDENCE ON DISK` only if all of them hold; anything
+else means do not believe the numbers below. On this machine it is **107 passed,
+0 failed in 33 s**; `python verify_all.py --fast` drops the two re-executed
+audits for 105 in 17 s. `.github/workflows/ci.yml` runs the full one on every
+push, after `python scrub_paths.py --check`.
+
+The version is pinned because the audits re-derive results through that solver,
+and a gate whose verdict depends on the day it runs is not a gate. CaDiCaL ships
+inside `python-sat`, so no solver has to be installed separately. Note that
+pysat's `Kissat404` hard-crashes the interpreter on this platform — a native
+abort with no Python exception — so it is excluded.
+
+Two of the gate's sections need external binaries and announce themselves as
+skipped without them: the DRAT refutation replays want `kissat` and `drat-trim`
+on `PATH` (`vdw/DRAT.md` has the build), and the staging-folder sections want a
+local `~/OEIS-upload`, which is machine-local and deliberately never committed.
+Everything else runs from a bare clone.
+
+The individual pieces, if you want them one at a time rather than through the
+gate:
 
 ```bash
 python vdw/encoding_audit.py                     # ~2 min

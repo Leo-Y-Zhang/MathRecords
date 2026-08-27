@@ -9,6 +9,11 @@ public record is about to be written.
 Type family, colour palette, breakpoints and touch targets have no meaning in
 `cmd.exe`, so this brief does not have them.
 
+The `go.cmd` menu is the one of the three that is **not** in this repository:
+it is machine-local session scaffolding and `.gitignore` keeps it out of the
+public tree. [APP_FLOW.md](APP_FLOW.md) says which files that covers. The other
+two, `verify_all.py` and `SUBMIT.md`, are here and can be run and read.
+
 [PRD.md](PRD.md) · [APP_FLOW.md](APP_FLOW.md)
 
 ## Making the wrong action awkward

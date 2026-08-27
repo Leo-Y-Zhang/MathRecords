@@ -28,7 +28,9 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v5
+      # Same major as the gitleaks job below. Two checkout majors in one file
+      # is not a pin, it is an accident that survived.
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v6
         with:

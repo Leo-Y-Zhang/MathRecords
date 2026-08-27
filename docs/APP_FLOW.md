@@ -5,9 +5,24 @@ the one that matters: a `cmd.exe` menu, `go.cmd`, that stands between finished
 mathematics and a permanent public record. This file describes that flow and the
 generated documents it hands the operator.
 
-Everything below is read out of `go.cmd`, `START HERE.md`, `verify_all.py` and
-`make_submit_pack.py` as they currently stand, including the parts that are
-currently wrong.
+**Half of what this file describes is not in this repository, on purpose.**
+`go.cmd`, `START HERE.md`, `announce.py`, `RESULT - READ ME.txt` and the
+`*_STATUS.md` files are session scaffolding for one person at one keyboard, and
+`.gitignore` excludes them from the public tree — they were removed on
+2026-08-04 and the ignore rules are there so an overnight script cannot quietly
+put them back. Do not go looking for them in a clone; nothing here depends on
+them. What is published and runnable is `verify_all.py`, `make_submit_pack.py`,
+the generated `SUBMIT.md` and `tools/`, and the entry point for a reader is
+`python verify_all.py`, described in the README.
+
+This file is kept because the design reasoning is the point of it — where the
+console refuses, what it prints when it has nothing to say, and why the
+irreversible step asks for a typed word. Read it as a design record of a private
+tool, not as a guide to files you can open.
+
+Everything below was read out of `go.cmd`, `START HERE.md`, `verify_all.py` and
+`make_submit_pack.py` as they stood, including the parts that were wrong at the
+time of writing.
 
 [PRD.md](PRD.md) · [DESIGN_BRIEF.md](DESIGN_BRIEF.md)
 
