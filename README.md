@@ -22,6 +22,14 @@ passed: SAT at n = 69 with a verified witness, UNSAT at n = 70, both at j = 8,
 defined and then not finished does not get waived retroactively because the
 answer looks right.
 
+**The paper.** [*Five new mixed van der Waerden numbers*](paper/main.pdf) --
+12 pages -- is the write-up: the encoding, the certificates, the
+cube-and-conquer refutation behind the headline value, and a Limitations
+section that states plainly which claims rest on what. Four of the five upper
+bounds are not reduced to checked proof objects; they rest on cross-checked
+solver verdicts along independent paths, and the paper says so rather than
+leaving it to be discovered. [LaTeX source](paper/main.tex).
+
 ---
 
 ## The problem

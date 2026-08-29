@@ -1,5 +1,6 @@
-# build artifacts - the LaTeX source is the deliverable, the PDF is not committed
-main.pdf
+# Build artifacts. The LaTeX source is the deliverable; main.pdf is committed
+# alongside it so the paper can be read without a TeX installation, and is
+# rebuilt from main.tex rather than edited.
 *.aux
 *.log
 *.out

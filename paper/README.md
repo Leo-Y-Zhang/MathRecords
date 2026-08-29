@@ -1,6 +1,7 @@
 # Paper source
 
-`main.tex` is the LaTeX source of *Four new mixed van der Waerden numbers*.
+`main.tex` is the LaTeX source of *Five new mixed van der Waerden numbers*,
+and `main.pdf` is the compiled paper.
 It is a single self-contained file: no `.bib`, no figures, standard packages
 only (`geometry`, `amsmath`, `amssymb`, `amsthm`, `booktabs`, `microtype`,
 `hyperref`).
@@ -17,7 +18,9 @@ tectonic paper/main.tex
 pdflatex main.tex && pdflatex main.tex   # twice, for cross-references
 ```
 
-The compiled PDF is deliberately not committed; the source is the artifact.
+`main.pdf` is committed so the paper can be read without a TeX installation.
+The source remains the artifact: the PDF is rebuilt from `main.tex`, never
+edited, and any change to the paper is a change to the source.
 
 ## Relationship to the repository
 
