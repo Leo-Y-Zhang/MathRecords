@@ -17,6 +17,48 @@ A proof of a symmetry-broken formula does not prove the original statement, and
 the reversal lex-leader constraint is the one piece of new mathematics in
 `vdw4` — precisely the thing that must not be assumed by its own check.
 
+## The colour-symmetry rule must be off in the CUBE SET too
+
+Turning `symbreak` off in the *formula* is not enough: `make_cubes` applied the
+same idea a second time, in the *cube generator*, and that is easy to miss
+because the two live in different places.
+
+`make_cubes(..., colour_sym=True)` drops a prefix when a colour sharing a target
+value appears out of canonical order. That is sound for *searching* — some other
+prefix is its colour-permutation image, so the search loses no solutions — but it
+is **not a refutation**. The dropped prefix is perfectly consistent with `F`,
+because `F` here is built with symmetry breaking off. So `cube_exhaustive.py`
+finds a full-depth prefix that is neither in the cube set nor falsifies any
+clause of `F`, and fails closed with a named counterexample. Correctly: the pile
+of per-cube proofs really does not cover those branches.
+
+The rule is a **no-op when the targets are pairwise distinct** — every group holds
+one colour, so the order test can never fail. That is why A217058 (`[3, 4]`)
+certified cleanly with it left on, and why the effect stayed hidden. It bites
+exactly on the equal-target families:
+
+| targets | cubes, rule on | rule off | exhaustiveness with the rule on |
+|---|---:|---:|---|
+| `[3, 4]` | 212 | 212 | PASS |
+| `[4, 5]` | 236 | 236 | PASS |
+| `[3, 5]` | 216 | 216 | PASS |
+| `[3, 3]` | 96 | 192 | **FAIL** — first counterexample `[0,0,0,0,2]` |
+| `[4, 4]` | 116 | 232 | **FAIL** — first counterexample `[0,0,0,0,2]` |
+
+(`n = 30, j = 4, k = 5`; the identical counts in the first three rows are the
+no-op, measured rather than argued.)
+
+**`cube_certify.py` therefore defaults `colour_sym` to OFF**, and records it in
+`status.json`. `--colour-sym` restores the old behaviour for search work. The
+cost of switching it off is a cube set roughly twice the size for a two-colour
+group, which is the honest price of a covering argument.
+
+Worked example, `A217005` `a(8) = 31` at `n = 31, j = 8, k = 6` — the first
+equal-target instance certified here: 523 cubes, all `s VERIFIED`, composition
+tail `s VERIFIED` over 1,717 clauses and 384 lemmas, in
+`cube_run_n31_j8_k6/`. The negative control at `n = 30 = a(8) - 1` returns a SAT
+cube and aborts, as it must.
+
 ## Running it
 
 ```sh

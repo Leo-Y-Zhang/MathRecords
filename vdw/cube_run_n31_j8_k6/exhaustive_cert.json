@@ -1,0 +1,1895 @@
+{
+ "n": 31,
+ "j": 8,
+ "targets": [
+  3,
+  3
+ ],
+ "k": 6,
+ "symbreak": false,
+ "revsym": false,
+ "formula": {
+  "vars": 247,
+  "clauses": 1194,
+  "body_sha256": "1f94ebea0905eca35c583995810fb6c8dce5e89fc4566b8b136d11e861e0c967"
+ },
+ "cube_source": "vdw/cube_run_n31_j8_k6_A217005/results.jsonl",
+ "cube_count": 523,
+ "cube_set_sha256": "731498092ec27e325ef7166e870d314eef468717f2ead50cf3f3246bfdc3e865",
+ "cube_results_nonverified": 0,
+ "cube_results_foreign_formula": 0,
+ "walk_s": 0.0,
+ "stats": {
+  "cube": 523,
+  "dropped_mono_ap": 82,
+  "dropped_up": 0,
+  "internal": 302
+ },
+ "dropped": [
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 126
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 351
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    3,
+    4
+   ],
+   "clause": [
+    -5,
+    -8,
+    -11
+   ],
+   "clause_index": 125
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 351
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 126
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    3,
+    4
+   ],
+   "clause": [
+    -6,
+    -9,
+    -12
+   ],
+   "clause_index": 350
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14
+   ],
+   "clause_index": 153
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 126
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14
+   ],
+   "clause_index": 153
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 351
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    2,
+    3
+   ],
+   "clause": [
+    -2,
+    -5,
+    -8
+   ],
+   "clause_index": 124
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 351
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14
+   ],
+   "clause_index": 153
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 126
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14
+   ],
+   "clause_index": 153
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    3,
+    4
+   ],
+   "clause": [
+    -6,
+    -9,
+    -12
+   ],
+   "clause_index": 350
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 126
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -3,
+    -9,
+    -15
+   ],
+   "clause_index": 378
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -3,
+    -9,
+    -15
+   ],
+   "clause_index": 378
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 351
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    3,
+    4
+   ],
+   "clause": [
+    -5,
+    -8,
+    -11
+   ],
+   "clause_index": 125
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -3,
+    -9,
+    -15
+   ],
+   "clause_index": 378
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17
+   ],
+   "clause_index": 154
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    1,
+    3,
+    5
+   ],
+   "clause": [
+    -3,
+    -9,
+    -15
+   ],
+   "clause_index": 378
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 351
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 127
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 126
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    2,
+    0,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    2,
+    1,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    4,
+    6
+   ],
+   "clause": [
+    -6,
+    -12,
+    -18
+   ],
+   "clause_index": 379
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 352
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    1,
+    2,
+    3
+   ],
+   "clause": [
+    -3,
+    -6,
+    -9
+   ],
+   "clause_index": 349
+  }
+ ],
+ "counterexamples": [],
+ "unmatched_cubes": [],
+ "tail_lemmas": 384,
+ "meaning": "exhaustiveness/composition ONLY: every branch of the full assignment tree is a cube or refuted by the formula. The per-cube UNSAT obligations are separate (cube_certify.py results with matching formula_sha256).",
+ "generated_utc": "2026-08-31T19:31:05+00:00",
+ "tail": {
+  "verdict": "VERIFIED",
+  "check_s": 0.05,
+  "fprime_clauses": 1717,
+  "tail_lemmas": 384,
+  "detail": null
+ },
+ "verdict": "PASS"
+}

@@ -163,9 +163,25 @@ def _has_mono_ap(prefix, targets):
     return False
 
 
-def make_cubes(n, j, targets, k):
+def make_cubes(n, j, targets, k, colour_sym=True):
     """Class assignments of positions 1..k surviving the local AP test, the
-    wildcard budget and the colour-symmetry rule."""
+    wildcard budget and -- when `colour_sym` -- the colour-symmetry rule.
+
+    **Set `colour_sym=False` for any certification run whose cube set must be
+    provably exhaustive (`cube_exhaustive.py`).**  The colour-symmetry rule
+    drops a prefix because some *other* prefix is its colour-permutation image,
+    which is a sound way to search but is NOT a refutation: the dropped prefix
+    is consistent with F, since the proofs deliberately run with symmetry
+    breaking OFF (`build(..., symbreak=False)`).  The exhaustiveness walk then
+    correctly reports it as an uncovered branch and fails closed.
+
+    The rule is a no-op whenever the targets are pairwise distinct -- every
+    group has one colour, so `cols[:len(seen)]` always matches -- which is why
+    the A217058 family ([3, 4]) certified cleanly with it left on.  It bites
+    exactly on the equal-target families, A217005 ([3, 3]) and A217007
+    ([4, 4]).  Default stays True so the search path and the committed
+    n=45 j=8 k=6 run keep their existing cube sets.
+    """
     r = len(targets)
     groups = {}
     for c, t in enumerate(targets, start=1):
@@ -175,14 +191,15 @@ def make_cubes(n, j, targets, k):
         if pre.count(0) > j:
             continue
         ok = True
-        for t, cols in groups.items():
-            seen = []
-            for x in pre:
-                if x in cols and x not in seen:
-                    seen.append(x)
-            if seen != cols[:len(seen)]:
-                ok = False
-                break
+        if colour_sym:
+            for t, cols in groups.items():
+                seen = []
+                for x in pre:
+                    if x in cols and x not in seen:
+                        seen.append(x)
+                if seen != cols[:len(seen)]:
+                    ok = False
+                    break
         if not ok or _has_mono_ap(pre, targets):
             continue
         cubes.append(pre)

@@ -241,6 +241,12 @@ def main():
                     help='run a single cube, e.g. "0,1,2,0,1,2,0,1" (must be in the cube set)')
     ap.add_argument('--dry-run', action='store_true',
                     help='count the cubes and exit')
+    ap.add_argument('--colour-sym', dest='colour_sym', action='store_true',
+                    help='restore make_cubes'' colour-symmetry pruning. OFF by '
+                         'default here: it drops a prefix because another prefix '
+                         'is its colour-permutation image, which is not a '
+                         'refutation, so cube_exhaustive.py cannot close the '
+                         'argument. A no-op when the targets are distinct.')
     ap.add_argument('--run-dir', help='where results.jsonl / status.json / work live '
                                       '(default vdw/cube_run_n{n}_j{j}_k{k})')
     ap.add_argument('--negctl-truncate', type=int, metavar='IDX',
@@ -250,7 +256,8 @@ def main():
     ap.add_argument('--drat-trim', dest='drat_trim')
     args = ap.parse_args()
 
-    cubes = order_cubes(make_cubes(args.n, args.j, args.targets, args.k))
+    cubes = order_cubes(make_cubes(args.n, args.j, args.targets, args.k,
+                                   colour_sym=args.colour_sym))
     if args.only:
         want = parse_cube(args.only, args.k)
         if want not in set(cubes):
@@ -304,7 +311,7 @@ def main():
           f'{len(todo)} to run on {args.workers} workers')
 
     status = {'n': args.n, 'j': args.j, 'targets': args.targets, 'k': args.k,
-              'symbreak': False, 'revsym': False,
+              'symbreak': False, 'revsym': False, 'colour_sym': args.colour_sym,
               'formula_sha256': sha, 'vars': nvars, 'clauses': nclauses,
               'total_cubes': len(cubes), 'verified': prev_ok,
               'state': 'running', 'counts': {}, 'eta_s': None}

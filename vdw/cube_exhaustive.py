@@ -296,6 +296,10 @@ def main():
     ap.add_argument('--no-tail', action='store_true',
                     help='skip the drat-trim composition tail (enumeration only)')
     ap.add_argument('--timeout', type=float)
+    ap.add_argument('--colour-sym', dest='colour_sym', action='store_true',
+                    help='only affects the fallback cube set used when --cubes '
+                         'is absent; see cube_certify.py. The walk never trusts '
+                         'make_cubes either way.')
     ap.add_argument('--kissat')            # accepted for symmetry; unused
     ap.add_argument('--drat-trim', dest='drat_trim')
     args = ap.parse_args()
@@ -318,7 +322,8 @@ def main():
                   f'against a DIFFERENT formula and do not count as '
                   f'discharged', file=sys.stderr)
     else:
-        cubes, nonverified = make_cubes(args.n, args.j, args.targets, args.k), None
+        cubes, nonverified = make_cubes(args.n, args.j, args.targets, args.k,
+                                        colour_sym=args.colour_sym), None
         source = 'make_cubes (claimed set; the walk below does not trust it)'
     for c in cubes:
         if len(c) != args.k or not all(0 <= x <= r for x in c):
