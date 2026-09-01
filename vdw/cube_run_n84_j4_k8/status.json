@@ -1,0 +1,24 @@
+{
+ "n": 84,
+ "j": 4,
+ "targets": [
+  4,
+  5
+ ],
+ "k": 8,
+ "symbreak": false,
+ "revsym": false,
+ "colour_sym": false,
+ "formula_sha256": "1e468ea49806a1f96f6c5d11b237a39bef68b38fa181879a569ae1ebbe1e4976",
+ "vars": 796,
+ "clauses": 6341,
+ "total_cubes": 5486,
+ "verified": 5486,
+ "state": "done",
+ "counts": {
+  "VERIFIED": 5398
+ },
+ "eta_s": 0,
+ "updated_utc": "2026-09-01T10:03:25+00:00",
+ "elapsed_s": 14361
+}

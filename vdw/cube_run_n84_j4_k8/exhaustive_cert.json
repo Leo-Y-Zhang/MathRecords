@@ -1,0 +1,11576 @@
+{
+ "n": 84,
+ "j": 4,
+ "targets": [
+  4,
+  5
+ ],
+ "k": 8,
+ "symbreak": false,
+ "revsym": false,
+ "formula": {
+  "vars": 796,
+  "clauses": 6341,
+  "body_sha256": "1e468ea49806a1f96f6c5d11b237a39bef68b38fa181879a569ae1ebbe1e4976"
+ },
+ "cube_source": "vdw/cube_run_n84_j4_k8/results.jsonl",
+ "cube_count": 5486,
+ "cube_set_sha256": "a02f0ea0939249827fa368e9896ed7f235319fe6492629b8bbeae4335accbaf8",
+ "cube_results_nonverified": 0,
+ "cube_results_foreign_formula": 0,
+ "walk_s": 1.15,
+ "stats": {
+  "cube": 5486,
+  "dropped_mono_ap": 184,
+  "dropped_up": 351,
+  "internal": 3010
+ },
+ "dropped": [
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -789,
+    -791,
+    773
+   ],
+   "clause_index": 6322
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -789,
+    -791,
+    773
+   ],
+   "clause_index": 6322
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -789,
+    -791,
+    773
+   ],
+   "clause_index": 6322
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -789,
+    -791,
+    773
+   ],
+   "clause_index": 6322
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -789,
+    -791,
+    773
+   ],
+   "clause_index": 6322
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -788,
+    -792,
+    773
+   ],
+   "clause_index": 6320
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 338
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -788,
+    -792,
+    773
+   ],
+   "clause_index": 6320
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15,
+    -18,
+    -21
+   ],
+   "clause_index": 1472
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -788,
+    -792,
+    773
+   ],
+   "clause_index": 6320
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -5,
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 337
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15,
+    -18,
+    -21
+   ],
+   "clause_index": 1472
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -788,
+    -792,
+    773
+   ],
+   "clause_index": 6320
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 338
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -6,
+    -9,
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 1471
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -788,
+    -792,
+    773
+   ],
+   "clause_index": 6320
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 338
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15,
+    -18,
+    -21
+   ],
+   "clause_index": 1472
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "clause": [
+    -2,
+    -5,
+    -8,
+    -11
+   ],
+   "clause_index": 336
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15,
+    -18,
+    -21
+   ],
+   "clause_index": 1472
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 338
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    1,
+    3,
+    5,
+    7
+   ],
+   "clause": [
+    -2,
+    -8,
+    -14,
+    -20
+   ],
+   "clause_index": 417
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -6,
+    -9,
+    -12,
+    -15,
+    -18
+   ],
+   "clause_index": 1471
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -788,
+    -792,
+    773
+   ],
+   "clause_index": 6320
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 338
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15,
+    -18,
+    -21
+   ],
+   "clause_index": 1472
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -5,
+    -8,
+    -11,
+    -14
+   ],
+   "clause_index": 337
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    0,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    2,
+    4,
+    6,
+    8
+   ],
+   "clause": [
+    -5,
+    -11,
+    -17,
+    -23
+   ],
+   "clause_index": 418
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -9,
+    -12,
+    -15,
+    -18,
+    -21
+   ],
+   "clause_index": 1472
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -772,
+    -775,
+    728
+   ],
+   "clause_index": 6272
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "clause": [
+    -8,
+    -11,
+    -14,
+    -17
+   ],
+   "clause_index": 338
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -12,
+    -15,
+    -18,
+    -21,
+    -24
+   ],
+   "clause_index": 1473
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "unit-propagation",
+   "clause": [
+    -771,
+    -776,
+    728
+   ],
+   "clause_index": 6268
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    2,
+    0,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "clause": [
+    -11,
+    -14,
+    -17,
+    -20
+   ],
+   "clause_index": 339
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "reason": "mono-AP",
+   "colour": 1,
+   "positions": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "clause": [
+    -14,
+    -17,
+    -20,
+    -23
+   ],
+   "clause_index": 340
+  },
+  {
+   "prefix": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "reason": "mono-AP",
+   "colour": 2,
+   "positions": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "clause": [
+    -3,
+    -6,
+    -9,
+    -12,
+    -15
+   ],
+   "clause_index": 1470
+  }
+ ],
+ "counterexamples": [],
+ "unmatched_cubes": [],
+ "tail_lemmas": 3545,
+ "meaning": "exhaustiveness/composition ONLY: every branch of the full assignment tree is a cube or refuted by the formula. The per-cube UNSAT obligations are separate (cube_certify.py results with matching formula_sha256).",
+ "generated_utc": "2026-09-01T10:03:26+00:00",
+ "tail": {
+  "verdict": "VERIFIED",
+  "check_s": 0.09,
+  "fprime_clauses": 11827,
+  "tail_lemmas": 3545,
+  "detail": null
+ },
+ "verdict": "PASS"
+}
