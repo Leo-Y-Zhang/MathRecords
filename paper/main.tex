@@ -14,9 +14,9 @@
 
 \newcommand{\seq}[1]{\texttt{#1}}
 
-\title{Five new mixed van der Waerden numbers}
-\author{Leo Y. Zhang}
-\date{August 2026}
+\title{Five new mixed van der Waerden numbers,\\with machine-checked upper bounds}
+\author{Leo Y. Zhang\thanks{ORCID: \url{https://orcid.org/0009-0008-1145-7969}}}
+\date{September 2026}
 
 \begin{document}
 
@@ -33,12 +33,16 @@ against the definition in milliseconds by a standalone program that uses only
 the Python standard library and never invokes a SAT solver. Every upper bound
 is a SAT refutation obtained by cube-and-conquer and re-derived along
 independent paths chosen so that they cannot share a mistake, including one
-engine that applies no symmetry breaking at all. For the first of the five
-values the refutation has additionally been reduced to formally checked proof
-objects: $4{,}487$ per-cube DRAT proofs, each replayed to \texttt{s VERIFIED}
-by \texttt{drat-trim} against a single formula, together with a checked proof
-that the cube set is exhaustive. The refutations behind the remaining four
-values are cross-checked but have not been reduced to proof objects. For every
+engine that applies no symmetry breaking at all. Every one of the five
+refutations has additionally been reduced to formally checked proof objects:
+$23{,}851$ per-cube DRAT proofs in total, each replayed to \texttt{s VERIFIED}
+by \texttt{drat-trim} against a single formula, and for each family a checked
+proof that the cube set is exhaustive, so that no upper bound here rests on a
+solver's unsupported verdict. Reaching that for the two families whose two
+targets are equal required removing a colour-symmetry rule from the cube
+generator: it discards colour-permutation images, which is sound when
+searching but is not a refutation, and the exhaustiveness check correctly
+refuses to close without it. For every
 family, the validation gate that reproduces the published adjacent term was
 run to completion before the extension was claimed. All code, certificates,
 proof-object tooling and result records are public.
@@ -117,14 +121,17 @@ address the first risk --- the far likelier one --- by proving, on every
 instance small enough to enumerate exhaustively, that the CNF accepts exactly
 the colourings the definition accepts, in both directions
 (Section~\ref{sec:verification}); and the second by re-deriving every
-refutation along independent paths, and, for the headline value, by reducing
-the refutation to DRAT proof objects checked by an independently built
+refutation along independent paths, and, for all five values, by reducing
+each refutation to DRAT proof objects checked by an independently built
 verifier (Section~\ref{sec:drat}).
 
 We are explicit throughout about which claims carry which kind of evidence.
-In particular: of the five new values, only the refutation behind
-$w(14;\,2^{12},3,4)=57$ has been reduced to formally checked proof objects;
-the other four rest on cross-checked solver verdicts, not on checked proofs.
+For the upper bounds the answer is now uniform: each of the five rests on
+per-cube DRAT proofs replayed to \texttt{s VERIFIED}, together with a checked
+composition proof that the cube set covers the whole assignment tree. What
+remains trusted is \texttt{drat-trim} itself and the claim that the CNF says
+what the definition says, and the second of those is what the exhaustive
+encoding audit of Section~\ref{sec:verification} addresses.
 
 \section{Definitions and conventions}\label{sec:defs}
 
@@ -334,7 +341,10 @@ the refutation at $n=52$ is the only computational input to the value.
 cubes reporting an explicit verdict. Cross-checks: \texttt{vdw2} refuted the
 same instance in $10650.4$\,s, the primary engine with reversal symmetry
 switched off in $11779.0$\,s, and \texttt{vdw2} additionally found and
-verified a witness of its own at $n=51$ ($1934.0$\,s).
+verified a witness of its own at $n=51$ ($1934.0$\,s). This refutation is
+also reduced to checked proof objects: $3{,}347$ per-cube DRAT proofs and a
+composition proof, all replayed to \texttt{s VERIFIED}
+(Section~\ref{sec:drat}, Table~\ref{tab:certified}).
 
 The targets here are equal, which switches on the colour-swap symmetry
 breaker --- a code path the first family never touches. On equal-target
@@ -390,7 +400,11 @@ cubes reporting an explicit verdict. Cross-checks: \texttt{vdw2}, which on
 this equal-target family breaks only the colour swap and carries no
 reversal-symmetry constraint, refuted the instance in $7375.6$\,s, and the
 primary engine with reversal symmetry switched off refuted it in
-$7285.2$\,s. The family gate passed before the extension was claimed:
+$7285.2$\,s. It is also reduced to checked proof objects: $5{,}730$ per-cube
+DRAT proofs and a composition proof, all replayed to \texttt{s VERIFIED}
+(Table~\ref{tab:certified}). Being an equal-target family, this is one of the
+two that the colour-symmetry rule of Section~\ref{sec:drat} blocked until it
+was removed from the cube generator. The family gate passed before the extension was claimed:
 published $a(6)=67$ was reproduced
 exactly --- \textsc{sat} at $n=66$ with a verified witness using all $6$
 wildcards and \textsc{unsat} at $n=67$, both at $j=6$, $1032.1$\,s for the
@@ -445,7 +459,12 @@ cubes reporting an explicit verdict. The value was bracketed rather than
 climbed: a ceiling probe at $n=87$ refuted in $6688.4$\,s, capping the value;
 $n=83$ \textsc{sat} raised the floor to $84$; $n=85$ \textsc{unsat}
 ($9061.5$\,s) dropped the ceiling to $85$; and $n=84$ \textsc{unsat} fixed
-the term. Monotonicity (Section~\ref{sec:mono}) is what licenses this. The
+the term. Monotonicity (Section~\ref{sec:mono}) is what licenses this. It is also
+reduced to checked proof objects: $5{,}486$ per-cube DRAT proofs and a
+composition proof, all replayed to \texttt{s VERIFIED}
+(Table~\ref{tab:certified}). This is the one family whose exhaustiveness walk
+relies substantially on unit propagation rather than on single falsified
+clauses, for the reason given in Section~\ref{sec:drat}. The
 refutation was established three ways:
 
 \begin{center}
@@ -532,8 +551,10 @@ term.
 cubes reporting an explicit verdict. As in the previous family the value was
 bracketed rather than climbed: a probe at $n=75$ refuted in $3484.7$\,s,
 capping the value, while the witness at $n=73$ raised the floor to $74$,
-leaving $n=74$ the single undecided instance. The refutation was established
-three ways:
+leaving $n=74$ the single undecided instance. It is also reduced to checked
+proof objects: $4{,}801$ per-cube DRAT proofs and a composition proof, all
+replayed to \texttt{s VERIFIED} (Table~\ref{tab:certified}). The refutation
+was established three ways:
 
 \begin{center}
 \begin{tabular}{lllclr}
@@ -626,8 +647,8 @@ that carries no reversal-symmetry constraint --- with agreement in every
 case, as detailed per family above. The records are the
 \texttt{crosscheck\_*.json} files in the repository.
 
-\section{Formally checked proof objects for the headline
-refutation}\label{sec:drat}
+\section{Formally checked proof objects for all five
+refutations}\label{sec:drat}
 
 The guards of Section~\ref{sec:verification} target an encoding defect,
 which is by far the likelier failure. A defect in the solver itself is a
@@ -636,19 +657,62 @@ different risk, and the standard remedy is a DRAT proof of unsatisfiability
 replays the log against the formula. What remains to be trusted shrinks to
 the checker plus the encoding audit.
 
-\subsection{Scope: what is and is not certified}
+\subsection{Scope of the certification}
 
 We state the perimeter plainly. The refutations behind the published rungs
 $a(0)$ through $a(6)$ of \seq{A217058}, and the first rungs of the other
 four families, are replayed under \texttt{drat-trim} on every full run of
-the repository's verification gate and come back \texttt{s VERIFIED}. The
-headline refutation $n=57$, $j=12$ is certified by the cube-level route
-described below. The refutations behind the other four new values ---
-$w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$, $w(6;\,2^{4},4,5)=84$ and
-$w(11;\,2^{9},3,5)=74$ ---
-have \emph{not} been reduced to proof objects; those upper bounds rest on
-the cross-checked solver verdicts of
-Sections~\ref{sec:a217005}--\ref{sec:a217059}, not on checked proofs.
+the repository's verification gate and come back \texttt{s VERIFIED}.
+
+\emph{All five} new upper bounds are certified by the cube-level route
+described below: for each, every cube's refutation is replayed to
+\texttt{s VERIFIED} and the cube set is proved exhaustive by a composition
+proof that is itself replayed to \texttt{s VERIFIED}. Table~\ref{tab:certified}
+records the sizes.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llrrr}
+\toprule
+sequence & value & cubes & lemmas & clauses in $F'$ \\
+\midrule
+\seq{A217058} & $w(14;\,2^{12},3,4)=57$ & $4{,}487$ & $3{,}236$ & $7{,}944$ \\
+\seq{A217005} & $w(21;\,2^{19},3,3)=52$ & $3{,}347$ & $3{,}104$ & $6{,}482$ \\
+\seq{A217059} & $w(11;\,2^{9},3,5)=74$  & $4{,}801$ & $3{,}222$ & $10{,}243$ \\
+\seq{A217007} & $w(9;\,2^{7},4,4)=68$   & $5{,}730$ & $3{,}331$ & $10{,}171$ \\
+\seq{A217236} & $w(6;\,2^{4},4,5)=84$   & $5{,}486$ & $3{,}545$ & $11{,}827$ \\
+\bottomrule
+\end{tabular}
+\caption{Per-cube proof obligations and the composition proof that discharges
+exhaustiveness. Every cube and every composition tail replays to
+\texttt{s VERIFIED}.}
+\label{tab:certified}
+\end{table}
+
+Two remarks are worth making because they are easy to get wrong.
+
+First, switching symmetry breaking off in the \emph{formula} is not
+sufficient. The cube generator applied the same idea a second time, discarding
+a prefix whenever two colours sharing a target value appeared out of canonical
+order. That is sound when searching, since some other prefix is its
+colour-permutation image, but it is not a refutation: the discarded prefix is
+consistent with $F$, precisely because $F$ no longer carries the
+symmetry-breaking clauses. The per-cube proofs therefore never covered those
+branches, and the exhaustiveness check fails closed on them, naming an
+uncovered prefix. The rule is a no-op whenever the targets are pairwise
+distinct, which is why it went unnoticed while only \seq{A217058}, with
+targets $3$ and $4$, was certified; it is exactly the two equal-target
+families, \seq{A217005} and \seq{A217007}, that it blocked. Removing it
+roughly doubles the cube set and changes nothing for the other three.
+
+Second, \seq{A217236} is the only family here with $k > j$, and it is the only
+one whose exhaustiveness walk makes substantial use of the unit-propagation
+fallback ($351$ such prefixes, against $184$ refuted by a single falsified
+clause). This is expected rather than anomalous: a prefix spending more than
+$j$ wildcards violates the cardinality bound, and that bound is a totalizer
+encoding, so it refutes by propagation across several clauses instead of
+falsifying one. A propagation conflict is as sound a refutation as a falsified
+clause, but the walk must retain the fallback for any instance with $k > j$.
 
 In all certified refutations, symmetry breaking is switched off: a proof of
 a symmetry-broken formula does not prove the original statement, and the
@@ -661,7 +725,7 @@ every bundled solver (the refutation never closes), and checked by
 source. Only the checker's literal \texttt{s VERIFIED} line counts as a
 pass; every other outcome, including a parse failure, fails the gate.
 
-\subsection{Certifying $n=57$, $j=12$ by cubes}
+\subsection{The cube-level route in detail, on $n=57$, $j=12$}
 
 Proof size grows about $2.4\times$ per rung in this family, which puts a
 single-shot proof of the headline instance at order $6$--$17$ hours and
@@ -702,25 +766,43 @@ the families and provide no new proof technique. The exhaustive
 encoding-equals-definition audit reaches only instances small enough to
 enumerate ($n \le 12$, $j \le 3$); beyond that scale its guarantee is
 extended by the scale tests of Section~\ref{sec:verification} and by replay
-of known values, not by exhaustion. Four of the five upper bounds are not
-reduced to checked proof objects. All computations ran on a single 8-core
+of known values, not by exhaustion. The proof objects reduce what must be
+trusted but do not eliminate it: \texttt{drat-trim} and the
+encoding-equals-definition claim both remain inside the trusted base. All
+computations ran on a single 8-core
 desktop machine; per-instance solver times are reported so that the scale of
 the computation is not overstated.
 
-\section{Methods and authorship}\label{sec:authorship}
+\section{Acknowledgements and disclosure of AI use}\label{sec:authorship}
 
 The search and verification tooling, the computations, and the drafting of
-this paper were carried out with substantial AI assistance, directed and
-reviewed by the author. This is stated plainly because the reader is
-entitled to weigh it. The verification programme of
+this paper were carried out with substantial assistance from a generative AI
+system: Anthropic's Claude, used through the Claude Code command-line
+interface. The project ran from July to September 2026, and the underlying
+model changed over that period as new versions were released --- successive
+models of Anthropic's Opus series, most recently Claude Opus~5. A single
+version number would misstate a project of this length, so the series and the
+period are given instead. It was used to write the SAT encodings,
+the verification and proof-checking tooling and the test suites, to run and
+supervise the computations, and to draft and revise this text. It was used
+because the work is a software-engineering problem as much as a mathematical
+one --- five encodings, an exhaustive encoding audit, a DRAT pipeline and a
+$3{,}700$-test gate --- and that volume of code was not otherwise reachable
+for a single author. Every design decision, every claim, and the contents of
+this paper were directed and reviewed by the author, who takes full
+responsibility for all of it.
+
+This is stated plainly because the reader is entitled to weigh it. The
+verification programme of
 Sections~\ref{sec:verification} and~\ref{sec:drat} is designed precisely so
 that no trust in any tool, human, or model is required: every lower bound is
 a printed colouring checkable against the definition by hand or by a
-standard-library script that shares no code with the search; every certified
-upper bound is a DRAT proof replayed by an independently built checker whose
-own failure modes were tested first; and the remaining upper bounds are
-labelled as what they are --- cross-checked solver verdicts. Nothing in this
-paper asks to be believed on the strength of the process that produced it.
+standard-library script that shares no code with the search; and every upper
+bound, without exception, is a set of DRAT proofs replayed by an
+independently built checker whose own failure modes were tested first,
+together with a checked proof that those cubes cover the search. Nothing in
+this paper asks to be believed on the strength of the process that produced
+it.
 
 \section{Reproducibility}\label{sec:repro}
 
@@ -738,11 +820,23 @@ test (\texttt{vdw/scale\_test.py}), the published-value replays
 (\texttt{vdw/vdw\_probe.py}) run with Python and PySAT; the repository's
 \texttt{verify\_all.py} gate runs the full battery, including the DRAT
 ladder when \texttt{kissat} and \texttt{drat-trim} binaries are present.
-The headline proof-object certification is reproduced by
-\texttt{vdw/cube\_certify.py} and \texttt{vdw/cube\_exhaustive.py} (about
-four hours on four cores, resumable). Build notes for the two binaries,
-including two silent Windows-specific pitfalls that produce wrong results
-rather than errors, are in \texttt{vdw/DRAT.md}.
+Each family's proof-object certification is reproduced by
+\texttt{vdw/cube\_certify.py} followed by \texttt{vdw/cube\_exhaustive.py},
+both resumable; the recorded runs are the \texttt{vdw/cube\_run\_*}
+directories, each holding its per-cube results, the run status and the
+composition certificate. Times on an 8-core desktop ranged from under three
+hours (\seq{A217005}, \seq{A217059}) to about five (\seq{A217236}).
+
+One practical note, because it cost a run. Worker count is bounded by disk
+throughput, not by cores or memory: \texttt{kissat} peaks near $33$\,MB and
+\texttt{drat-trim} near $420$\,MB, but \seq{A217236} writes proofs of
+$200$--$650$\,MB each, and fourteen concurrent workers writing and re-reading
+those made every cube fail. Six workers verified the same cubes cleanly, and
+twelve measured twice as slow as six on identical work.
+
+Build notes for the two binaries, including two silent Windows-specific
+pitfalls that produce wrong results rather than errors, are in
+\texttt{vdw/DRAT.md}.
 
 \begin{thebibliography}{99}
 

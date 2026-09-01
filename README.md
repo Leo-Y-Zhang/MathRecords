@@ -22,13 +22,20 @@ passed: SAT at n = 69 with a verified witness, UNSAT at n = 70, both at j = 8,
 defined and then not finished does not get waived retroactively because the
 answer looks right.
 
-**The paper.** [*Five new mixed van der Waerden numbers*](paper/main.pdf) --
-12 pages -- is the write-up: the encoding, the certificates, the
-cube-and-conquer refutation behind the headline value, and a Limitations
-section that states plainly which claims rest on what. Four of the five upper
-bounds are not reduced to checked proof objects; they rest on cross-checked
-solver verdicts along independent paths, and the paper says so rather than
-leaving it to be discovered. [LaTeX source](paper/main.tex).
+**The paper.** [*Five new mixed van der Waerden numbers, with machine-checked
+upper bounds*](paper/main.pdf) -- 13 pages -- is the write-up: the encoding, the
+certificates, and the cube-and-conquer refutations. **All five upper bounds are
+reduced to checked proof objects**: 23,851 per-cube DRAT proofs in total, every
+one replayed to `s VERIFIED` by drat-trim, each family with a composition proof
+that its cube set covers the whole assignment tree. [LaTeX source](paper/main.tex).
+
+The equal-target families were the hard ones and are worth a sentence. The cube
+generator dropped colour-permutation images, which is sound when you are
+*searching* -- some other prefix is the image -- but is not a *refutation*, so
+the per-cube proofs never covered those branches and `[3,3]` and `[4,4]` could
+not be certified at all. Taking colour symmetry out of the cube set fixes it.
+Measured, not argued: the cube sets are byte-identical with and without it for
+`[3,4]`, `[4,5]` and `[3,5]`, and exactly double for `[3,3]` and `[4,4]`.
 
 ---
 
