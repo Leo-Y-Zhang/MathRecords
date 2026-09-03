@@ -29,7 +29,7 @@ $w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$,
 $w(6;\,2^{4},4,5)=84$ and $w(11;\,2^{9},3,5)=74$. Each extends by one term a
 sequence in the On-Line Encyclopedia of Integer Sequences (\seq{A217058},
 \seq{A217005}, \seq{A217007}, \seq{A217236}, \seq{A217059}) whose published
-values, due to Ahmed, had stood since 2012. Every lower bound ships as an explicit colouring, checkable
+values, due to Ahmed, had stood since 2012 or 2013. Every lower bound ships as an explicit colouring, checkable
 against the definition in milliseconds by a standalone program that uses only
 the Python standard library and never invokes a SAT solver. Every upper bound
 is a SAT refutation obtained by cube-and-conquer and re-derived along
@@ -72,7 +72,8 @@ integers form a $2$-term progression, so these classes behave as a budget of
 $j$ \emph{wildcards}: positions excused from the problem at a cost of one
 budget unit each. Ahmed computed extensive tables of such numbers
 \cite{ahmed2009,ahmed2010,ahmed2011,ahmed2013} and entered several families into the On-Line
-Encyclopedia of Integer Sequences in 2012 \cite{oeis}. The five families
+Encyclopedia of Integer Sequences in 2012 \cite{oeis}, adding one further term to
+\seq{A217059} in March 2013. The five families
 treated here --- \seq{A217058} $=w(j+2;\,2^j,3,4)$, \seq{A217005}
 $=w(j+2;\,2^j,3,3)$, \seq{A217007} $=w(j+2;\,2^j,4,4)$, \seq{A217236}
 $=w(j+2;\,2^j,4,5)$ and \seq{A217059} $=w(j+2;\,2^j,3,5)$ --- had received no
@@ -706,8 +707,9 @@ targets $3$ and $4$, was certified; it is exactly the two equal-target
 families, \seq{A217005} and \seq{A217007}, that it blocked. Removing it
 roughly doubles the cube set and changes nothing for the other three.
 
-Second, \seq{A217236} is the only family here with $k > j$, and it is the only
-one whose exhaustiveness walk makes substantial use of the unit-propagation
+Second, \seq{A217236} is the family here for which $k$ exceeds $j$ by the most
+(\seq{A217007}, with $k = 8 > j = 7$, invoked the fallback exactly once), and it is
+the only one whose exhaustiveness walk makes substantial use of the unit-propagation
 fallback ($351$ such prefixes, against $184$ refuted by a single falsified
 clause). This is expected rather than anomalous: a prefix spending more than
 $j$ wildcards violates the cardinality bound, and that bound is a totalizer
@@ -845,7 +847,7 @@ The author reports that there are no competing interests to declare.
 
 \section*{Data availability statement}
 
-All code, certificates, proof objects and result records supporting this
+All code, certificates, proof-object tooling and result records supporting this
 paper are openly available at \url{https://github.com/Leo-Y-Zhang/MathRecords}.
 
 \section*{Funding}

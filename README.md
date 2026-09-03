@@ -23,7 +23,7 @@ defined and then not finished does not get waived retroactively because the
 answer looks right.
 
 **The paper.** [*Five new mixed van der Waerden numbers, with machine-checked
-upper bounds*](paper/main.pdf) -- 13 pages -- is the write-up: the encoding, the
+upper bounds*](paper/main.pdf) -- 14 pages -- is the write-up: the encoding, the
 certificates, and the cube-and-conquer refutations. **All five upper bounds are
 reduced to checked proof objects**: 23,851 per-cube DRAT proofs in total, every
 one replayed to `s VERIFIED` by drat-trim, each family with a composition proof
