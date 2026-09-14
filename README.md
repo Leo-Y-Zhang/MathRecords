@@ -141,10 +141,10 @@ python verify_all.py
 That second line is the whole thing. It re-checks every claim in this repository
 against the evidence committed beside it and prints `EVERY CLAIM IN THIS
 REPOSITORY IS SUPPORTED BY EVIDENCE ON DISK` only if all of them hold; anything
-else means do not believe the numbers below. On this machine it is **107 passed,
-0 failed in 33 s**; `python verify_all.py --fast` drops the two re-executed
-audits for 105 in 17 s. `.github/workflows/ci.yml` runs the full one on every
-push, after `python scrub_paths.py --check`.
+else means do not believe the numbers below. On this machine it is **108 passed,
+0 failed, 15 skipped**; `python verify_all.py --fast` drops the two
+re-executed audits for 106 passed, 12 skipped. `.github/workflows/ci.yml`
+runs the full one on every push, after `python scrub_paths.py --check`.
 
 The version is pinned because the audits re-derive results through that solver,
 and a gate whose verdict depends on the day it runs is not a gate. CaDiCaL ships
@@ -153,13 +153,27 @@ pysat's `Kissat404` hard-crashes the interpreter on this platform — a native
 abort with no Python exception — so it is excluded.
 
 Two of the gate's sections skip rather than fail when what they need is absent,
-and say so in their own heading. The DRAT refutation replays want the `kissat`
+and say so in their own heading, with the skipped count folded into the final
+tally line (`N passed, 0 failed, K skipped`) rather than only appearing inside
+a section nobody has to read. The DRAT refutation replays want the `kissat`
 and `drat-trim` binaries, found on `PATH`, through `KISSAT` / `DRAT_TRIM`, or by
 flag — `vdw/DRAT.md` builds both without administrator rights and explains the
-Windows text-mode trap that silently truncates a proof. The staging-folder
-sections want a local `OEIS-upload` directory, which is a one-person workbench,
-deliberately never committed, and absent on a CI runner by design. Everything
-else runs from a bare clone.
+Windows text-mode trap that silently truncates a proof. Neither ships as an
+apt or cargo package; **CI should build both from source** per `vdw/DRAT.md`
+(on Linux that is just `cc -O2 -o drat-trim drat-trim.c` for drat-trim and
+kissat's own `./configure && make`) so this section actually runs instead of
+skipping on every push. The staging-folder sections want a local `OEIS-upload`
+directory, which is a one-person workbench, deliberately never committed, and
+absent on a CI runner by design. Everything else runs from a bare clone,
+**including `cube_certify.py`'s own verdict logic** (`vdw cube_certify
+--selftest`, standalone below): kissat/drat-trim being absent used to mean
+`cube_certify.py` was imported by nothing in this gate at all, so a broken
+verdict there was as invisible as a broken verdict in code that had been
+deleted. The selftest calls `certify_cube` and `parse_cube` directly with the
+two external tools stood in for (their real DRAT proof-checking is exactly
+the thing the paragraph above is about) and checks that a genuine proof is
+ACCEPTED and one corrupted by the file's own `--negctl-truncate` control is
+REJECTED.
 
 The individual pieces, if you want them one at a time rather than through the
 gate:
