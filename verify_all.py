@@ -53,6 +53,7 @@ CLAIMS = {
 
 _fail = []
 _pass = []
+_skip = []
 
 
 def check(name, ok, detail='', fail_detail=''):
@@ -67,6 +68,17 @@ def check(name, ok, detail='', fail_detail=''):
     print(f'  [{"PASS" if ok else "FAIL"}] {name}{("  " + extra) if extra else ""}',
           flush=True)
     return ok
+
+
+def skip(name, detail=''):
+    """A check that was not run because a tool this environment lacks was
+    needed, not because anything failed. Counted separately from _pass/_fail
+    so a bare clone's summary line shows, in numbers, how much of the gate a
+    missing tool actually took out -- rather than that count silently
+    vanishing into a section that never runs its checks at all.
+    """
+    _skip.append(name)
+    print(f'  [SKIPPED] {name}{("  " + detail) if detail else ""}', flush=True)
 
 
 def run(cmd, cwd):
@@ -84,6 +96,21 @@ def main():
     section('standalone checkers self-test')
     rc, out = run([PY, 'verify_certificate.py', '--selftest'], VDW)
     check('vdw verify_certificate --selftest', rc == 0 and 'SELFTEST PASSED' in out)
+    # cube_certify.py certifies the per-cube UNSAT obligations behind the
+    # headline upper bounds (23,851 DRAT proofs for A217058 alone) but was
+    # never imported or invoked anywhere in this gate -- so every mutation to
+    # its verdict logic (parse_cube's arity check, certify_cube's VERIFIED /
+    # NOT_VERIFIED dispatch) survived silently (audit/mutants/SAT_checkers.md,
+    # MathRecords, M2-M4). This selftest imports cube_certify directly and
+    # calls its real functions -- kissat/drat-trim stand in for the two
+    # external tools (not installed here; their own DRAT proof-checking is a
+    # separate, explicitly SKIPPED section below), so what is checked is that
+    # cube_certify.py itself turns a genuine proof into VERIFIED and a
+    # corrupted one into NOT_VERIFIED, not that any particular proof is valid.
+    rc, out = run([PY, 'cube_certify.py', '--selftest'], VDW)
+    check('vdw cube_certify --selftest (parse_cube + certify_cube verdict '
+          'dispatch, real function, corrupted proof REJECTED)',
+          rc == 0 and 'SELFTEST PASSED' in out)
     rc, out = run([PY, 'verify_rank.py', '--selftest'], EC)
     check('ec verify_rank --selftest', rc == 0 and 'SELFTEST PASSED' in out)
 
@@ -407,8 +434,21 @@ def main():
         rc, out = run([PY, 'drat_certify.py', '--seq', seq, '--ladder', spec,
                        '--json'], VDW)
         if rc == drat_certify.TOOLS_MISSING:
-            section('DRAT refutations (skipped: kissat/drat-trim not installed '
-                    '- see vdw/DRAT.md)')
+            # Missing tools, not a broken claim -- but silently `break`-ing out
+            # here used to make the whole ladder vanish with no trace in the
+            # summary line, so a bare clone's "N passed, 0 failed" looked
+            # identical whether or not this entire layer ran. List exactly what
+            # was not checked, so the gap is a number, not an absence.
+            section('DRAT refutations: SKIPPED (needs kissat, drat-trim) '
+                    '- see vdw/DRAT.md')
+            for s, spec2 in ladder.items():
+                for n_val, j_val in drat_certify.rungs_for(s, spec2):
+                    skip(f'{s}: a({j_val}) <= {n_val} refutation replay',
+                         'needs kissat, drat-trim')
+            print('  CI should build both from source per vdw/DRAT.md (there '
+                  'is no apt or cargo package for either): drat-trim is one '
+                  'file (`cc -O2 -o drat-trim drat-trim.c`); kissat ships its '
+                  'own `./configure && make`.')
             break
         if not started:
             section('DRAT refutations replayed under drat-trim')
@@ -444,7 +484,8 @@ def main():
         check('scale test: wildcard budget correct at n=55..58, j=12',
               rc == 0 and 'SCALE TEST PASSED' in out)
 
-    print(f'\n{len(_pass)} passed, {len(_fail)} failed')
+    skipped = f', {len(_skip)} skipped (needs kissat, drat-trim)' if _skip else ''
+    print(f'\n{len(_pass)} passed, {len(_fail)} failed{skipped}')
     if _fail:
         print('\nFAILED:')
         for f in _fail:

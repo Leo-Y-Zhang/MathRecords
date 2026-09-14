@@ -32,6 +32,7 @@ hard), so this keeps the heavy tail from straggling at the end of the run.
     python vdw/cube_certify.py --n 45 --j 8 --targets 3 4 --k 6
     python vdw/cube_certify.py --n 57 --j 12 --targets 3 4 --k 8 --dry-run
     KISSAT=... DRAT_TRIM=... python vdw/cube_certify.py --n 57 --j 12 --targets 3 4 --k 8
+    python vdw/cube_certify.py --selftest
 
 Exit codes follow `drat_certify.py`, with one addition:
 
@@ -197,6 +198,87 @@ def parse_cube(text, k):
     return tuple(parts)
 
 
+def selftest():
+    """`verify_all.py` used to import neither `certify_cube` nor `parse_cube` --
+    every mutation to this file's verdict logic survived vacuously (see
+    audit/mutants/SAT_checkers.md, MathRecords section). This exercises both,
+    for real, without needing kissat/drat-trim (not installed on a bare clone
+    or CI runner -- the actual DRAT proof-checking those provide is a separate,
+    explicitly-SKIPPED section of verify_all.py; this only checks that
+    cube_certify.py's own dispatch of a checker's verdict is not vacuous).
+
+    Two independent controls:
+
+    1. `parse_cube`'s arity check, called directly: a well-formed cube parses,
+       a truncated one (one wildcard entry short) must be REJECTED.
+    2. `certify_cube`, called directly, with `subprocess.run` stood in for
+       kissat/drat-trim (their exit code and stdout are the entire interface
+       `certify_cube` trusts, per its own docstring: "never its exit code ...
+       the checker's own verdict line"). The stand-in kissat always reports
+       UNSAT and writes a fixed-size proof; the stand-in drat-trim reports
+       's VERIFIED' iff the proof it is handed still has that full size and
+       's NOT VERIFIED' otherwise. certify_cube's own `--negctl-truncate`
+       machinery (already documented in cube_negative_controls.json) then
+       does the actual corrupting: it halves the proof on disk before the
+       stand-in drat-trim ever sees it. The UNMODIFIED run must be ACCEPTED
+       (VERIFIED); the TRUNCATED run must be REJECTED (NOT_VERIFIED).
+    """
+    import tempfile
+    from unittest import mock
+
+    ok = True
+
+    cases = [('1,0,2', 3, True, 'well-formed 3-entry cube'),
+             ('1,0', 3, False, 'truncated: 2 of 3 entries')]
+    for text, k, expect_ok, note in cases:
+        try:
+            parse_cube(text, k)
+            got_ok = True
+        except SystemExit:
+            got_ok = False
+        flag = 'ok ' if got_ok == expect_ok else 'FAIL'
+        if got_ok != expect_ok:
+            ok = False
+        print(f'  [{flag}] parse_cube({text!r}, k={k})  accepted={got_ok} '
+              f'expected={expect_ok}   {note}')
+
+    proof_sizes = {}
+
+    def fake_run(cmd, **kwargs):
+        exe = cmd[0]
+        if exe == 'FAKE_KISSAT':
+            proof_path = cmd[-1]
+            content = (b'1 2 0\n' * 50)          # arbitrary, nonzero, fixed
+            with open(proof_path, 'wb') as fh:
+                fh.write(content)
+            proof_sizes[proof_path] = len(content)
+            return subprocess.CompletedProcess(cmd, 20, stdout='', stderr='')
+        if exe == 'FAKE_DRAT_TRIM':
+            proof_path = cmd[2]
+            full = proof_sizes.get(proof_path)
+            actual = os.path.getsize(proof_path)
+            line = 's VERIFIED' if actual >= full else 's NOT VERIFIED'
+            return subprocess.CompletedProcess(cmd, 0, stdout=line + '\n', stderr='')
+        raise AssertionError(f'selftest: unexpected command {cmd}')
+
+    with tempfile.TemporaryDirectory(prefix='cube_certify_selftest_') as workdir:
+        base_task = (6, 1, [3, 3], (1, 1), workdir, 'FAKE_KISSAT', 'FAKE_DRAT_TRIM', None)
+        with mock.patch('subprocess.run', side_effect=fake_run):
+            rec_good = certify_cube(base_task + (False,))
+            rec_bad = certify_cube(base_task + (True,))
+
+    for rec, expect, note in ((rec_good, 'VERIFIED', 'genuine proof, unmodified'),
+                              (rec_bad, 'NOT_VERIFIED', 'proof halved by --negctl-truncate')):
+        got = rec.get('verdict')
+        flag = 'ok ' if got == expect else 'FAIL'
+        if got != expect:
+            ok = False
+        print(f'  [{flag}] certify_cube: verdict={got!r}  expected={expect!r}   {note}')
+
+    print('SELFTEST PASSED' if ok else 'SELFTEST FAILED')
+    return 0 if ok else 1
+
+
 def load_results(path):
     """cube-tuple -> last recorded dict. Tolerates a torn final line, which is
     exactly what a killed run leaves behind."""
@@ -226,6 +308,8 @@ def write_status(path, payload):
 
 
 def main():
+    if len(sys.argv) >= 2 and sys.argv[1] == '--selftest':
+        return selftest()
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--n', type=int, required=True)
     ap.add_argument('--j', type=int, required=True)
