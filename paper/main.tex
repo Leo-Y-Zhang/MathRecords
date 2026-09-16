@@ -1,6 +1,6 @@
 % Five new mixed van der Waerden numbers
 % LaTeX source; compiles with pdflatex, xelatex, or tectonic.
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -9,12 +9,13 @@
 \usepackage[hidelinks]{hyperref}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
 
 \newcommand{\seq}[1]{\texttt{#1}}
 
-\title{Five new mixed van der Waerden numbers,\\with machine-checked upper bounds}
+\title{New terms for five OEIS sequences\\of mixed van der Waerden numbers}
 \author{Leo Y. Zhang\thanks{Corresponding author. ORCID: \url{https://orcid.org/0009-0008-1145-7969}}\\[2pt]
   \small Independent researcher, United Kingdom\\[2pt]
   \small \href{mailto:academic.submissions26@gmail.com}{\texttt{academic.submissions26@gmail.com}}}
@@ -25,29 +26,34 @@
 \maketitle
 
 \begin{abstract}
-We establish five previously unknown mixed van der Waerden numbers:
-$w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$, $w(9;\,2^{7},4,4)=68$,
-$w(6;\,2^{4},4,5)=84$ and $w(11;\,2^{9},3,5)=74$. Each extends by one term a
-sequence in the On-Line Encyclopedia of Integer Sequences (\seq{A217058},
-\seq{A217005}, \seq{A217007}, \seq{A217236}, \seq{A217059}) whose published
-values, due to Ahmed, had stood since 2012 or 2013. Every lower bound ships as an explicit colouring, checkable
-against the definition in milliseconds by a standalone program that uses only
-the Python standard library and never invokes a SAT solver. Every upper bound
-is a SAT refutation obtained by cube-and-conquer and re-derived along
-independent paths chosen so that they cannot share a mistake, including one
-engine that applies no symmetry breaking at all. Every one of the five
-refutations has additionally been reduced to formally checked proof objects:
-$23{,}851$ per-cube DRAT proofs in total, each replayed to \texttt{s VERIFIED}
-by \texttt{drat-trim} against a single formula, and for each family a checked
-proof that the cube set is exhaustive, so that no upper bound here rests on a
-solver's unsupported verdict. Reaching that for the two families whose two
-targets are equal required removing a colour-symmetry rule from the cube
-generator: it discards colour-permutation images, which is sound when
-searching but is not a refutation, and the exhaustiveness check correctly
-refuses to close without it. For every
-family, the validation gate that reproduces the published adjacent term was
-run to completion before the extension was claimed. All code, certificates,
-proof-object tooling and result records are public.
+We determine the next term of each of five sequences of mixed van der Waerden
+numbers: $w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$,
+$w(9;\,2^{7},4,4)=68$, $w(6;\,2^{4},4,5)=84$ and $w(11;\,2^{9},3,5)=74$. Each
+extends by one term a sequence in the On-Line Encyclopedia of Integer
+Sequences (\seq{A217058}, \seq{A217005}, \seq{A217007}, \seq{A217236},
+\seq{A217059}) whose published values, due to Ahmed, had stood since 2012 or
+2013.
+
+What the paper establishes beyond the five values is the standard of proof.
+Every upper bound is a SAT refutation obtained by cube-and-conquer and reduced
+to formally checked proof objects: $23{,}851$ per-cube DRAT proofs in total,
+each replayed to \texttt{s VERIFIED} by \texttt{drat-trim} against a single
+formula, and for each family a checked proof that the cube set is exhaustive.
+In every certified refutation the symmetry breaking is switched off, so what
+is certified is the raw encoding rather than a reduced one. Each refutation
+was additionally re-derived in a configuration carrying no reversal-symmetry
+constraint, which agreed in every case. Every lower bound ships as an explicit
+colouring, checkable against the definition in milliseconds by a standalone
+program that uses only the Python standard library and never invokes a SAT
+solver. No bound here rests on a solver's unsupported verdict.
+
+Reaching full certification for the two families whose two targets are equal
+required removing a colour-symmetry rule from the cube generator: it discards
+colour-permutation images, which is sound when searching but is not a
+refutation, and the exhaustiveness check correctly refuses to close without
+it. For every family, the validation gate that reproduces the published
+adjacent term was run to completion before the extension was claimed. All
+code, certificates, proof-object tooling and result records are public.
 \end{abstract}
 
 \noindent\emph{2020 Mathematics Subject Classification:} 05D10; 68R05.
@@ -123,10 +129,10 @@ the solver faithfully represents the problem, plus the solver itself. We
 address the first risk --- the far likelier one --- by proving, on every
 instance small enough to enumerate exhaustively, that the CNF accepts exactly
 the colourings the definition accepts, in both directions
-(Section~\ref{sec:verification}); and the second by re-deriving every
-refutation along independent paths, and, for all five values, by reducing
+(Section~\ref{sec:verification}); and the second, for all five values, by reducing
 each refutation to DRAT proof objects checked by an independently built
-verifier (Section~\ref{sec:drat}).
+verifier, with the symmetry breaking switched off so that what is certified
+is the raw encoding (Section~\ref{sec:drat}).
 
 We are explicit throughout about which claims carry which kind of evidence.
 For the upper bounds the answer is now uniform: each of the five rests on
@@ -150,16 +156,49 @@ are
 \[
   w(j+r;\,2^j,t_1,\dots,t_r).
 \]
-Since a class with target $2$ holds at most one element, an equivalent
-formulation is
+A colouring \emph{with wildcards} assigns each integer either to one of the
+$r$ real classes or to a wildcard position that belongs to no class; it is
+valid for $(t_1,\dots,t_r)$ if class $i$ contains no $t_i$-term arithmetic
+progression, for every $i$. In certificates below, \texttt{.}\ denotes a
+wildcard and \texttt{1}, \texttt{2} the two real classes. Throughout, a
+colouring is a map into the set of classes and is not required to be
+surjective: classes may be empty.
+
+The encoding of Section~\ref{sec:encoding} decides the wildcard formulation,
+not the definition above, so we record the bridge between them.
+
+\begin{lemma}\label{lem:wildcards}
+For all $j \ge 0$ and all $t_1,\dots,t_r \ge 2$,
 \[
   w(j+r;\,2^j,t_1,\dots,t_r) = 1 + \max\bigl\{ n : \{1,\dots,n\}
-  \text{ admits a valid colouring with at most } j \text{ wildcards} \bigr\},
+  \text{ admits a valid colouring with at most } j \text{ wildcards} \bigr\}.
 \]
-where a colouring with wildcards assigns each integer either to one of the
-$r$ real classes or to a wildcard position that belongs to no class. In
-certificates below, \texttt{.}\ denotes a wildcard and \texttt{1},
-\texttt{2} the two real classes.
+\end{lemma}
+
+\begin{proof}
+Fix $n$. We show that $\{1,\dots,n\}$ admits a valid $(j+r)$-colouring for
+$(2^j,t_1,\dots,t_r)$ if and only if it admits a valid colouring with at most
+$j$ wildcards.
+
+($\Rightarrow$) Let $c$ be such a colouring. Any two distinct integers form a
+$2$-term arithmetic progression, so each of the $j$ classes of target $2$
+holds at most one element and their union has at most $j$ elements. Send every
+element of that union to a wildcard and leave the other $r$ classes as they
+are. No class of target $t_i$ has changed, so the result is valid and uses at
+most $j$ wildcards.
+
+($\Leftarrow$) Let $d$ be valid with $m \le j$ wildcards. Assign the $m$
+wildcard positions to $m$ distinct classes of target $2$, one element each,
+and leave the remaining $j-m$ such classes empty, which the convention above
+permits. Every class of target $2$ then holds at most one element and so
+contains no $2$-term progression, and the $r$ other classes are unchanged, so
+the result is a valid $(j+r)$-colouring.
+
+Restricting a valid colouring of $\{1,\dots,n\}$ to $\{1,\dots,n-1\}$ leaves
+it valid, so the set of $n$ admitting one is an initial segment of the
+positive integers. Its supremum is therefore one less than the least $n$
+admitting none, which is the displayed identity.
+\end{proof}
 
 For a family with fixed targets we write $a(j) = w(j+2;\,2^j,t_1,t_2)$,
 following the OEIS entries, which index each family by the number of
@@ -222,10 +261,12 @@ distinct-target families such as $(3,4)$ that rule emits no clauses at all,
 so every search there had previously run with no symmetry breaking
 whatsoever. Adding reversal symmetry measured a $1.55\times$ speedup on the
 $n=45$, $j=8$ refutation, on the half of the problem that consumes
-essentially all the time. Because this constraint is the one piece of new
-mathematics in the engine, the verification programme of
-Sections~\ref{sec:verification} and~\ref{sec:drat} is arranged so that it is
-never assumed by its own check.
+essentially all the time. The map itself is standard, and is used in
+the same role by Kouril and Paul \cite{kourilpaul}; what is new here is only
+its presence on distinct-target families, where the pre-existing rule was
+silent. Because it is nonetheless the one component the engine adds, the
+verification programme of Sections~\ref{sec:verification}
+and~\ref{sec:drat} is arranged so that it is never assumed by its own check.
 
 \subsection{Cube-and-conquer and the completeness of the cube set}\label{sec:cube}
 
@@ -276,8 +317,8 @@ $28$, and $12$ are wildcards. The standalone verifier checks it in
 milliseconds.
 
 \emph{Upper bound.} No valid colouring of $\{1,\dots,57\}$ with at most $12$
-wildcards exists. The refutation was established along paths chosen so that
-they cannot share a mistake:
+wildcards exists. The refutation was established in four configurations,
+varying the symmetry breaking, the solver and the cube depth:
 
 \begin{center}
 \begin{tabular}{lllclr}
@@ -292,10 +333,12 @@ vdw4 & reversal off & CaDiCaL 1.9.5 & $k=4$ & \textsc{unsat} & $8317.4$\,s \\
 \end{tabular}
 \end{center}
 
-The second row is the one that matters: \texttt{vdw2}, an older and
-independently written engine, imposes no lex-leader constraint on this family
-and searches the full unreduced space, so it cannot inherit an error from the
-reversal-symmetry constraint. It agrees. The third row was started and
+The second row is the one that matters: \texttt{vdw2}, the earlier
+engine from which \texttt{vdw4} was derived, imposes no lex-leader constraint
+on this family and searches the full unreduced space, so it cannot inherit an
+error from the reversal-symmetry constraint. It agrees. It shares its
+encoding core with \texttt{vdw4} and is therefore not an independent
+implementation; what it isolates is that one constraint, and nothing further. The third row was started and
 stopped after $7.4$ hours without finishing; it is reported as incomplete
 rather than omitted. The same reversal-off question was settled in the
 configuration that suits this family (row four), and a second \texttt{vdw2}
@@ -642,12 +685,18 @@ at the limit were accepted and $240$ over the limit were rejected, and
 forcing $13$ wildcards inside the full formula is correctly unsatisfiable.
 (\texttt{vdw/scale\_test.py})
 
-\subsection{Independent refutation paths}
+\subsection{Cross-checks against the reversal constraint}
 
-Every established value's refutation was re-derived along disjoint paths ---
-in particular through \texttt{vdw2}, an older, independently written engine
-that carries no reversal-symmetry constraint --- with agreement in every
-case, as detailed per family above. The records are the
+Every established value's refutation was re-derived through \texttt{vdw2},
+the earlier engine from which \texttt{vdw4} was derived, which carries no
+reversal-symmetry constraint, with agreement in every case, as detailed per
+family above. \texttt{vdw2} shares its progression enumeration, its clause
+construction and its cardinality encoding with \texttt{vdw4}: it is not an
+independent implementation, and a defect common to both would not be caught
+by these runs. What they isolate is the reversal lex-leader constraint, the
+one component \texttt{vdw4} adds. The stronger guarantee is the one in
+Section~\ref{sec:drat}, where symmetry breaking is switched off altogether
+and what is certified is the raw encoding. The records are the
 \texttt{crosscheck\_*.json} files in the repository.
 
 \section{Formally checked proof objects for all five
@@ -720,8 +769,8 @@ clause, but the walk must retain the fallback for any instance with $k > j$.
 
 In all certified refutations, symmetry breaking is switched off: a proof of
 a symmetry-broken formula does not prove the original statement, and the
-reversal lex-leader constraint --- the one piece of new mathematics in the
-engine --- must not be assumed by the thing meant to check it. What is
+reversal lex-leader constraint --- the one component the engine adds --- must
+not be assumed by the thing meant to check it. What is
 certified is the raw encoding. Proofs are generated by a standalone
 Kissat~4.0.1, because the PySAT interface returns truncated proofs from
 every bundled solver (the refutation never closes), and checked by
@@ -777,27 +826,40 @@ computations ran on a single 8-core
 desktop machine; per-instance solver times are reported so that the scale of
 the computation is not overstated.
 
-\section{Acknowledgements and disclosure of AI use}\label{sec:authorship}
+\section{Declarations}\label{sec:authorship}
 
-The search and verification tooling, the computations, and the drafting of
-this paper were carried out with substantial assistance from a generative AI
-system: Anthropic's Claude, used through the Claude Code command-line
-interface. The project ran from July to September 2026, and the underlying
-model changed over that period as new versions were released --- successive
-models of Anthropic's Opus series, most recently Claude Opus~5. A single
-version number would misstate a project of this length, so the series and the
-period are given instead. It was used to write the SAT encodings,
-the verification and proof-checking tooling and the test suites, to run and
-supervise the computations, and to draft and revise this text. It was used
-because the work is a software-engineering problem as much as a mathematical
-one --- five encodings, an exhaustive encoding audit, a DRAT pipeline and a
-$3{,}700$-test gate --- and that volume of code was not otherwise reachable
-for a single author. Every design decision, every claim, and the contents of
-this paper were directed and reviewed by the author, who takes full
-responsibility for all of it.
+\subsection*{Use of generative AI}
 
-This is stated plainly because the reader is entitled to weigh it. The
-verification programme of
+The author declares the following use of a generative AI system in the
+preparation of this work: Anthropic's Claude, used through the Claude Code
+command-line interface. The project ran from July to September 2026 and the
+underlying model changed over that period as successive models of Anthropic's
+Opus series were released, most recently Claude Opus~5; the series and the
+period are given rather than a single version number, which would misstate a
+project of this length.
+
+\emph{Software and computation.} The SAT encodings, the verification and
+proof-checking tooling, the DRAT pipeline and the test suites were written
+with substantial assistance from that system, and the computations were run
+and supervised with it. This is use of an AI system as a programming tool, on
+the same footing as the SAT solver and the proof checker on which this paper
+also depends. The resulting code is public, and its outputs are checked by
+the independent means described below rather than accepted on the authority
+of whatever produced them.
+
+\emph{Text.} The manuscript was drafted and revised with assistance from the
+same system. Every sentence in it has been reviewed, edited and approved by
+the author.
+
+\emph{Mathematics and accountability.} The research questions, the choice of
+families and targets, the design of the verification programme, and every
+claim made in this paper are the author's. The AI system is not an author, it
+advances no claim of its own, and it bears no responsibility for the
+contents. The author takes full responsibility for the whole of this work,
+including those parts prepared with AI assistance.
+
+This is stated plainly because the reader is entitled to weigh it, and
+because the verification programme of
 Sections~\ref{sec:verification} and~\ref{sec:drat} is designed precisely so
 that no trust in any tool, human, or model is required: every lower bound is
 a printed colouring checkable against the definition by hand or by a
