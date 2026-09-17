@@ -157,10 +157,17 @@ forward mode confirms each logged lemma is valid RUP, but the refutation never
 closes — `c conflict claimed, but not detected`. A four-clause UNSAT formula
 yields zero proof lines. A standalone binary is required.
 
-Also: kissat's **binary** proof does not check under drat-trim (`RAT check failed
-on all possible pivots`, at a different line for every inprocessing setting — a
-format mismatch, not a technique to disable). The ASCII proof of the identical
-run verifies, at roughly 2–3x the bytes. Hence `--no-binary`.
+Also: kissat's **binary** proof did not check under drat-trim here (`RAT check
+failed on all possible pivots`, at a different line for every inprocessing
+setting). The ASCII proof of the identical run verifies, at roughly 2–3x the
+bytes. Hence `--no-binary`.
+
+This was not diagnosed, and it should not be read as a defect in kissat.
+drat-trim is told that a proof is binary by the `-i` flag, and the invocations
+in `drat_certify.py` and `cube_certify.py` do not pass it — so the mismatch is
+at least as likely to be on this side as in the solver. Anyone wanting binary
+proofs (2–3x smaller) should try `-i` before concluding anything about the
+format. Text proofs are adequate at the sizes here; the largest is under 200 MB.
 
 ## Validate the checker before believing it
 
