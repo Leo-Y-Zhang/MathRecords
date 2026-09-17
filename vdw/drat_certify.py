@@ -121,9 +121,14 @@ def certify(n, j, targets, tools, workdir, timeout=None):
            'revsym': False, 'clauses': len(cnf), 'vars': pool.top,
            'build_s': round(t_build, 1)}
 
-    # --no-binary is mandatory: kissat's binary proof does not check under
-    # drat-trim (it fails RAT on all pivots, at a different line for every
-    # inprocessing setting -- a format mismatch, not a technique to disable).
+    # --no-binary: with kissat's binary proof, the drat-trim call below reports
+    # RAT failures on all pivots, at a different line for every inprocessing
+    # setting. Text proofs check clean, so text is what this uses.
+    #
+    # Not diagnosed further, and it should not be read as a defect in kissat:
+    # drat-trim is told that a proof is binary by the -i flag, which the call
+    # below does not pass, so the mismatch is at least as likely to be on this
+    # side. Text proofs are adequate at the sizes here (largest under 200 MB).
     t0 = time.time()
     try:
         solve = subprocess.run([tools['kissat'], '-q', '--no-binary', formula, proof],

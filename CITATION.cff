@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, or cite the values it establishes, please cite the archived version below."
+title: "MathRecords: search and verification software for mixed van der Waerden numbers"
+abstract: >-
+  Search and verification software for mixed van der Waerden numbers
+  w(j+2; 2^j, t_1, t_2), together with the lower-bound colourings, the SAT
+  refutations and the replayed DRAT proof objects that establish five new
+  terms of the OEIS sequences A217005, A217007, A217058, A217059 and A217236.
+  Lower bounds are explicit colourings checkable by a standard-library-only
+  program that never invokes a solver; upper bounds are SAT refutations, with
+  per-cube DRAT proofs replayed under drat-trim and a separate machine-checked
+  proof that the cube set is exhaustive.
+type: software
+authors:
+  - family-names: Zhang
+    given-names: Leo Y.
+    orcid: "https://orcid.org/0009-0008-1145-7969"
+version: "1.0.0"
+date-released: "2026-09-16"
+doi: 10.5281/zenodo.22801469
+url: "https://doi.org/10.5281/zenodo.22801469"
+repository-code: "https://github.com/Leo-Y-Zhang/MathRecords"
+license-url: "https://github.com/Leo-Y-Zhang/MathRecords/blob/main/LICENSE"
+keywords:
+  - van der Waerden number
+  - mixed van der Waerden number
+  - arithmetic progression
+  - Ramsey theory on the integers
+  - SAT solving
+  - cube and conquer
+  - DRAT proof
+  - certificate
+  - OEIS

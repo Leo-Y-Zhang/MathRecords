@@ -229,7 +229,7 @@ python vdw/verify_certificate.py "2.21221212.12.22211.112.2221.222.2.1..12221211
 ```
 
 **Upper bound.** `n=57` with `j=12` is unsatisfiable, established three times
-over along paths that cannot share a mistake:
+over in three symmetry configurations:
 
 | encoding | solver | cubes | verdict | time |
 |---|---|---|---|---|
@@ -241,6 +241,12 @@ The middle row is the one that matters: it searches the full unreduced space,
 so it cannot inherit an error from the lex-leader constraint that is the only
 new mathematics in the engine. Separately, a randomised-restart portfolio spent
 8 rounds × 5 seeds × 3M conflicts hunting a witness at `n=57` and found none.
+
+These runs do not check the encoding. All three build the formula the same way —
+same AP enumeration, same exactly-one blocks, same totalizer call, same CaDiCaL
+through pysat — so an error there would survive all three. They differ only in
+which symmetry-breaking constraints are active, which is what they test. The
+encoding is checked separately against the definition (`vdw/encoding_audit.py`).
 
 The step from `a(11) = 55` is **+2**. That is not anomalous — `+2` already
 occurs in the published sequence at `a(6) = 40 → a(7) = 42`.
@@ -320,12 +326,12 @@ The step from `a(8) = 70` is **+4**. The published differences are
 `10, 11, 1, 6, 5, 6, 4, 5`, so +4 already occurs at `a(6) = 61 -> a(7) = 65`.
 
 **Cross-checked, like the others.** The refutation at `n=74` was re-derived twice
-more along paths that cannot share a mistake: `vdw2`, which carries no
+more in other symmetry configurations: `vdw2`, which carries no
 symmetry-breaking constraint at all, returned UNSAT in 3453 s, and the primary
 engine with reversal symmetry disabled returned UNSAT in 3460 s. `vdw2` also
 found and verified a witness of its own at `n=73` (2416 s). Recorded in
-`vdw/crosscheck_a9.json`, `AGREES`. All five terms now stand on three
-independent refutation paths.
+`vdw/crosscheck_a9.json`, `AGREES`. All five terms were refuted in three
+symmetry configurations.
 
 ### A217236(4) = 84
 
@@ -359,7 +365,7 @@ tightened the cap, and one run at `n=84` closed the remaining gap. Satisfiabilit
 is monotone in `n`, which is what makes bracketing valid.
 
 **Cross-checked, like the others.** The refutation at `n=84` was re-derived twice
-more along paths that cannot share a mistake: `vdw2`, which carries no
+more in other symmetry configurations: `vdw2`, which carries no
 symmetry-breaking constraint at all, returned UNSAT in 10959 s, and the primary
 engine with reversal symmetry disabled returned UNSAT in 16975 s. `vdw2` also
 found and verified a witness of its own at `n=83` (9893 s). Recorded in

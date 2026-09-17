@@ -243,8 +243,7 @@ distinct-target families, including `[3,4]`, the breaking is additionally
 
 ### 5.4 The refutation, three ways
 
-`n = 57, j = 12` was refuted along paths chosen so that they cannot share a
-mistake:
+`n = 57, j = 12` was refuted in three symmetry configurations:
 
 | encoding | symmetry | solver | cubes | verdict | time |
 |---|---|---|---|---|---|
@@ -257,6 +256,14 @@ The second row is the one that matters. `vdw2` imposes no lex-leader constraint
 on this family and therefore searches the full unreduced space; it cannot
 inherit an error from the reversal-symmetry constraint, which is the only new
 mathematics in the engine. It agrees.
+
+These three configurations do not check the encoding. All of them build the
+formula the same way: the same AP enumeration, the same exactly-one blocks, the
+same `CardEnc.atmost(..., EncType.totalizer)` call, and CaDiCaL reached through
+pysat. An error in any of those would survive all three runs. What differs
+between them is only which symmetry-breaking constraints are active, so what
+they test is the symmetry breaking. The encoding is tested separately, against
+the definition, in section 5.1.
 
 The third row was started and stopped after 7.4 hours without finishing — with
 twice the workers it was running more than three times longer than the second,
@@ -357,8 +364,8 @@ likelier failure and the one that low-level proof checking cannot detect.
 
 The upper bound therefore rests on: an encoding proven equal to the definition
 by exhaustion, symmetry breaking proven to lose nothing, the wildcard budget
-tested at exact scale, the whole published sequence reproduced, three
-independent refutations — one of them through an engine that imposes no symmetry
+tested at exact scale, the whole published sequence reproduced, refutations in
+three symmetry configurations — one through an engine that imposes no symmetry
 breaking at all, another with the reversal constraint switched off — and now a
 replayed proof object for the headline rung itself.
 
@@ -680,8 +687,9 @@ using all 3 wildcards (404.9 s) and UNSAT at `n = 79` (377.7 s), both at
 
 ### 11.4 The refutation, three ways
 
-`n = 84, j = 4` was refuted along three paths chosen so that they cannot share a
-mistake:
+`n = 84, j = 4` was refuted in three symmetry configurations. As in section
+5.4, these differ only in which symmetry-breaking constraints are active; they
+share the encoding and the solver, so they do not check those.
 
 | encoding | symmetry | solver | cubes | verdict | time |
 |---|---|---|---|---|---|
