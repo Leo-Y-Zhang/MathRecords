@@ -377,8 +377,9 @@ Note what such a certificate does and does not buy: it guards against a solver
 defect, whereas the audits above target an encoding defect, which is by far the
 likelier failure and the one that low-level proof checking cannot detect.
 
-The upper bound therefore rests on: an encoding proven equal to the definition
-by exhaustion, symmetry breaking proven to lose nothing, the wildcard budget
+The upper bound therefore rests on: an encoding checked equal to the definition
+by exhaustion at the scale of section 5.1 (11 cases, `n` = 8 to 12), symmetry
+breaking checked to lose no orbit on those same cases, the wildcard budget
 tested at exact scale, the whole published sequence reproduced, refutations in
 three symmetry configurations — one through an engine that imposes no symmetry
 breaking at all, another with the reversal constraint switched off — and now a
@@ -489,8 +490,8 @@ alongside the reversal one.  Cube-and-conquer at `k = 4` yields 40 cubes for
 `[4,4]`, against 75 for `[3,4]` and 36 for `[3,3]`.
 
 The encoding audit of section 5.1 already covered `[4,4]` among its target
-shapes, so the CNF-equals-definition and no-orbit-lost guarantees apply to this
-family without extension.
+shapes, so the CNF-equals-definition and no-orbit-lost checks cover this
+family's shape without extension — at that section's scale, not at `n = 68`.
 
 ### 9.2 Validation
 
@@ -519,8 +520,9 @@ constraint at all -- on this equal-target family it breaks only the colour swap
 symmetry switched off refuted it in 7285.2 s
 (`vdw/crosscheck_a7.json`, `AGREES: true`).  Beneath that sits the shared
 machinery that applied from the start -- an encoding audited against the
-definition on this very target shape, symmetry breaking proven to lose no orbit,
-the crash-honest rule that every cube must report explicitly (all 40 did), and a
+definition on this very target shape, symmetry breaking checked to lose no orbit
+on the same small cases, the crash-honest rule that every cube must report
+explicitly (all 40 did), and a
 full-scale gate in this family at the adjacent index.
 
 ### 9.4 An observation, not a claim
@@ -606,8 +608,8 @@ since been run and **agrees** (`vdw/crosscheck_a9.json`), as have the verdict fi
 for every other term in this paper. All five refutations therefore rest on more
 than the primary engine alone, on top of the shared machinery that always applied:
 an encoding audited against the definition on this target shape, symmetry breaking
-proven to lose no orbit, the crash-honest rule that every cube must report
-explicitly (all 76 did), and the family's own validation gate.
+checked to lose no orbit on the same small cases, the crash-honest rule that every
+cube must report explicitly (all 76 did), and the family's own validation gate.
 
 ### 10.5 The family gate, and why this term waited
 
