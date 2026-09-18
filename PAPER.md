@@ -181,17 +181,32 @@ a sound lex-leader constraint, and it halves the search space.
 This matters more than it might appear. The pre-existing implementation broke
 only the symmetry between classes *sharing* a target value. A217058 has targets
 `3` and `4`, which differ, so that rule emitted **no clauses at all** and every
-search ran with no symmetry breaking whatsoever. Adding reversal symmetry
-measured a **1.55×** speedup on the `n=45, j=8` refutation, on the half of the
-problem that consumes essentially all the time.
+search ran with no symmetry breaking whatsoever.
+
+**A 1.55× speedup was claimed here and is withdrawn.** It came from one timed run
+per configuration. Permuting the clause order of this same formula, which changes
+nothing semantically, moves the conflict count across a 2.26× range (16
+permutations, 887,582 to 2,005,413), so a single pair cannot resolve an effect of
+that size. Measured over 12 permutations per configuration on the monolithic
+path, all 24 runs UNSAT: median 1,386,901 conflicts with reversal symmetry on
+against 1,194,370 with it off — ratio 0.861, the opposite direction, two-sided
+p = 0.347. Details in `vdw/BENCHMARKING.md`.
+
+The constraint itself is unaffected: the lex-leader argument above is a proof, not
+a measurement. This also does not settle the cube-and-conquer path, where the
+original number was measured; that was not re-run. What is withdrawn is the
+number, not the constraint.
 
 ### 4.5 Search organisation
 
 Refutations use cube-and-conquer: branch on all class assignments to the first
 `k` positions, discard prefixes that already exceed the wildcard budget or
 already contain a monochromatic AP, and solve the residual formulas in parallel.
-For `[3,4]`, `k = 4` gives 75 cubes. A measured comparison put `k = 4` at 34.1 s
-against `k = 6` at 65.1 s on `n=45, j=8`, so the finer split was not used.
+For `[3,4]`, `k = 4` gives 75 cubes. An earlier version reported `k = 4` at 34.1 s
+against `k = 6` at 65.1 s on `n=45, j=8`. That is a 1.91× ratio from a single
+wall-clock pair — inside the 2.26× clause-order range above, and wall-clock on a
+shared machine besides. `k = 4` is kept as the default, but that comparison does
+not establish it.
 
 **UNSAT is reported only when every cube has returned an explicit verdict.** A
 worker killed by the operating system raises an error rather than being counted

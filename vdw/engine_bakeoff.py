@@ -10,6 +10,12 @@ so this is UNSAT, and it sits about 2.5x below the survey's j=8 point -- big
 enough to rank engines, small enough to finish in minutes.
 
 One core per engine, run concurrently.
+
+READ vdw/BENCHMARKING.md BEFORE TRUSTING THIS RANKING.  One run per engine, and
+the engines are not even given the same clause order.  The clause-order noise
+floor on n=42, j=7 is 1.56x, so the "2x engine" this docstring is built around is
+right at the edge of what this experiment can resolve.  Ranking engines credibly
+needs the same permutation set across engines and more than one instance.
 """
 import os
 import sys
