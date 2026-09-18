@@ -206,6 +206,105 @@ def make_cubes(n, j, targets, k, colour_sym=True):
     return cubes
 
 
+def ap_incidence(n, targets):
+    """inc[i] = how many target-length APs of [1,n] pass through position i,
+    summed over the targets.  Positions near the centre lie on strictly more
+    APs than positions near either end, so fixing them constrains more clauses
+    per decision than fixing a prefix does."""
+    inc = [0] * (n + 2)
+    for t in targets:
+        for ap in aps(n, t):
+            for i in ap:
+                inc[i] += 1
+    return inc
+
+
+def split_positions(n, k, mode='prefix', targets=None):
+    """The k positions to split on.  'prefix' is the historical behaviour
+    (positions 1..k); 'central' takes the middle window; 'incidence' takes the
+    k positions of highest AP incidence (needs `targets`)."""
+    if mode == 'prefix':
+        return list(range(1, k + 1))
+    if mode == 'central':
+        lo = (n - k) // 2 + 1
+        return list(range(lo, lo + k))
+    if mode == 'incidence':
+        if targets is None:
+            raise ValueError("mode='incidence' needs targets")
+        inc = ap_incidence(n, targets)
+        return sorted(sorted(range(1, n + 1), key=lambda i: (-inc[i], i))[:k])
+    raise ValueError(f'unknown split mode {mode!r}')
+
+
+def _aps_within(n, targets, positions):
+    """(colour, AP) pairs whose every member lies in `positions`."""
+    S = set(positions)
+    out = []
+    for c, t in enumerate(targets, start=1):
+        for ap in aps(n, t):
+            if all(i in S for i in ap):
+                out.append((c, ap))
+    return out
+
+
+def make_cubes_pos(n, j, targets, positions, colour_sym=False):
+    """make_cubes generalised to an arbitrary SET of split positions.
+
+    Returns cubes as tuples of (position, class) pairs.  A cube is dropped only
+    when a clause already in build()'s output refutes it outright: a
+    monochromatic target-length AP lying wholly inside `positions` (an AP
+    clause), or more than j wildcards among them (the cardinality constraint).
+    Everything else is kept, so the cube set stays EXHAUSTIVE: for any
+    assignment of `positions`, it is either some cube or refuted by F alone.
+
+    `colour_sym` is REFUSED off a prefix.  The repo's colour-symmetry rule
+    orders the FIRST OCCURRENCE of interchangeable colours in the whole word;
+    read off a window it orders first occurrences *within the window*, which is
+    not a symmetry of F and silently deletes solutions.  Measured: [3,3] j=3
+    n=19 is SAT, and a central k=6 window with that rule ported naively reports
+    it UNSAT.  That is exactly how a false new term gets published.
+    """
+    positions = sorted(positions)
+    k = len(positions)
+    if colour_sym and positions != list(range(1, k + 1)):
+        raise ValueError('colour_sym is sound only on a prefix; see docstring')
+    r = len(targets)
+    idx = {p: m for m, p in enumerate(positions)}
+    within = [(c, [idx[i] for i in ap])
+              for c, ap in _aps_within(n, targets, positions)]
+    groups = {}
+    for c, t in enumerate(targets, start=1):
+        groups.setdefault(t, []).append(c)
+    cubes = []
+    for asg in itertools.product(range(r + 1), repeat=k):
+        if asg.count(0) > j:
+            continue
+        if colour_sym:
+            ok = True
+            for t, cols in groups.items():
+                seen = []
+                for x in asg:
+                    if x in cols and x not in seen:
+                        seen.append(x)
+                if seen != cols[:len(seen)]:
+                    ok = False
+                    break
+            if not ok:
+                continue
+        if any(all(asg[m] == c for m in ap) for c, ap in within):
+            continue
+        cubes.append(tuple(zip(positions, asg)))
+    return cubes
+
+
+def _cube_pairs(cube):
+    """Accept both cube shapes: a flat tuple of classes (legacy prefix cube,
+    positions 1..k) or a tuple of (position, class) pairs."""
+    if cube and isinstance(cube[0], tuple):
+        return list(cube)
+    return [(i + 1, c) for i, c in enumerate(cube)]
+
+
 def _decode(model, v, n, r):
     m = set(l for l in model if l > 0)
     return [next(c for c in range(r + 1) if v(i, c) in m) for i in range(1, n + 1)]
@@ -215,7 +314,7 @@ def _cube_job(args):
     n, j, targets, cube, symbreak, revsym, engine = args
     cnf, pool, v = build(n, j, targets, symbreak=symbreak, revsym=revsym)
     r = len(targets)
-    units = [[v(i + 1, c)] for i, c in enumerate(cube)]
+    units = [[v(i, c)] for i, c in _cube_pairs(cube)]
     cls = _solver(engine)
     if engine in NON_INCREMENTAL:
         with cls(bootstrap_with=cnf + units) as s:
@@ -245,8 +344,13 @@ def solve_direct(n, j, targets, conflicts=20_000, symbreak=True, revsym=True,
 
 
 def solve(n, j, targets, k=None, workers=16, symbreak=True, revsym=True,
-          engine=DEFAULT_ENGINE, probe=20_000):
-    """(sat?, colouring or None).  Raises if any cube fails to report."""
+          engine=DEFAULT_ENGINE, probe=20_000, split='prefix'):
+    """(sat?, colouring or None).  Raises if any cube fails to report.
+
+    `split` selects the cube positions: 'prefix' (default, unchanged) or
+    'central'/'incidence' (see split_positions).  The non-prefix modes run with
+    the colour-symmetry cube rule OFF, which is what a certification run needs
+    anyway (cube_exhaustive.py)."""
     if probe:
         r, col = solve_direct(n, j, targets, conflicts=probe, symbreak=symbreak,
                               revsym=revsym, engine=engine)
@@ -256,7 +360,11 @@ def solve(n, j, targets, k=None, workers=16, symbreak=True, revsym=True,
             return False, None
     if k is None:
         k = 4 if len(targets) == 2 else 3
-    cubes = make_cubes(n, j, targets, k)
+    if split == 'prefix':
+        cubes = make_cubes(n, j, targets, k)
+    else:
+        cubes = make_cubes_pos(n, j, targets,
+                               split_positions(n, k, split, targets))
     if not cubes:
         return False, None
     tasks = [(n, j, targets, c, symbreak, revsym, engine) for c in cubes]

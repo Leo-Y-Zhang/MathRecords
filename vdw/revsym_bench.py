@@ -5,6 +5,16 @@ is vacuous when the targets differ, as they do for [3,4]).  This measures the
 same UNSAT instances with the reversal lex constraint off and on, everything
 else held fixed, so the number is attributable.
 
+READ vdw/BENCHMARKING.md BEFORE TRUSTING WHAT THIS PRINTS.  It reports one timed
+run per configuration, and on this family a semantically null clause-order
+permutation alone moves the conflict count by a factor of 2.26.  Anything this
+script reports below roughly 2.3x is inside that floor and is not evidence.  The
+1.55x that this script produced for PAPER.md 4.4 did not survive a 12-permutation
+paired retest (median ratio 0.861, the opposite sign, p = 0.347) and has been
+withdrawn.  To measure this properly, run both configurations over the SAME set of
+clause permutations and compare distributions, scoring conflicts rather than wall
+clock.
+
 Also sweeps worker count, because the machine has 16 logical but ~8 physical
 cores and only ~6 GB free: 16 concurrent CaDiCaLs is what was exhausting RAM
 and orphaning workers.
