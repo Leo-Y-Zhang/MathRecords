@@ -259,9 +259,15 @@ This matters more than it might appear. The pre-existing implementation broke
 only the symmetry between classes \emph{sharing} a target value. On
 distinct-target families such as $(3,4)$ that rule emits no clauses at all,
 so every search there had previously run with no symmetry breaking
-whatsoever. Adding reversal symmetry measured a $1.55\times$ speedup on the
-$n=45$, $j=8$ refutation, on the half of the problem that consumes
-essentially all the time. The map itself is standard, and is used in
+whatsoever. An earlier version of this paper reported a $1.55\times$ speedup
+from adding reversal symmetry on the $n=45$, $j=8$ refutation. That figure is
+withdrawn: it rested on one timed run per configuration, and permuting the
+clause order of the same formula---a semantically null change---moves the
+conflict count across a $2.26\times$ range, so a single pair cannot resolve an
+effect of that size. Measured over $12$ clause permutations per configuration
+on the monolithic path, the median ratio is $0.861$ in the opposite direction
+(two-sided $p=0.347$). The lex-leader argument is a proof and is unaffected;
+what is withdrawn is the timing. The map itself is standard, and is used in
 the same role by Kouril and Paul \cite{kourilpaul}; what is new here is only
 its presence on distinct-target families, where the pre-existing rule was
 silent. Because it is nonetheless the one component the engine adds, the
@@ -277,8 +283,10 @@ the residual formulas in parallel. The same division of labour --- separate
 branches of one search tree, solved independently --- is what Ahmed used to
 settle $w(2;3,17)$ and $w(2;3,18)$ \cite{ahmed2010}. At $k=4$ the five families yield $75$
 cubes for targets $(3,4)$, $36$ for $(3,3)$, $40$ for $(4,4)$, $80$ for
-$(4,5)$ and $76$ for $(3,5)$. A measured comparison on $n=45$, $j=8$ put $k=4$ at $34.1$\,s
-against $k=6$ at $65.1$\,s, so the finer split was not used for search.
+$(4,5)$ and $76$ for $(3,5)$. An earlier version reported $k=4$ at $34.1$\,s against
+$k=6$ at $65.1$\,s on $n=45$, $j=8$; that is a $1.91\times$ ratio from a single
+wall-clock pair, inside the clause-order range noted above, so it does not
+establish the preference. $k=4$ is retained as the default.
 
 One structural rule is worth stating because it is the difference between a
 theorem and a retraction: \textsc{unsat} is reported only when every cube has
