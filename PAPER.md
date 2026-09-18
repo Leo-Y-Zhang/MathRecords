@@ -178,6 +178,14 @@ common difference; it fixes every class and the wildcard count. Requiring a
 colouring to be lexicographically no greater than its own reversal is therefore
 a sound lex-leader constraint, and it halves the search space.
 
+A note on what that soundness does and does not extend to: `i -> n+1-i` permutes
+*colourings*, which is all a lex-leader needs, but it is **not** an automorphism
+of the encoded CNF — the totalizer builds its auxiliary tree over positions in a
+fixed left-to-right order, so 86 of 2221 clauses at `n=45, j=8` are not preserved.
+That costs nothing here and no published value is affected, but it does rule out
+transporting proofs between symmetric cubes by renaming. Measured in
+`vdw/SIGMA-EQUIVARIANCE.md`.
+
 This matters more than it might appear. The pre-existing implementation broke
 only the symmetry between classes *sharing* a target value. A217058 has targets
 `3` and `4`, which differ, so that rule emitted **no clauses at all** and every
