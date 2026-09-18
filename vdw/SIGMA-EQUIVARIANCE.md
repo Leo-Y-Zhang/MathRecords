@@ -1,10 +1,10 @@
 # The sigma-equivariance trap: a symmetric constraint with an asymmetric encoding
 
-Private note. Nothing here has been published, filed, or sent anywhere.
-Every number below was measured in this session by
-`/tmp/claude-0/-home-user-Blank/cdf10545-c83e-52b1-ab18-ba0699ae1f41/scratchpad/private-drafts/sigma_check.py`
-and its companions (`sigma_drat.py`, `sigma_drat2.py`, `sigma_drat3.py`,
-`sigma_scan.py`, `sigma_acid.py`). Nothing is copied from a previous run.
+A measurement note, recorded 2026-09-17. Every number below was measured in one
+session against `vdw/vdw4.py` as it then stood, by throwaway driver scripts that
+are not retained; the properties they check are cheap to re-derive from the
+description in each section, and section 3 gives the exact clause-set comparison.
+Nothing here is copied from an earlier run.
 
 ---
 
@@ -121,10 +121,10 @@ proof that drat-trim nevertheless **accepts** (reported 9 of 12). The observable
 half reproduces. The interpretation does not, and I could not make it fail in
 any way that convicts the checker.
 
-**Setup.** `drat-trim` binary already present in this scratchpad, built from
-upstream `drat-trim.c` with `sha256 = d834b649f437e091597f5347f259b9f681087f89ca0844d0cee250a1a1a0c2ee`,
-matching the hash recorded in `vdw/DRAT.md`. I could not re-download and
-re-compile it in this session (blocked), so it is reused, not rebuilt.
+**Setup.** A `drat-trim` binary already built in the working environment from
+upstream `drat-trim.c`, `sha256 = d834b649f437e091597f5347f259b9f681087f89ca0844d0cee250a1a1a0c2ee`,
+matching the hash recorded in `vdw/DRAT.md`. It could not be re-downloaded and
+re-compiled in that session (network blocked), so it was reused, not rebuilt.
 Checker controls run here: real proof vs UNSAT formula → `VERIFIED`; the same
 proof vs a satisfiable formula → `NOT VERIFIED`; bare empty clause → `NOT
 VERIFIED`. (A fourth "bogus lemma" control I wrote was not actually bogus — the
