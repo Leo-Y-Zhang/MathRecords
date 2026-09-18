@@ -1,9 +1,8 @@
 # Central-position cubing for vdw4 — what it is, what it is worth
 
-Private notes. Nothing here has been committed, pushed or published; the repo at
-`/home/user/mathrecords` was never modified (`git status --porcelain` empty at start and
-at finish). The patch lives beside this file as `central-cubing.patch` and applies to
-`vdw/vdw4.py` (`git apply --check` passes).
+A measurement note, recorded 2026-09-17, on the central-position cubing that
+`vdw/vdw4.py` now offers as `split_positions()` / `make_cubes_pos()`, with
+`solve(split=...)` defaulting to `'prefix'` so nothing changes unless asked.
 
 Every number below was measured in this session on this machine, single-threaded,
 in-process, with pysat's `Cadical195` and `s.accum_stats()`. Conflicts and propagations
@@ -287,11 +286,11 @@ certified value is claimed with central cubes.
 
 ## 10. Reproducing
 
-Scripts used, all in `/tmp/claude-0/-home-user-Blank/cdf10545-c83e-52b1-ab18-ba0699ae1f41/scratchpad/cc/`:
-`incid.py`, `incid2.py` (§2), `central.py` (the implementation, mirrored by the patch),
-`exhaust.py`, `exhaust2.py`, `equiv.py` (§3), `csym_hazard.py` (§4), `rungs.py`,
-`rungs2.py` (§5), `driver.py`, `bench_mid.py`, `bench45.py`, `control.py` (§6),
-`makespan.py` (§8), `clean_wall.py`, `clean_wall2.py` (§7). Raw logs: `bench_mid.log`,
-`bench45.log`.
+The measurements were driven by throwaway scripts that are not retained. The
+implementation they exercised is the one now in `vdw/vdw4.py`, so each section is
+reproducible from `split_positions()` and `make_cubes_pos()` directly: incidence
+sums (§2), cube-set exhaustiveness and disjointness (§3), the colour-symmetry
+hazard (§4), the rung sweep (§5), and the two benchmarks (§6, §7), each summing
+conflicts over the whole cube set in one process.
 
 Environment: python 3.11.15, python-sat 1.9.dev15, Cadical195, 4 cores, 15 GB.
