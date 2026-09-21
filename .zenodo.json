@@ -1,13 +1,13 @@
 {
- "upload_type": "software",
  "title": "MathRecords: search and verification software for mixed van der Waerden numbers",
- "description": "Search and verification software for mixed van der Waerden numbers w(j+2; 2^j, t_1, t_2), together with the lower-bound colorings, the SAT refutations and the replayed DRAT proof objects that establish five new terms of the OEIS sequences A217005, A217007, A217058, A217059 and A217236. Lower bounds are explicit colorings checkable by a standard-library-only program that never invokes a solver; upper bounds are SAT refutations, with per-cube DRAT proofs replayed under drat-trim and a separate machine-checked proof that the cube set is exhaustive.",
+ "upload_type": "software",
  "creators": [
   {
    "name": "Zhang, Leo Y.",
    "orcid": "0009-0008-1145-7969"
   }
  ],
+ "description": "<p>Search and verification software for mixed van der Waerden numbers <em>w</em>(<em>j</em>+2; 2<sup><em>j</em></sup>, <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>), together with the lower-bound colourings, the SAT refutations and the replayed DRAT proof objects that establish five new terms of the OEIS sequences A217005, A217007, A217058, A217059 and A217236.</p><p>Lower bounds are explicit colourings, checkable against the definition by a standard-library-only program that never invokes a SAT solver. Upper bounds are SAT refutations: the search space is split into cubes, each cube's refutation is replayed to <code>s VERIFIED</code> under drat-trim, and the cube set is separately proved exhaustive by a composition proof that is itself replayed.</p><p>New terms established: A217058 a(12) = 57, A217005 a(19) = 52, A217007 a(7) = 68, A217059 a(9) = 74, A217236 a(4) = 84.</p>",
  "keywords": [
   "van der Waerden number",
   "mixed van der Waerden number",
@@ -19,38 +19,38 @@
   "certificate",
   "OEIS"
  ],
- "access_right": "open",
- "license": "other-closed",
  "related_identifiers": [
   {
+   "relation": "isSupplementTo",
    "identifier": "https://oeis.org/A217005",
-   "relation": "isSupplementTo",
    "scheme": "url"
   },
   {
+   "relation": "isSupplementTo",
    "identifier": "https://oeis.org/A217007",
-   "relation": "isSupplementTo",
    "scheme": "url"
   },
   {
+   "relation": "isSupplementTo",
    "identifier": "https://oeis.org/A217058",
-   "relation": "isSupplementTo",
    "scheme": "url"
   },
   {
+   "relation": "isSupplementTo",
    "identifier": "https://oeis.org/A217059",
-   "relation": "isSupplementTo",
    "scheme": "url"
   },
   {
+   "relation": "isSupplementTo",
    "identifier": "https://oeis.org/A217236",
-   "relation": "isSupplementTo",
    "scheme": "url"
   },
   {
-   "identifier": "https://github.com/Leo-Y-Zhang/MathRecords",
    "relation": "isSupplementTo",
+   "identifier": "https://github.com/Leo-Y-Zhang/MathRecords",
    "scheme": "url"
   }
- ]
+ ],
+ "access_right": "open",
+ "license": "other-closed"
 }
