@@ -71,8 +71,9 @@ python vdw/drat_certify.py --n 42 --j 7 --targets 3 4
 `verify_all.py` runs a short ladder across all five families, replays the
 composition proof of each of the five new upper bounds, and on a full run
 re-proves one recorded cube per family. **If the binaries are absent those skip
-rather than fail** — a clean clone and a CI runner both land there, and a
-missing tool is not a broken claim.
+rather than fail** — a clean clone and the `gate` CI job both land there, and a
+missing tool is not a broken claim. The `drat` CI job builds both from pinned
+source and passes `--require-drat`, so there a missing tool is a failure.
 
 Point at the binaries with `--kissat` / `--drat-trim`, the `KISSAT` /
 `DRAT_TRIM` environment variables, or by putting them on `PATH`. No build
@@ -104,6 +105,18 @@ Neither is redistributed here; both are built from pristine upstream sources.
 The recipe below was carried out on a Windows box with **no C compiler at all**,
 using `zig cc` as the compiler, both toolchains installed without administrator
 rights (`winget install --scope user`).
+
+On Linux neither needs any of that: the `drat` job in `.github/workflows/ci.yml`
+is the whole recipe — drat-trim at a pinned upstream commit, its SHA-256 checked
+against the one below, `cc -O2`; Kissat at tag `rel-4.0.1`, its commit checked,
+`./configure && make -C build kissat`.
+
+That Linux build of Kissat 4.0.1 regenerates the recorded per-cube proofs byte
+for byte once its line endings are converted to CRLF: `proof_bytes` and
+`proof_sha256` in `cube_run_*/results.jsonl` were taken on Windows, where the
+proof file came out with CRLF line endings. Checked on 11 cubes across all five
+families. So a recorded hash can be reproduced on Linux, but only after that
+conversion.
 
 ### drat-trim
 

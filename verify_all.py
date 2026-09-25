@@ -12,8 +12,11 @@ evidence on disk.  Anything else means a claim has drifted from its evidence and
 the write-up is wrong until it is fixed.
 
 Usage:
-    python verify_all.py            # everything
-    python verify_all.py --fast     # skip the two slow audits
+    python verify_all.py                  # everything
+    python verify_all.py --fast           # skip the two slow audits
+    python verify_all.py --require-drat   # a missing kissat/drat-trim FAILS
+                                          # instead of skipping (the CI job
+                                          # that builds them runs this)
 """
 import json
 import os
@@ -62,6 +65,11 @@ _skip = []
 CUBE_DEPTH = {'A217058': 8, 'A217005': 8, 'A217007': 8, 'A217059': 8,
               'A217236': 8}
 
+# Set by --require-drat. The job that builds kissat and drat-trim runs with it,
+# because there a skip can only mean the build went wrong, and a job that
+# skips the one layer it exists to run would still come back green.
+REQUIRE_DRAT = False
+
 
 def check(name, ok, detail='', fail_detail=''):
     """`detail` is context shown either way; `fail_detail` only on failure.
@@ -83,7 +91,13 @@ def skip(name, detail=''):
     so a bare clone's summary line shows, in numbers, how much of the gate a
     missing tool actually took out -- rather than that count silently
     vanishing into a section that never runs its checks at all.
+
+    Under --require-drat there is no such thing as a skip: it is a failure.
     """
+    if REQUIRE_DRAT:
+        check(name, False, fail_detail=f'{detail} (--require-drat: a missing '
+                                       f'tool is a failure here, not a skip)')
+        return
     _skip.append(name)
     print(f'  [SKIPPED] {name}{("  " + detail) if detail else ""}', flush=True)
 
@@ -98,7 +112,9 @@ def section(t):
 
 
 def main():
+    global REQUIRE_DRAT
     fast = '--fast' in sys.argv
+    REQUIRE_DRAT = '--require-drat' in sys.argv
 
     section('standalone checkers self-test')
     rc, out = run([PY, 'verify_certificate.py', '--selftest'], VDW)
@@ -452,10 +468,12 @@ def main():
                 for n_val, j_val in drat_certify.rungs_for(s, spec2):
                     skip(f'{s}: a({j_val}) <= {n_val} refutation replay',
                          'needs kissat, drat-trim')
-            print('  CI should build both from source per vdw/DRAT.md (there '
-                  'is no apt or cargo package for either): drat-trim is one '
-                  'file (`cc -O2 -o drat-trim drat-trim.c`); kissat ships its '
-                  'own `./configure && make`.')
+            print('  Build both from source per vdw/DRAT.md (there is no apt '
+                  'or cargo package for either): drat-trim is one file '
+                  '(`cc -O2 -o drat-trim drat-trim.c`); kissat ships its own '
+                  '`./configure && make`. The `drat` job in '
+                  '.github/workflows/ci.yml does exactly that, from pinned '
+                  'sources, and runs this gate with --require-drat.')
             break
         if not started:
             section('DRAT refutations replayed under drat-trim')

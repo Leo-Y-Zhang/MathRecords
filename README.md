@@ -145,8 +145,9 @@ else means do not believe the numbers below. From a bare clone it is **135
 passed, 0 failed, 25 skipped**; `python verify_all.py --fast` drops the two
 re-executed audits and the per-cube re-proofs for 133 passed, 17 skipped. With
 `kissat` and `drat-trim` present nothing skips: 165 passed.
-`.github/workflows/ci.yml` runs the full one on every push, after `python
-scrub_paths.py --check`.
+`.github/workflows/ci.yml` runs the full gate on every push twice: the `gate`
+job on a bare runner, after `python scrub_paths.py --check`, and the `drat` job
+with both binaries built from pinned source.
 
 The version is pinned because the audits re-derive results through that solver,
 and a gate whose verdict depends on the day it runs is not a gate. CaDiCaL ships
@@ -161,20 +162,22 @@ appearing inside a section nobody has to read. The DRAT replays want the
 `kissat` and `drat-trim` binaries, found on `PATH`, through `KISSAT` /
 `DRAT_TRIM`, or by flag — `vdw/DRAT.md` builds both without administrator
 rights and explains the Windows text-mode trap that silently truncates a proof.
-Neither ships as an apt or cargo package; **CI should build both from source**
-per `vdw/DRAT.md` (on Linux that is just `cc -O2 -o drat-trim drat-trim.c` for
-drat-trim and kissat's own `./configure && make`) so these replays actually run
-instead of skipping on every push. The staging-folder sections want a local
-`OEIS-upload` directory, which is a one-person workbench, deliberately never
-committed, and absent on a CI runner by design. Everything else runs from a
-bare clone, **including `cube_certify.py`'s own verdict logic** (`vdw
-cube_certify --selftest`, standalone below): kissat/drat-trim being absent used
-to mean `cube_certify.py` was imported by nothing in this gate at all, so a
-broken verdict there was as invisible as a broken verdict in code that had been
-deleted. The selftest calls `certify_cube` and `parse_cube` directly with the
-two external tools stood in for (their real DRAT proof-checking is exactly the
-thing the paragraph above is about) and checks that a genuine proof is ACCEPTED
-and one corrupted by the file's own `--negctl-truncate` control is REJECTED.
+Neither ships as an apt or cargo package, so the `drat` job in
+`.github/workflows/ci.yml` builds both from pinned upstream source (on Linux
+that is just `cc -O2 -o drat-trim drat-trim.c` for drat-trim and kissat's own
+`./configure && make`) and runs `python verify_all.py --require-drat`, under
+which a missing tool is a failure rather than a skip. The staging-folder
+sections want a local `OEIS-upload` directory, which is a one-person workbench,
+deliberately never committed, and absent on a CI runner by design. Everything
+else runs from a bare clone, **including `cube_certify.py`'s own verdict
+logic** (`vdw cube_certify --selftest`, standalone below): kissat/drat-trim
+being absent used to mean `cube_certify.py` was imported by nothing in this
+gate at all, so a broken verdict there was as invisible as a broken verdict in
+code that had been deleted. The selftest calls `certify_cube` and `parse_cube`
+directly with the two external tools stood in for (their real DRAT
+proof-checking is exactly the thing the paragraph above is about) and checks
+that a genuine proof is ACCEPTED and one corrupted by the file's own
+`--negctl-truncate` control is REJECTED.
 
 **The cube-level certificates behind the five upper bounds are checked from a
 bare clone too.** For each new term the gate reads the committed per-cube
