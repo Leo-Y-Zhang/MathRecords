@@ -13,7 +13,8 @@ the write-up is wrong until it is fixed.
 
 Usage:
     python verify_all.py                  # everything
-    python verify_all.py --fast           # skip the two slow audits
+    python verify_all.py --fast           # skip the two slow audits and the
+                                          # per-cube re-proofs
     python verify_all.py --require-drat   # a missing kissat/drat-trim FAILS
                                           # instead of skipping (the CI job
                                           # that builds them runs this)
