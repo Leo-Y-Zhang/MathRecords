@@ -12,14 +12,19 @@ evidence on disk.  Anything else means a claim has drifted from its evidence and
 the write-up is wrong until it is fixed.
 
 Usage:
-    python verify_all.py            # everything
-    python verify_all.py --fast     # skip the two slow audits
+    python verify_all.py                  # everything
+    python verify_all.py --fast           # skip the two slow audits and the
+                                          # per-cube re-proofs
+    python verify_all.py --require-drat   # a missing kissat/drat-trim FAILS
+                                          # instead of skipping (the CI job
+                                          # that builds them runs this)
 """
 import json
 import os
 import re
 import subprocess
 import sys
+import tempfile
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 VDW = os.path.join(ROOT, 'vdw')
@@ -55,6 +60,17 @@ _fail = []
 _pass = []
 _skip = []
 
+# Cube depth k of the committed cube-and-conquer certification behind each new
+# upper bound: vdw/cube_run_n{value}_j{j}_k{k}/ holds its per-cube records
+# (results.jsonl) and its composition certificate (exhaustive_cert.json).
+CUBE_DEPTH = {'A217058': 8, 'A217005': 8, 'A217007': 8, 'A217059': 8,
+              'A217236': 8}
+
+# Set by --require-drat. The job that builds kissat and drat-trim runs with it,
+# because there a skip can only mean the build went wrong, and a job that
+# skips the one layer it exists to run would still come back green.
+REQUIRE_DRAT = False
+
 
 def check(name, ok, detail='', fail_detail=''):
     """`detail` is context shown either way; `fail_detail` only on failure.
@@ -76,7 +92,13 @@ def skip(name, detail=''):
     so a bare clone's summary line shows, in numbers, how much of the gate a
     missing tool actually took out -- rather than that count silently
     vanishing into a section that never runs its checks at all.
+
+    Under --require-drat there is no such thing as a skip: it is a failure.
     """
+    if REQUIRE_DRAT:
+        check(name, False, fail_detail=f'{detail} (--require-drat: a missing '
+                                       f'tool is a failure here, not a skip)')
+        return
     _skip.append(name)
     print(f'  [SKIPPED] {name}{("  " + detail) if detail else ""}', flush=True)
 
@@ -91,13 +113,15 @@ def section(t):
 
 
 def main():
+    global REQUIRE_DRAT
     fast = '--fast' in sys.argv
+    REQUIRE_DRAT = '--require-drat' in sys.argv
 
     section('standalone checkers self-test')
     rc, out = run([PY, 'verify_certificate.py', '--selftest'], VDW)
     check('vdw verify_certificate --selftest', rc == 0 and 'SELFTEST PASSED' in out)
     # cube_certify.py certifies the per-cube UNSAT obligations behind the
-    # headline upper bounds (23,851 DRAT proofs for A217058 alone) but was
+    # headline upper bounds (23,851 DRAT proofs across all five) but was
     # never imported or invoked anywhere in this gate -- so every mutation to
     # its verdict logic (parse_cube's arity check, certify_cube's VERIFIED /
     # NOT_VERIFIED dispatch) survived silently (audit/mutants/SAT_checkers.md,
@@ -445,10 +469,12 @@ def main():
                 for n_val, j_val in drat_certify.rungs_for(s, spec2):
                     skip(f'{s}: a({j_val}) <= {n_val} refutation replay',
                          'needs kissat, drat-trim')
-            print('  CI should build both from source per vdw/DRAT.md (there '
-                  'is no apt or cargo package for either): drat-trim is one '
-                  'file (`cc -O2 -o drat-trim drat-trim.c`); kissat ships its '
-                  'own `./configure && make`.')
+            print('  Build both from source per vdw/DRAT.md (there is no apt '
+                  'or cargo package for either): drat-trim is one file '
+                  '(`cc -O2 -o drat-trim drat-trim.c`); kissat ships its own '
+                  '`./configure && make`. The `drat` job in '
+                  '.github/workflows/ci.yml does exactly that, from pinned '
+                  'sources, and runs this gate with --require-drat.')
             break
         if not started:
             section('DRAT refutations replayed under drat-trim')
@@ -469,6 +495,216 @@ def main():
                   f"{r['verdict']}, {r.get('proof_mb', 0)} MB proof checked in "
                   f"{r.get('check_s', 0)} s",
                   fail_detail=r.get('detail', r['verdict']))
+
+    # "All five upper bounds are reduced to checked proof objects: 23,851
+    # per-cube DRAT proofs in total ... each family with a composition proof"
+    # is the headline claim of the README and the paper, and no line of this
+    # gate opened the evidence behind it. Measured: marking one of A217058's
+    # cubes NOT_VERIFIED in its results.jsonl, deleting another cube's record
+    # outright, and setting A217236's composition certificate to FAIL left this
+    # gate at 0 failed. Same shape as the SUBMIT.md and b-file gaps above: a
+    # chain of checks stopping one link short of the artifact the claim is
+    # about. cube_exhaustive.py, the composition argument itself, was run by
+    # nothing here either.
+    #
+    # Most of it needs no solver. cube_exhaustive.py re-walks the whole
+    # assignment tree over the RECORDED cube set, in pure Python, against the
+    # formula built here, and fails unless every branch is a cube or refuted by
+    # a clause of that formula and every cube's record is VERIFIED against it
+    # (by its SHA-256). Replaying the composition tail needs drat-trim, and
+    # re-proving a cube needs kissat as well; those skip, like the ladder
+    # above, when the tools are absent.
+    section('cube-level certificates of the five new upper bounds')
+    tools, _missing = drat_certify.find_tools()
+    have_trim = 'drat_trim' in tools
+    have_both = have_trim and 'kissat' in tools
+    rederived = {}
+    with tempfile.TemporaryDirectory(prefix='verify_all_cubes_') as tmp:
+        for seq, (targets, published, jnew, value, wf, rf) in CLAIMS.items():
+            k = CUBE_DEPTH[seq]
+            run_dir = os.path.join(VDW, f'cube_run_n{value}_j{jnew}_k{k}')
+            results = os.path.join(run_dir, 'results.jsonl')
+            committed = os.path.join(run_dir, 'exhaustive_cert.json')
+            if not check(f'{seq}: cube run n={value} j={jnew} k={k} is committed',
+                         os.path.exists(results) and os.path.exists(committed),
+                         fail_detail=f'missing {os.path.relpath(results, ROOT)} '
+                                     f'or {os.path.relpath(committed, ROOT)}'):
+                continue
+
+            # Read strictly. cube_certify.py and cube_exhaustive.py skip a torn
+            # line and keep the last record per cube, which is right for
+            # resuming a killed run and wrong for committed evidence: a line
+            # that does not parse, or a cube recorded twice, is a defect in the
+            # record, not something to read past.
+            recs, torn = [], 0
+            with open(results, encoding='ascii') as fh:
+                for ln in fh:
+                    if not ln.strip():
+                        continue
+                    try:
+                        rec = json.loads(ln)
+                    except ValueError:
+                        rec = None
+                    if isinstance(rec, dict):
+                        recs.append(rec)
+                    else:
+                        torn += 1
+            cubes = [tuple(r.get('cube') or ()) for r in recs]
+            not_ok = sum(1 for r in recs if r.get('verdict') != 'VERIFIED')
+            dupes = len(cubes) - len(set(cubes))
+            check(f'{seq}: all {len(recs)} per-cube refutations recorded '
+                  f'VERIFIED, one record per cube',
+                  bool(recs) and not torn and not not_ok and not dupes,
+                  fail_detail=f'{torn} unparseable line(s), {not_ok} record(s) '
+                              f'not VERIFIED, {dupes} duplicate cube(s)')
+
+            fresh_path = os.path.join(tmp, f'{seq}_exhaustive.json')
+            cmd = ([PY, 'cube_exhaustive.py', '--n', str(value), '--j', str(jnew),
+                    '--targets'] + [str(t) for t in targets]
+                   + ['--k', str(k), '--cubes', results, '--out', fresh_path,
+                      '--timeout', '600'])
+            if not have_trim:
+                cmd.append('--no-tail')
+            rc, out = run(cmd, VDW)
+            try:
+                with open(fresh_path, encoding='ascii') as fh:
+                    fresh = json.load(fh)
+            except (OSError, ValueError):
+                fresh = {}
+            stats = fresh.get('stats') or {}
+            uncovered = fresh.get('counterexamples') or []
+            if uncovered:
+                why = (f"{len(uncovered)} uncovered prefix(es), first "
+                       f"{uncovered[0].get('prefix')}: {uncovered[0].get('why')}")
+            elif fresh.get('cube_results_nonverified'):
+                why = (f"{fresh['cube_results_nonverified']} cube record(s) not "
+                       f"VERIFIED against this formula, "
+                       f"{fresh.get('cube_results_foreign_formula')} of them "
+                       f"proved against a different formula")
+            else:
+                why = out.strip()[-300:]
+            check(f'{seq}: exhaustiveness re-walked over the recorded cubes '
+                  f'(every branch a cube or refuted by the formula, every cube '
+                  f'VERIFIED against this formula)',
+                  bool(fresh) and not uncovered
+                  and fresh.get('cube_results_nonverified') == 0
+                  and fresh.get('cube_count') == len(set(cubes)),
+                  f"{fresh.get('cube_count')} cubes, "
+                  f"{stats.get('dropped_mono_ap')} + {stats.get('dropped_up')} "
+                  f"refuted prefixes",
+                  fail_detail=why)
+
+            with open(committed, encoding='ascii') as fh:
+                cert = json.load(fh)
+            keys = ('n', 'j', 'targets', 'k', 'formula', 'cube_count',
+                    'cube_set_sha256', 'stats', 'tail_lemmas')
+            differ = [key for key in keys if cert.get(key) != fresh.get(key)]
+            # The replay it records as VERIFIED must be of the tail the re-walk
+            # builds: the same lemma count over the same F' (F plus one clause
+            # per cube). Otherwise that VERIFIED is about some other proof.
+            replayed = cert.get('tail') or {}
+            fprime = ((fresh.get('formula') or {}).get('clauses', 0)
+                      + (fresh.get('cube_count') or 0))
+            if (replayed.get('tail_lemmas'), replayed.get('fprime_clauses')) \
+                    != (fresh.get('tail_lemmas'), fprime):
+                differ.append('tail')
+            cert_tail = replayed.get('verdict')
+            check(f'{seq}: committed composition certificate is PASS and agrees '
+                  f'with the re-walk',
+                  bool(fresh) and not differ and cert.get('verdict') == 'PASS'
+                  and cert_tail == 'VERIFIED'
+                  and cert.get('cube_results_nonverified') == 0,
+                  fail_detail=f"verdict {cert.get('verdict')}, tail {cert_tail}, "
+                              f"fields that differ from the re-walk: {differ}")
+
+            if fresh.get('formula') and fresh.get('cube_count'):
+                rederived[seq] = (fresh['cube_count'], fresh.get('tail_lemmas'),
+                                  fresh['formula']['clauses'] + fresh['cube_count'])
+
+            tail = fresh.get('tail') or {}
+            if have_trim:
+                check(f'{seq}: composition proof replayed under drat-trim',
+                      tail.get('verdict') == 'VERIFIED',
+                      f"{tail.get('tail_lemmas')} lemmas over "
+                      f"{tail.get('fprime_clauses')} F' clauses",
+                      fail_detail=str(tail.get('detail') or out.strip()[-300:]))
+            else:
+                skip(f'{seq}: composition proof replayed under drat-trim',
+                     'needs drat-trim')
+
+            # One recorded cube per family is re-proved from scratch by kissat
+            # and replayed under drat-trim, through cube_certify.py itself. Not
+            # a replay of the evidence -- that is some 180 CPU-hours -- but a
+            # check that the recorded pipeline still turns this formula plus a
+            # recorded cube into a proof drat-trim accepts. Chosen by rule, not
+            # by hand: the cheapest recorded cube spending at most two
+            # wildcards. Spent wildcards are what make a cube easy, so this
+            # stays in the hard part of the split while keeping the proof to
+            # megabytes and the run to seconds.
+            if fast:
+                continue
+            light = [r for r in recs if isinstance(r.get('cube'), list)
+                     and r['cube'].count(0) <= 2
+                     and 'solve_s' in r and 'check_s' in r]
+            if not light:
+                check(f'{seq}: a recorded cube re-proved by kissat and replayed '
+                      f'under drat-trim', False,
+                      fail_detail='no recorded cube spends at most two wildcards')
+                continue
+            pick = min(light, key=lambda r: (r['solve_s'] + r['check_s'],
+                                             r['cube']))
+            name = (f"{seq}: recorded cube {''.join(map(str, pick['cube']))} "
+                    f"re-proved by kissat and replayed under drat-trim")
+            if not have_both:
+                skip(name, 'needs kissat, drat-trim')
+                continue
+            cube_dir = os.path.join(tmp, f'{seq}_cube')
+            rc, out = run([PY, 'cube_certify.py', '--n', str(value),
+                           '--j', str(jnew), '--targets']
+                          + [str(t) for t in targets]
+                          + ['--k', str(k), '--workers', '1', '--timeout', '1200',
+                             '--only', ','.join(map(str, pick['cube'])),
+                             '--run-dir', cube_dir], VDW)
+            try:
+                with open(os.path.join(cube_dir, 'results.jsonl'),
+                          encoding='ascii') as fh:
+                    new = json.loads([ln for ln in fh if ln.strip()][-1])
+            except (OSError, ValueError, IndexError):
+                new = {}
+            check(name,
+                  rc == 0 and new.get('verdict') == 'VERIFIED'
+                  and new.get('formula_sha256') == pick.get('formula_sha256'),
+                  f"{new.get('proof_bytes', 0) / 1e6:.1f} MB proof, solve "
+                  f"{new.get('solve_s')} s, check {new.get('check_s')} s",
+                  fail_detail=f"verdict {new.get('verdict')}: "
+                              f"{out.strip()[-300:]}")
+
+    # The prose quotes these counts. Checked against the re-walk above rather
+    # than against the committed certificates, so a stale certificate cannot
+    # vouch for a stale sentence.
+    if len(rederived) == len(CLAIMS):
+        total = sum(c for c, _lemmas, _fprime in rederived.values())
+        with open(os.path.join(ROOT, 'README.md'), encoding='utf-8') as fh:
+            readme = fh.read()
+        check(f'README.md: quotes the {total:,} per-cube proofs on disk',
+              f'{total:,} per-cube DRAT proofs' in readme)
+
+        def tex(x):
+            return f'{x:,}'.replace(',', '{,}')
+        with open(os.path.join(ROOT, 'paper', 'main.tex'), encoding='utf-8') as fh:
+            paper = fh.read()
+        check(f'paper/main.tex: quotes the {total:,} per-cube proofs on disk',
+              f'${tex(total)}$ per-cube DRAT proofs' in paper)
+        for seq, (ncubes, lemmas, fprime) in rederived.items():
+            row = f'${tex(ncubes)}$ & ${tex(lemmas)}$ & ${tex(fprime)}$'
+            check(f'paper/main.tex: {seq} row of the certification table '
+                  f'matches the re-walk',
+                  any(row in ln for ln in paper.splitlines()
+                      if f'\\seq{{{seq}}} &' in ln),
+                  fail_detail=f'no \\seq{{{seq}}} row ending {row}')
+    else:
+        check('README.md and paper/main.tex cube counts', False,
+              fail_detail='not checked: a cube run above could not be re-walked')
 
     if not fast:
         section('audits re-executed (slow)')
