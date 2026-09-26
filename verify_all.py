@@ -599,7 +599,16 @@ def main():
             keys = ('n', 'j', 'targets', 'k', 'formula', 'cube_count',
                     'cube_set_sha256', 'stats', 'tail_lemmas')
             differ = [key for key in keys if cert.get(key) != fresh.get(key)]
-            cert_tail = (cert.get('tail') or {}).get('verdict')
+            # The replay it records as VERIFIED must be of the tail the re-walk
+            # builds: the same lemma count over the same F' (F plus one clause
+            # per cube). Otherwise that VERIFIED is about some other proof.
+            replayed = cert.get('tail') or {}
+            fprime = ((fresh.get('formula') or {}).get('clauses', 0)
+                      + (fresh.get('cube_count') or 0))
+            if (replayed.get('tail_lemmas'), replayed.get('fprime_clauses')) \
+                    != (fresh.get('tail_lemmas'), fprime):
+                differ.append('tail')
+            cert_tail = replayed.get('verdict')
             check(f'{seq}: committed composition certificate is PASS and agrees '
                   f'with the re-walk',
                   bool(fresh) and not differ and cert.get('verdict') == 'PASS'
