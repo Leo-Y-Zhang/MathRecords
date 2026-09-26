@@ -122,8 +122,9 @@ conversion.
 
 Source: `https://raw.githubusercontent.com/marijnheule/drat-trim/master/drat-trim.c`
 `sha256 = d834b649f437e091597f5347f259b9f681087f89ca0844d0cee250a1a1a0c2ee`
-(1501 lines, upstream edit of 2024-04-21). Kept **byte-identical to upstream** so
-that hash stays checkable — both portability fixes are compiler flags, not edits.
+(1501 lines, upstream commit `2e3b2dc0` of 2024-11-25, the one `ci.yml` pins).
+Kept **byte-identical to upstream** so that hash stays checkable — both
+portability fixes are compiler flags, not edits.
 
 ```sh
 zig cc -O2 -Dgetc_unlocked=getc -include drat_win_shim.h -o drat-trim.exe drat-trim.c
