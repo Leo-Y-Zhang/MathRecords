@@ -76,9 +76,10 @@ jobs:
   # never hide, or be hidden by, the solver-free verdict there.
   drat:
     runs-on: ubuntu-latest
-    # Measured locally: about 20 s of CPU to build both tools and 70 s for the
-    # full gate with them. A job still running at 30 minutes has hung.
-    timeout-minutes: 30
+    # Measured on a GitHub runner: about a minute for the whole job (both tools
+    # built in 6 s, the gate with them in 48 s). A job still running at 15
+    # minutes has hung, not slowed down.
+    timeout-minutes: 15
     env:
       # drat-trim.c at this commit is the file vdw/DRAT.md pins by SHA-256;
       # the hash is checked below rather than trusted.
