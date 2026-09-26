@@ -155,10 +155,12 @@ inside `python-sat`, so no solver has to be installed separately. Note that
 pysat's `Kissat404` hard-crashes the interpreter on this platform — a native
 abort with no Python exception — so it is excluded.
 
-Two kinds of check skip rather than fail when what they need is absent, each
-marked `[SKIPPED]` where it would have run, with the skipped count folded into
-the final tally line (`N passed, 0 failed, K skipped`) rather than only
-appearing inside a section nobody has to read. The DRAT replays want the
+Two kinds of check skip rather than fail when what they need is absent. The
+DRAT replays are each marked `[SKIPPED]` where they would have run, with the
+skipped count folded into the final tally line
+(`N passed, 0 failed, K skipped`) rather than only appearing inside a section
+nobody has to read; the staging-folder sections say so in their own heading
+and are not counted. The DRAT replays want the
 `kissat` and `drat-trim` binaries, found on `PATH`, through `KISSAT` /
 `DRAT_TRIM`, or by flag — `vdw/DRAT.md` builds both without administrator
 rights and explains the Windows text-mode trap that silently truncates a proof.
