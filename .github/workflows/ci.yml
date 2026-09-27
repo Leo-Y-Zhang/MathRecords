@@ -52,9 +52,76 @@ jobs:
       # a previous run of itself.
       #
       # The staging-folder sections skip on a runner by design -- ~/OEIS-upload
-      # is machine-local and never committed.
+      # is machine-local and never committed. The DRAT sections skip here too,
+      # because this runner has no kissat or drat-trim; the `drat` job below
+      # builds both and runs them.
       - name: Re-check every claim against the evidence on disk
         run: python verify_all.py
+
+  # The same gate with the two binaries it otherwise skips for. On a bare
+  # runner every DRAT replay in verify_all.py is SKIPPED, so the layer that
+  # turns "a solver said UNSAT" into "drat-trim checked a proof" ran on no
+  # machine but the author's. This job builds both tools from pinned upstream
+  # source and runs the gate with --require-drat, under which a missing tool
+  # fails instead of skipping: here a skip could only mean the build broke.
+  #
+  # What it replays: the short refutation ladder (a(0)..a(6) of A217058 and
+  # the first two rungs of the other four families), the composition proof of
+  # every one of the five new upper bounds, and one recorded cube per family
+  # re-proved from scratch. Not the 23,851 per-cube proofs themselves -- those
+  # are some 180 CPU-hours -- but every layer of the certificate is exercised
+  # on every push.
+  #
+  # Kept apart from `gate` so that a network or toolchain failure here can
+  # never hide, or be hidden by, the solver-free verdict there.
+  drat:
+    runs-on: ubuntu-latest
+    # Measured on a GitHub runner: about a minute for the whole job (both tools
+    # built in 6 s, the gate with them in 48 s). A job still running at 15
+    # minutes has hung, not slowed down.
+    timeout-minutes: 15
+    env:
+      # drat-trim.c at this commit is the file vdw/DRAT.md pins by SHA-256;
+      # the hash is checked below rather than trusted.
+      DRAT_TRIM_COMMIT: 2e3b2dc0ecf938addbd779d42877b6ed69d9a985
+      DRAT_TRIM_SHA256: d834b649f437e091597f5347f259b9f681087f89ca0844d0cee250a1a1a0c2ee
+      # Kissat 4.0.1, the version that produced the committed per-cube proofs.
+      # A tag can be moved, so the commit it resolves to is checked as well.
+      KISSAT_TAG: rel-4.0.1
+      KISSAT_COMMIT: 43f02cf3e992cb44653b35e5cb26f93281552ae0
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install the SAT solver the audits run through
+        run: pip install python-sat==1.9.dev7
+
+      - name: Build drat-trim from pinned upstream source
+        run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          curl -sSfL -o "$RUNNER_TEMP/drat-trim.c" \
+            "https://raw.githubusercontent.com/marijnheule/drat-trim/${DRAT_TRIM_COMMIT}/drat-trim.c"
+          echo "${DRAT_TRIM_SHA256}  $RUNNER_TEMP/drat-trim.c" | sha256sum -c -
+          cc -O2 -o "$RUNNER_TEMP/bin/drat-trim" "$RUNNER_TEMP/drat-trim.c"
+
+      - name: Build kissat from pinned upstream source
+        run: |
+          git clone --quiet --depth 1 --branch "$KISSAT_TAG" \
+            https://github.com/arminbiere/kissat.git "$RUNNER_TEMP/kissat"
+          test "$(git -C "$RUNNER_TEMP/kissat" rev-parse HEAD)" = "$KISSAT_COMMIT"
+          cd "$RUNNER_TEMP/kissat"
+          ./configure
+          make -C build -j"$(nproc)" kissat
+          cp build/kissat "$RUNNER_TEMP/bin/kissat"
+          "$RUNNER_TEMP/bin/kissat" --version
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: Re-check every claim, DRAT replays included
+        run: python verify_all.py --require-drat
+
   # The gitleaks binary directly rather than gitleaks-action, and the whole
   # history rather than a diff. The action scans only the range
   # <before>^..<after> that a push touched, so a secret committed earlier and
