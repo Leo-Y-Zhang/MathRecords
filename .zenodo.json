@@ -7,7 +7,7 @@
    "orcid": "0009-0008-1145-7969"
   }
  ],
- "description": "<p>Search and verification software for mixed van der Waerden numbers <em>w</em>(<em>j</em>+2; 2<sup><em>j</em></sup>, <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>), together with the lower-bound colourings, the SAT refutations and the replayed DRAT proof objects that establish five new terms of the OEIS sequences A217005, A217007, A217058, A217059 and A217236.</p><p>Lower bounds are explicit colourings, checkable against the definition by a standard-library-only program that never invokes a SAT solver. Upper bounds are SAT refutations: the search space is split into cubes, each cube's refutation is replayed to <code>s VERIFIED</code> under drat-trim, and the cube set is separately proved exhaustive by a composition proof that is itself replayed.</p><p>New terms established: A217058 a(12) = 57, A217005 a(19) = 52, A217007 a(7) = 68, A217059 a(9) = 74, A217236 a(4) = 84.</p>",
+ "description": "<p>Search and verification software for mixed van der Waerden numbers <em>w</em>(<em>j</em>+2; 2<sup><em>j</em></sup>, <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>), together with the lower-bound colourings, the SAT refutations and the replayed DRAT proof objects that independently re-derive five terms of the OEIS sequences A217005, A217007, A217058, A217059 and A217236.</p><p>These values are not first determinations. A217058 a(12), A217007 a(7), A217059 a(9) and A217236 a(4) were first computed by M. Ochocki (Zenodo preprint, June 2026, doi:10.5281/zenodo.20572598), and A217005 a(19) by S. Karki (U(t)-Mathazine 9 (2024), 34–39). All five agree with the values derived here; what this work adds is a second derivation by a different method and a machine-checked proof of every upper bound.</p><p>Lower bounds are explicit colourings, checkable against the definition by a standard-library-only program that never invokes a SAT solver. Upper bounds are SAT refutations: the search space is split into cubes, each cube's refutation is replayed to <code>s VERIFIED</code> under drat-trim, and the cube set is separately proved exhaustive by a composition proof that is itself replayed.</p><p>Terms re-derived: A217058 a(12) = 57, A217005 a(19) = 52, A217007 a(7) = 68, A217059 a(9) = 74, A217236 a(4) = 84.</p>",
  "keywords": [
   "van der Waerden number",
   "mixed van der Waerden number",
@@ -49,6 +49,11 @@
    "relation": "isSupplementTo",
    "identifier": "https://github.com/Leo-Y-Zhang/MathRecords",
    "scheme": "url"
+  },
+  {
+   "relation": "references",
+   "identifier": "10.5281/zenodo.20572598",
+   "scheme": "doi"
   }
  ],
  "access_right": "open",
