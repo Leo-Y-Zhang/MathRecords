@@ -3,14 +3,21 @@
 Extending tracked combinatorial records by computation, in a form where nobody
 has to take the computation's word for it.
 
-Five new terms have been established, in five different families of mixed van
-der Waerden numbers whose published lists had all stood since 2012:
+Five terms, in five different families of mixed van der Waerden numbers whose
+OEIS lists had all stood since 2012, are derived here independently:
 **[A217058](https://oeis.org/A217058)(12) = 57**,
 **[A217005](https://oeis.org/A217005)(19) = 52**,
 **[A217007](https://oeis.org/A217007)(7) = 68**,
 **[A217236](https://oeis.org/A217236)(4) = 84** and
 **[A217059](https://oeis.org/A217059)(9) = 74**. Each ships a certificate you
 can check without running a solver.
+
+**None of the five was computed here first.** Four appear among the 55 new
+values in Marek Ochocki's preprint of June 2026, and A217005(19) = 52 was
+published by S. Karki in 2024. Both predate every submission from this
+repository. What this repository adds is a second derivation by a different
+method, with every upper bound reduced to proofs a machine can check. See
+[Prior computation](#prior-computation).
 
 The fifth was withheld for nearly two weeks, and the reason is worth keeping. A217059
 a(9) = 74 was computed and cross-checked alongside the others, but the family
@@ -22,8 +29,8 @@ passed: SAT at n = 69 with a verified witness, UNSAT at n = 70, both at j = 8,
 defined and then not finished does not get waived retroactively because the
 answer looks right.
 
-**The paper.** [*Five new mixed van der Waerden numbers, with machine-checked
-upper bounds*](paper/main.pdf) -- 14 pages -- is the write-up: the encoding, the
+**The paper.** [*Five mixed van der Waerden numbers, with machine-checked
+upper bounds*](paper/main.pdf) -- 17 pages -- is the write-up: the encoding, the
 certificates, and the cube-and-conquer refutations. **All five upper bounds are
 reduced to checked proof objects**: 23,851 per-cube DRAT proofs in total, every
 one replayed to `s VERIFIED` by drat-trim, each family with a composition proof
@@ -211,16 +218,16 @@ by hours.
 
 ## Results
 
-Five new terms, in five different families, all published lists standing since
-2012:
+Five terms, in five different families, each one past an OEIS list that had
+stood since 2012:
 
-| sequence | new term | value | published before |
-|---|---|---|---|
-| A217058 | `a(12) = w(14; 2^12, 3, 4)` | **57** | 12 terms |
-| A217005 | `a(19) = w(21; 2^19, 3, 3)` | **52** | 19 terms |
-| A217007 | `a(7) = w(9; 2^7, 4, 4)` | **68** | 7 terms |
-| A217059 | `a(9) = w(11; 2^9, 3, 5)` | **74** | 9 terms |
-| A217236 | `a(4) = w(6; 2^4, 4, 5)` | **84** | 4 terms |
+| sequence | term | value | in the OEIS before | first computed by |
+|---|---|---|---|---|
+| A217058 | `a(12) = w(14; 2^12, 3, 4)` | **57** | 12 terms | Ochocki, 2026 |
+| A217005 | `a(19) = w(21; 2^19, 3, 3)` | **52** | 19 terms | Karki, 2024 |
+| A217007 | `a(7) = w(9; 2^7, 4, 4)` | **68** | 7 terms | Ochocki, 2026 |
+| A217059 | `a(9) = w(11; 2^9, 3, 5)` | **74** | 9 terms | Ochocki, 2026 |
+| A217236 | `a(4) = w(6; 2^4, 4, 5)` | **84** | 4 terms | Ochocki, 2026 |
 
 ```
 A217058:  18, 21, 25, 29, 33, 36, 40, 42, 45, 48, 52, 55, 57
@@ -230,8 +237,36 @@ A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74
 A217236:  55, 71, 75, 79, 84
 ```
 
-Novelty for all five was confirmed against the live OEIS API, not against a
-paper.
+## Prior computation
+
+Novelty for all five was checked against the live OEIS API, not against the
+literature, and that was not enough. An OEIS entry with no new terms means
+nobody submitted any, not that nobody computed any.
+
+- **Marek Ochocki**, *Computing Off-Diagonal Van der Waerden Numbers: Improved
+  Algorithm and New Exact Values*, Zenodo preprint, v1 6 June 2026, v2 10 June
+  2026, [doi:10.5281/zenodo.20572598](https://doi.org/10.5281/zenodo.20572598).
+  Table 1 lists A217058(12) = 57, A217007(7) = 68, A217059(9) = 74 and
+  A217236(4) = 84 among 55 new values, found by a backtracking search with
+  pruning. It was posted weeks before the first of these was submitted to the
+  OEIS from here.
+- **S. Karki**, *A New van der Waerden Number*, U(t)-Mathazine **9** (2024),
+  34–39, gives A217005(19) = w(21; 2^19, 3, 3) = 52. Ochocki lists it among
+  known values (Table 2). It is cited here as he cites it; it has not been
+  read here.
+
+All five agree with the values derived here. Ochocki's four printed colourings
+pass `vdw/verify_certificate.py`. His tables also go well past this repository
+in the same families: A217058 to a(21), A217005 to a(33), A217007 to a(11),
+A217059 to a(17) and A217236 to a(6).
+
+What remains this repository's is the second derivation and the standard of
+proof. Ochocki's lower bounds are printed colourings, as here. His upper bounds
+rest on the exhaustive search itself: his checker confirms that each colouring
+is valid and that no single further position can be added, which does not by
+itself exclude a longer colouring. Here every upper bound is reduced to DRAT
+proofs replayed by drat-trim. Each of the five values now has two independent
+derivations, by different methods, and one machine-checked proof.
 
 ### A217058(12) = 57
 
@@ -413,6 +448,9 @@ number cannot drift from what was computed, and the generator re-runs the
 verifier before writing. **All five are now approved and live in the OEIS**:
 A217058(12) on 30 July 2026, A217005(19), A217007(7) and A217236(4) on 7 August,
 and A217059(9) on 13 August, each credited in the entry's extensions line.
+Those lines were written before the prior computations above were known here.
+Ochocki plans to add his values to the OEIS himself, so the entries' credit is
+left to him.
 
 The entries themselves are the live state; this paragraph is checked against
 them rather than remembered, and the way to check it is to search OEIS for the
