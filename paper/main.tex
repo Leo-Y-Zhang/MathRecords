@@ -1,4 +1,4 @@
-% Five new mixed van der Waerden numbers
+% Five mixed van der Waerden numbers, with machine-checked upper bounds
 % LaTeX source; compiles with pdflatex, xelatex, or tectonic.
 \documentclass[12pt]{article}
 
@@ -15,26 +15,29 @@
 
 \newcommand{\seq}[1]{\texttt{#1}}
 
-\title{New terms for five OEIS sequences\\of mixed van der Waerden numbers}
+\title{Five mixed van der Waerden numbers,\\with machine-checked upper bounds}
 \author{Leo Y. Zhang\thanks{Corresponding author. ORCID: \url{https://orcid.org/0009-0008-1145-7969}}\\[2pt]
   \small Independent researcher, United Kingdom\\[2pt]
   \small \href{mailto:academic.submissions26@gmail.com}{\texttt{academic.submissions26@gmail.com}}}
-\date{September 2026}
+\date{September 2026; revised October 2026}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We determine the next term of each of five sequences of mixed van der Waerden
-numbers: $w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$,
+We give independent derivations of five mixed van der Waerden numbers:
+$w(14;\,2^{12},3,4)=57$, $w(21;\,2^{19},3,3)=52$,
 $w(9;\,2^{7},4,4)=68$, $w(6;\,2^{4},4,5)=84$ and $w(11;\,2^{9},3,5)=74$. Each
-extends by one term a sequence in the On-Line Encyclopedia of Integer
+is the next term of a sequence in the On-Line Encyclopedia of Integer
 Sequences (\seq{A217058}, \seq{A217005}, \seq{A217007}, \seq{A217236},
-\seq{A217059}) whose published values, due to Ahmed, had stood since 2012 or
-2013.
+\seq{A217059}) whose published values, due to Ahmed, had stood there since
+2012 or 2013. None is a first determination: four were computed by Ochocki
+\cite{ochocki} by backtracking search, and $w(21;\,2^{19},3,3)=52$ by Karki
+\cite{karki}. Our derivations are by a different method and agree in every
+case.
 
-What the paper establishes beyond the five values is the standard of proof.
+What the paper adds to the five values is the standard of proof.
 Every upper bound is a SAT refutation obtained by cube-and-conquer and reduced
 to formally checked proof objects: $23{,}851$ per-cube DRAT proofs in total,
 each replayed to \texttt{s VERIFIED} by \texttt{drat-trim} against a single
@@ -84,22 +87,23 @@ Encyclopedia of Integer Sequences in 2012 \cite{oeis}, adding one further term t
 treated here --- \seq{A217058} $=w(j+2;\,2^j,3,4)$, \seq{A217005}
 $=w(j+2;\,2^j,3,3)$, \seq{A217007} $=w(j+2;\,2^j,4,4)$, \seq{A217236}
 $=w(j+2;\,2^j,4,5)$ and \seq{A217059} $=w(j+2;\,2^j,3,5)$ --- had received no
-new terms since then.
+new terms in the OEIS since then.
 
 \subsection{Results}
 
-We establish the next term of each of the five families.
+We derive the next term of each of the five families independently and reduce
+every upper bound to checked proof objects.
 
 \begin{center}
 \begin{tabular}{llcl}
 \toprule
-sequence & new term & value & status \\
+sequence & term & value & first computed by \\
 \midrule
-\seq{A217058} & $a(12) = w(14;\,2^{12},3,4)$ & $57$ & approved by the OEIS, 6 August 2026 \\
-\seq{A217005} & $a(19) = w(21;\,2^{19},3,3)$ & $52$ & approved by the OEIS, 12 August 2026 \\
-\seq{A217007} & $a(7) \;\,= w(9;\,2^{7},4,4)$ & $68$ & approved by the OEIS, 12 August 2026 \\
-\seq{A217236} & $a(4) \;\,= w(6;\,2^{4},4,5)$ & $84$ & approved by the OEIS, 12 August 2026 \\
-\seq{A217059} & $a(9) \;\,= w(11;\,2^{9},3,5)$ & $74$ & approved by the OEIS, 13 August 2026 \\
+\seq{A217058} & $a(12) = w(14;\,2^{12},3,4)$ & $57$ & Ochocki, 2026 \cite{ochocki} \\
+\seq{A217005} & $a(19) = w(21;\,2^{19},3,3)$ & $52$ & Karki, 2024 \cite{karki} \\
+\seq{A217007} & $a(7) \;\,= w(9;\,2^{7},4,4)$ & $68$ & Ochocki, 2026 \cite{ochocki} \\
+\seq{A217236} & $a(4) \;\,= w(6;\,2^{4},4,5)$ & $84$ & Ochocki, 2026 \cite{ochocki} \\
+\seq{A217059} & $a(9) \;\,= w(11;\,2^{9},3,5)$ & $74$ & Ochocki, 2026 \cite{ochocki} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -110,6 +114,28 @@ that family, before an extension is claimed. For \seq{A217059} that gate was
 finished after the computation rather than before it, so the value was held
 back until it had run; Section~\ref{sec:a217059} gives the timings and the
 verdicts.
+
+\subsection{Prior computation}\label{sec:prior}
+
+None of the five values is new. Novelty was checked against the OEIS rather
+than against the literature, and an OEIS entry with no new terms shows only
+that none had been submitted. In a preprint posted in June 2026, before any of
+the work reported here was submitted, Ochocki \cite{ochocki} computes $55$ new
+off-diagonal van der Waerden numbers by a backtracking search with pruning.
+Four of them are $w(14;\,2^{12},3,4)=57$, $w(9;\,2^{7},4,4)=68$,
+$w(11;\,2^{9},3,5)=74$ and $w(6;\,2^{4},4,5)=84$. He also lists
+$w(21;\,2^{19},3,3)=52$ among known values, citing Karki \cite{karki}. His
+tables extend all five families well beyond the terms treated here.
+
+All five values agree with ours. Ochocki's four printed colourings are
+accepted by our standalone verifier. Our contribution is therefore twofold:
+a second derivation by an independent method (a SAT encoding solved by
+cube-and-conquer, against his direct backtracking search), and a checked
+proof of every upper bound. Ochocki's verification confirms that each
+colouring is valid and that no single further position can be added to it.
+That does not by itself exclude a longer colouring, so his upper bounds rest
+on the correctness of the search. Ours are reduced to DRAT proofs replayed by
+an independent checker (Section~\ref{sec:drat}).
 
 \subsection{The certificate discipline}
 
@@ -295,7 +321,7 @@ an error rather than being counted as an empty branch. That failure mode was obs
 during development, which is why the rule is enforced in code rather than
 assumed.
 
-\section{The five new terms}\label{sec:results}
+\section{The five values}\label{sec:results}
 
 \subsection{$\seq{A217058}$: $w(14;\,2^{12},3,4)=57$}\label{sec:a217058}
 
@@ -822,7 +848,9 @@ report \textsc{sat}, never \texttt{VERIFIED}, and does.
 \section{Limitations}\label{sec:limitations}
 
 These are finite, checkable extensions of tracked sequences by one term
-each. They are not structural results: they say nothing about the growth of
+each, and none is a first determination (Section~\ref{sec:prior}): their
+value is as independent, machine-checked confirmation of values computed
+first by others. They are not structural results: they say nothing about the growth of
 the families and provide no new proof technique. The exhaustive
 encoding-equals-definition audit reaches only instances small enough to
 enumerate ($n \le 12$, $j \le 3$); beyond that scale its guarantee is
@@ -1004,6 +1032,17 @@ B.~M.~Landman and A.~Robertson,
 \emph{Ramsey Theory on the Integers}, 2nd edition,
 Student Mathematical Library \textbf{73}, American Mathematical Society,
 2014.
+
+\bibitem{karki}
+S.~Karki,
+\emph{A new van der Waerden number},
+U(t)-Mathazine \textbf{9} (2024), 34--39. Cited as in \cite{ochocki}.
+
+\bibitem{ochocki}
+M.~Ochocki,
+\emph{Computing off-diagonal van der Waerden numbers: improved algorithm and
+new exact values}, preprint, Zenodo, June 2026,
+\href{https://doi.org/10.5281/zenodo.20572598}{doi:10.5281/zenodo.20572598}.
 
 \bibitem{oeis}
 OEIS Foundation Inc.,
