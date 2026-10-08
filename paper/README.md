@@ -1,6 +1,7 @@
 # Paper source
 
-`main.tex` is the LaTeX source of *Five new mixed van der Waerden numbers*,
+`main.tex` is the LaTeX source of *Five mixed van der Waerden numbers, with
+machine-checked upper bounds*,
 and `main.pdf` is the compiled paper.
 It is a single self-contained file: no `.bib`, no figures, standard packages
 only (`geometry`, `amsmath`, `amssymb`, `amsthm`, `booktabs`, `microtype`,

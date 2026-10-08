@@ -1,10 +1,21 @@
-# Five established new terms for mixed van der Waerden numbers
+# Five mixed van der Waerden numbers, independently re-derived
 
 Leo Y. Zhang, August 2026.
 
-**Results.** Five previously uncomputed values, established in five different
-families whose published lists have all stood since 2012 — one of them,
-A217059, withheld until its family gate had run to completion.
+**Results.** Five values, established here independently in five different
+families whose OEIS lists have all stood since 2012 — one of them, A217059,
+withheld until its family gate had run to completion.
+
+> **Not first determinations.** All five were computed elsewhere first, which
+> was not known when this file was written. A217058(12), A217007(7),
+> A217059(9) and A217236(4) are among the 55 new values in M. Ochocki,
+> *Computing Off-Diagonal Van der Waerden Numbers: Improved Algorithm and New
+> Exact Values*, Zenodo preprint, June 2026, doi:10.5281/zenodo.20572598.
+> A217005(19) = 52 is S. Karki, *A New van der Waerden Number*,
+> U(t)-Mathazine 9 (2024), 34–39, as cited there. Every value agrees with the
+> ones below. What this file adds is a second derivation by a different
+> method and a machine-checked upper bound for each. The README's "Prior
+> computation" section has the detail.
 
 > **Formerly withheld.** A217059 a(9) = 74 was computed and cross-checked
 > alongside the others, but the family gate that reproduces the published
@@ -17,7 +28,7 @@ A217059, withheld until its family gate had run to completion.
 > detail.
 
 
-| sequence | new term | value |
+| sequence | term | value |
 |---|---|---|
 | [A217058](https://oeis.org/A217058) | `a(12) = w(14; 2^12, 3, 4)` | **57** |
 | [A217005](https://oeis.org/A217005) | `a(19) = w(21; 2^19, 3, 3)` | **52** |
