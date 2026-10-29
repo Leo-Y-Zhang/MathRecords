@@ -389,6 +389,11 @@ def check(col, targets, j):
     """Independent verifier: reads only the colouring, never the CNF."""
     n = len(col)
     wild = sum(1 for c in col if c == 0)
+    # Every cell is a wildcard (0) or one of the target colours 1..len(targets);
+    # anything else would silently escape the monochromatic-AP scan below.
+    bad = [c for c in col if type(c) is not int or not 0 <= c <= len(targets)]
+    if bad:
+        return False, wild, ('colour out of range', bad[0])
     if wild > j:
         return False, wild, ('wildcard budget', wild, j)
     for c, t in enumerate(targets, start=1):

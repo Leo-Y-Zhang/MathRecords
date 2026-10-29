@@ -47,6 +47,11 @@ jobs:
       - name: No machine-local paths in a public repository
         run: python scrub_paths.py --check
 
+      - name: Run unit tests
+        run: |
+          pip install pytest==8.4.2
+          pytest -q
+
       # The repository's own gate, in full. The two slow audits are included:
       # they are what check the CNF against the definition rather than against
       # a previous run of itself.

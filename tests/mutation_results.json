@@ -1,0 +1,1178 @@
+{
+  "gate_command": "python verify_all.py",
+  "test_command": "python -m pytest -q",
+  "baseline": {
+    "gate": {
+      "returncode": 0,
+      "seconds": 14.76
+    },
+    "pytest": {
+      "returncode": 0,
+      "seconds": 0.67
+    }
+  },
+  "mutants": [
+    {
+      "id": "C01",
+      "module": "vdw/verify_certificate.py",
+      "line": 50,
+      "old": "if dots > j:",
+      "new": "if dots >= j:",
+      "before": {
+        "returncode": 1,
+        "seconds": 16.39
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.05
+      },
+      "killing_tests": [
+        "tests/test_certificate.py::test_one_changed_colour_creates_an_ap",
+        "tests/test_certificate.py::test_wildcard_budget_includes_the_limit",
+        "tests/test_certificate.py::test_each_colour_uses_its_own_target"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "C02",
+      "module": "vdw/verify_certificate.py",
+      "line": 55,
+      "old": "if bad:",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 16.39
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.02
+      },
+      "killing_tests": [
+        "tests/test_certificate.py::test_unknown_symbols_are_rejected[0]",
+        "tests/test_certificate.py::test_unknown_symbols_are_rejected[3]",
+        "tests/test_certificate.py::test_unknown_symbols_are_rejected[x]",
+        "tests/test_certificate.py::test_unknown_symbols_are_rejected[\\n]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "C03",
+      "module": "vdw/verify_certificate.py",
+      "line": 37,
+      "old": "if a + (t - 1) * d > n:",
+      "new": "if a + (t - 1) * d >= n:",
+      "before": {
+        "returncode": 1,
+        "seconds": 16.39
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.04
+      },
+      "killing_tests": [
+        "tests/test_certificate.py::test_ap_search_checks_later_starts_and_the_right_endpoint",
+        "tests/test_certificate.py::test_each_colour_uses_its_own_target"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "C04",
+      "module": "vdw/verify_certificate.py",
+      "line": 39,
+      "old": "in ps for m in range(t))",
+      "new": "in ps for m in range(t - 1))",
+      "before": {
+        "returncode": 1,
+        "seconds": 16.39
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.07
+      },
+      "killing_tests": [
+        "tests/test_certificate.py::test_one_changed_colour_creates_an_ap",
+        "tests/test_certificate.py::test_ap_search_checks_later_starts_and_the_right_endpoint"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "C05",
+      "module": "vdw/verify_certificate.py",
+      "line": 58,
+      "old": "for c, t in enumerate(targets, start=1):\n        pos =",
+      "new": "for c, t in enumerate(targets, start=0):\n        pos =",
+      "before": {
+        "returncode": 1,
+        "seconds": 17.11
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.08
+      },
+      "killing_tests": [
+        "tests/test_certificate.py::test_one_changed_colour_creates_an_ap",
+        "tests/test_certificate.py::test_each_colour_uses_its_own_target"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "C06",
+      "module": "vdw/verify_certificate.py",
+      "line": 67,
+      "old": "return problems, dots",
+      "new": "return problems, dots + 1",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.17
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_certificate.py::test_one_changed_colour_creates_an_ap",
+        "tests/test_certificate.py::test_wildcard_budget_includes_the_limit",
+        "tests/test_certificate.py::test_each_colour_uses_its_own_target"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V01",
+      "module": "vdw/vdw4.py",
+      "line": 397,
+      "old": "if wild > j:",
+      "new": "if wild >= j:",
+      "before": {
+        "returncode": 1,
+        "seconds": 16.24
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.08
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_internal_checker_accepts_witness_and_rejects_corruptions"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "V02",
+      "module": "vdw/vdw4.py",
+      "line": 406,
+      "old": "if all((a + m * d) in ps for m in range(t)):",
+      "new": "if False:",
+      "before": {
+        "returncode": 1,
+        "seconds": 17.24
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_internal_checker_accepts_witness_and_rejects_corruptions"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "V03",
+      "module": "vdw/vdw4.py",
+      "line": 57,
+      "old": "range(1, (n - 1) // (t - 1) + 1)",
+      "new": "range(1, (n - 1) // (t - 1))",
+      "before": {
+        "returncode": 1,
+        "seconds": 17.44
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.08
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_an_ap_is_not_a_refutation_if_its_clause_is_missing",
+        "tests/test_vdw_core.py::test_all_aps_include_maximum_step_and_endpoint",
+        "tests/test_vdw_core.py::test_plain_encoding_exactly_matches_small_assignments",
+        "tests/test_vdw_core.py::test_split_and_decode_use_one_based_positions"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "V04",
+      "module": "vdw/vdw4.py",
+      "line": 72,
+      "old": "cnf.append([v(i, c) for c in range(r + 1)])",
+      "new": "cnf.append([])",
+      "before": {
+        "returncode": 1,
+        "seconds": 10.15
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.1
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_a_truncated_record_cannot_cover_a_missing_branch",
+        "tests/test_vdw_core.py::test_plain_encoding_exactly_matches_small_assignments"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "V05",
+      "module": "vdw/vdw4.py",
+      "line": 80,
+      "old": "cnf.append([-v(i, c) for i in ap])",
+      "new": "cnf.append([v(i, c) for i in ap])",
+      "before": {
+        "returncode": 1,
+        "seconds": 13.34
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.13
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_an_ap_is_not_a_refutation_if_its_clause_is_missing"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "V06",
+      "module": "vdw/vdw4.py",
+      "line": 269,
+      "old": "if colour_sym and positions != list(range(1, k + 1)):",
+      "new": "if colour_sym or positions != list(range(1, k + 1)):",
+      "before": {
+        "returncode": 0,
+        "seconds": 16.9
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.08
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_nonprefix_cubes_preserve_both_colour_orders_and_budget_boundary",
+        "tests/test_vdw_core.py::test_non_ap_split_positions_do_not_prune_a_monochromatic_assignment"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V07",
+      "module": "vdw/vdw4.py",
+      "line": 280,
+      "old": "if asg.count(0) > j:",
+      "new": "if asg.count(0) >= j:",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.06
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_nonprefix_cubes_preserve_both_colour_orders_and_budget_boundary",
+        "tests/test_vdw_core.py::test_non_ap_split_positions_do_not_prune_a_monochromatic_assignment"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V08",
+      "module": "vdw/vdw4.py",
+      "line": 294,
+      "old": "if any(all(asg[m] == c for m in ap) for c, ap in within):",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.13
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_nonprefix_cubes_preserve_both_colour_orders_and_budget_boundary"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V09",
+      "module": "vdw/vdw4.py",
+      "line": 229,
+      "old": "lo = (n - k) // 2 + 1",
+      "new": "lo = (n - k) // 2",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.15
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_split_and_decode_use_one_based_positions"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V10",
+      "module": "vdw/vdw4.py",
+      "line": 309,
+      "old": "m = set(l for l in model if l > 0)",
+      "new": "m = set(l for l in model if l < 0)",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.19
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.0
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_split_and_decode_use_one_based_positions"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V11",
+      "module": "vdw/vdw4.py",
+      "line": 203,
+      "old": "if not ok or _has_mono_ap(pre, targets):",
+      "new": "if not ok and _has_mono_ap(pre, targets):",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.06
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.05
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_prefix_cubes_can_disable_colour_symmetry_for_certification"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V12",
+      "module": "vdw/vdw4.py",
+      "line": 383,
+      "old": "if done != len(tasks):",
+      "new": "if done == len(tasks):",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.32
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_cube_search_requires_explicit_results[outcomes0-expected0]",
+        "tests/test_vdw_core.py::test_missing_cube_result_cannot_be_read_as_unsat"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V13",
+      "module": "vdw/vdw4.py",
+      "line": 378,
+      "old": "if res is not None:",
+      "new": "if res is None:",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.56
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.02
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_cube_search_requires_explicit_results[outcomes0-expected0]",
+        "tests/test_vdw_core.py::test_cube_search_requires_explicit_results[outcomes1-expected1]",
+        "tests/test_vdw_core.py::test_missing_cube_result_cannot_be_read_as_unsat"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V14",
+      "module": "vdw/vdw4.py",
+      "line": 376,
+      "old": "res = f.result()",
+      "new": "res = None",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.65
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.03
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_cube_search_requires_explicit_results[outcomes1-expected1]",
+        "tests/test_vdw_core.py::test_dead_cube_worker_cannot_be_read_as_unsat"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "V15",
+      "module": "vdw/vdw4.py",
+      "line": 395,
+      "old": "if bad:\n        return False, wild, ('colour",
+      "new": "if False:\n        return False, wild, ('colour",
+      "before": {
+        "returncode": 0,
+        "seconds": 19.69
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.07
+      },
+      "killing_tests": [
+        "tests/test_vdw_core.py::test_internal_checker_rejects_out_of_range_colours[-1]",
+        "tests/test_vdw_core.py::test_internal_checker_rejects_out_of_range_colours[3]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "E01",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 89,
+      "old": "if assign.get(var, val) != val:",
+      "new": "if assign.get(var, val) == val:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.82
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_unit_propagation_requires_a_real_conflict[cnf4-assumptions4-stable]",
+        "tests/test_cube_exhaustive.py::test_a_truncated_record_cannot_cover_a_missing_branch"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "E02",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 159,
+      "old": "if ci is None:",
+      "new": "if ci is not None:",
+      "before": {
+        "returncode": 1,
+        "seconds": 18.98
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_an_ap_is_not_a_refutation_if_its_clause_is_missing"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "E03",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 109,
+      "old": "if unassigned == 0:",
+      "new": "if unassigned == 1:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.34
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.1
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_unit_propagation_requires_a_real_conflict[cnf1-assumptions1-conflict]",
+        "tests/test_cube_exhaustive.py::test_unit_propagation_requires_a_real_conflict[cnf4-assumptions4-stable]",
+        "tests/test_cube_exhaustive.py::test_unit_propagation_requires_a_real_conflict[cnf5-assumptions5-conflict]",
+        "tests/test_cube_exhaustive.py::test_a_truncated_record_cannot_cover_a_missing_branch"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "E04",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 146,
+      "old": "counterexamples.append({'prefix': list(p), 'why': why_direct_failed})",
+      "new": "return False",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.63
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.03
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_valid_cover_and_a_removed_cube",
+        "tests/test_cube_exhaustive.py::test_a_truncated_record_cannot_cover_a_missing_branch"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "E05",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 276,
+      "old": "and r.get('formula_sha256') != expect_sha))",
+      "new": "and False))",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.84
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.05
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_records_must_be_verified_against_the_same_formula"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "E06",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 274,
+      "old": "r.get('verdict') != 'VERIFIED'",
+      "new": "r.get('verdict') == 'VERIFIED'",
+      "before": {
+        "returncode": 1,
+        "seconds": 18.84
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.03
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_records_must_be_verified_against_the_same_formula"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "E07",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 233,
+      "old": "elif 's VERIFIED' in status:",
+      "new": "elif 's VERIFIED' in out:",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.91
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.02
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_composition_tail_dispatch_and_written_clause_counts[c previous s VERIFIED result\\n-CHECKER_ERROR]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "E08",
+      "module": "vdw/cube_exhaustive.py",
+      "line": 159,
+      "old": "if ci is None:",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.31
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.13
+      },
+      "killing_tests": [
+        "tests/test_cube_exhaustive.py::test_an_ap_is_not_a_refutation_if_its_clause_is_missing"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "D01",
+      "module": "vdw/drat_certify.py",
+      "line": 141,
+      "old": "if solve.returncode == 10:",
+      "new": "if solve.returncode != 10:",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.17
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.1
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s VERIFIED\\n-1-VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s NOT VERIFIED\\n-0-NOT_VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20--0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-checker diagnostic only\\n-0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\n-0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\ns NOT VERIFIED\\n-0-NOT_VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[10-s VERIFIED\\n-0-SAT-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[1-s VERIFIED\\n-0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_timeouts_are_not_refutations[fake-trim-whole]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "D02",
+      "module": "vdw/drat_certify.py",
+      "line": 144,
+      "old": "if solve.returncode != 20:",
+      "new": "if solve.returncode == 20:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.92
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.1
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s VERIFIED\\n-1-VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s NOT VERIFIED\\n-0-NOT_VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20--0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-checker diagnostic only\\n-0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\n-0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\ns NOT VERIFIED\\n-0-NOT_VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[1-s VERIFIED\\n-0-SOLVER_ERROR-whole]",
+        "tests/test_proof_verdicts.py::test_timeouts_are_not_refutations[fake-trim-whole]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "D03",
+      "module": "vdw/drat_certify.py",
+      "line": 170,
+      "old": "elif 's VERIFIED' in status:",
+      "new": "elif 's VERIFIED' in out:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.74
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.04
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\n-0-SOLVER_ERROR-whole]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "D04",
+      "module": "vdw/drat_certify.py",
+      "line": 168,
+      "old": "rec['verdict'] = 'NOT_VERIFIED'",
+      "new": "rec['verdict'] = 'VERIFIED'",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.99
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.1
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s NOT VERIFIED\\n-0-NOT_VERIFIED-whole]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\ns NOT VERIFIED\\n-0-NOT_VERIFIED-whole]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "D05",
+      "module": "vdw/drat_certify.py",
+      "line": 98,
+      "old": "fh.write(f'p cnf {nvars} {len(cnf)}\\n')",
+      "new": "fh.write(f'p cnf {nvars} {len(cnf) + 1}\\n')",
+      "before": {
+        "returncode": 0,
+        "seconds": 18.23
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.09
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_dimacs_preserves_signs_empty_clauses_and_counts"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "P01",
+      "module": "vdw/cube_certify.py",
+      "line": 198,
+      "old": "if len(parts) != k:",
+      "new": "if len(parts) == k:",
+      "before": {
+        "returncode": 1,
+        "seconds": 18.07
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.12
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_cube_parser_accepts_both_separators_and_rejects_wrong_counts"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "P02",
+      "module": "vdw/cube_certify.py",
+      "line": 130,
+      "old": "if solve.returncode == 10:",
+      "new": "if solve.returncode != 10:",
+      "before": {
+        "returncode": 1,
+        "seconds": 18.1
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.11
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s VERIFIED\\n-1-VERIFIED-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s NOT VERIFIED\\n-0-NOT_VERIFIED-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20--0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-checker diagnostic only\\n-0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\n-0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\ns NOT VERIFIED\\n-0-NOT_VERIFIED-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[10-s VERIFIED\\n-0-SAT-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[1-s VERIFIED\\n-0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_timeouts_are_not_refutations[fake-trim-cube]",
+        "tests/test_proof_verdicts.py::test_truncating_a_proof_rejects_it_and_hashes_the_actual_bytes"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "P03",
+      "module": "vdw/cube_certify.py",
+      "line": 137,
+      "old": "if solve.returncode != 20:",
+      "new": "if solve.returncode == 20:",
+      "before": {
+        "returncode": 1,
+        "seconds": 17.38
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.27
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s VERIFIED\\n-1-VERIFIED-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-s NOT VERIFIED\\n-0-NOT_VERIFIED-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20--0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-checker diagnostic only\\n-0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\n-0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\ns NOT VERIFIED\\n-0-NOT_VERIFIED-cube]",
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[1-s VERIFIED\\n-0-SOLVER_ERROR-cube]",
+        "tests/test_proof_verdicts.py::test_timeouts_are_not_refutations[fake-trim-cube]",
+        "tests/test_proof_verdicts.py::test_truncating_a_proof_rejects_it_and_hashes_the_actual_bytes"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "P04",
+      "module": "vdw/cube_certify.py",
+      "line": 176,
+      "old": "elif 's VERIFIED' in status:",
+      "new": "elif 's VERIFIED' in out:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.0
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.18
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_only_an_explicit_checker_verdict_certifies[20-c previous s VERIFIED result\\n-0-SOLVER_ERROR-cube]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "P05",
+      "module": "vdw/cube_certify.py",
+      "line": 144,
+      "old": "if truncate:",
+      "new": "if False:",
+      "before": {
+        "returncode": 1,
+        "seconds": 17.31
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.19
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_truncating_a_proof_rejects_it_and_hashes_the_actual_bytes"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "P06",
+      "module": "vdw/cube_certify.py",
+      "line": 156,
+      "old": "rec['proof_sha256'] = h.hexdigest()",
+      "new": "rec['proof_sha256'] = sha",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.45
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.16
+      },
+      "killing_tests": [
+        "tests/test_proof_verdicts.py::test_truncating_a_proof_rejects_it_and_hashes_the_actual_bytes"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "R01",
+      "module": "ec/verify_rank.py",
+      "line": 172,
+      "old": "if C.disc == 0:",
+      "new": "if C.disc != 0:",
+      "before": {
+        "returncode": 1,
+        "seconds": 10.25
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.16
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_real_rank_witness_and_one_changed_coordinate",
+        "tests/test_rank.py::test_singular_curve_and_exactly_dependent_points_are_rejected",
+        "tests/test_rank.py::test_torsion_is_rejected_even_without_the_small_relation_search",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low0-high0-0.25-10-torsion]",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low1-high1-0.01-4-torsion]",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low2-high2-0.75-10-regulator]",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low3-high3-0.01-1.3333333333333333-decays]"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "R02",
+      "module": "ec/verify_rank.py",
+      "line": 175,
+      "old": "if not C.on(P):",
+      "new": "if C.on(P):",
+      "before": {
+        "returncode": 1,
+        "seconds": 10.53
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.09
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_real_rank_witness_and_one_changed_coordinate",
+        "tests/test_rank.py::test_singular_curve_and_exactly_dependent_points_are_rejected",
+        "tests/test_rank.py::test_torsion_is_rejected_even_without_the_small_relation_search",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low0-high0-0.25-10-torsion]",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low1-high1-0.01-4-torsion]",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low2-high2-0.75-10-regulator]",
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low3-high3-0.01-1.3333333333333333-decays]"
+      ],
+      "killed_before": true,
+      "killed_after": true
+    },
+    {
+      "id": "R03",
+      "module": "ec/verify_rank.py",
+      "line": 208,
+      "old": "if hh <= floor or",
+      "new": "if hh < floor or",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.76
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.09
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low0-high0-0.25-10-torsion]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "R04",
+      "module": "ec/verify_rank.py",
+      "line": 208,
+      "old": "hl / hh >= decay_tol",
+      "new": "hl / hh > decay_tol",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.58
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.06
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low1-high1-0.01-4-torsion]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "R05",
+      "module": "ec/verify_rank.py",
+      "line": 219,
+      "old": "if nh <= floor:",
+      "new": "if nh < floor:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.42
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.16
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low2-high2-0.75-10-regulator]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "R06",
+      "module": "ec/verify_rank.py",
+      "line": 221,
+      "old": "elif decay >= decay_tol:",
+      "new": "elif decay > decay_tol:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.32
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.21
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_numerical_rejection_boundaries[low3-high3-0.01-1.3333333333333333-decays]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "R07",
+      "module": "ec/verify_rank.py",
+      "line": 190,
+      "old": "if rel:",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.27
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.22
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_singular_curve_and_exactly_dependent_points_are_rejected"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "R08",
+      "module": "ec/verify_rank.py",
+      "line": 140,
+      "old": "d = -d",
+      "new": "d = d",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.31
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.13
+      },
+      "killing_tests": [
+        "tests/test_rank.py::test_determinant_pivot_sign_and_nonpositive_heights"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "S01",
+      "module": "make_submit_pack.py",
+      "line": 87,
+      "old": "if xc.get('j') != j:",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.58
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.19
+      },
+      "killing_tests": [
+        "tests/test_evidence.py::test_crosscheck_is_bound_to_index_targets_and_value"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "S02",
+      "module": "make_submit_pack.py",
+      "line": 89,
+      "old": "if list(xc.get('targets') or []) != list(targets):",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.78
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.13
+      },
+      "killing_tests": [
+        "tests/test_evidence.py::test_crosscheck_is_bound_to_index_targets_and_value"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "S03",
+      "module": "make_submit_pack.py",
+      "line": 93,
+      "old": "if int(xc.get('claim', -1)) != int(value):",
+      "new": "if False:",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.69
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.1
+      },
+      "killing_tests": [
+        "tests/test_evidence.py::test_crosscheck_is_bound_to_index_targets_and_value"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "S04",
+      "module": "make_submit_pack.py",
+      "line": 132,
+      "old": "and rec.get('PASS') and rec.get('sat_at_w_minus_1')",
+      "new": "or rec.get('PASS') and rec.get('sat_at_w_minus_1')",
+      "before": {
+        "returncode": 0,
+        "seconds": 17.73
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 1.15
+      },
+      "killing_tests": [
+        "tests/test_evidence.py::test_validation_gate_requires_every_part_of_the_previous_term[seq]",
+        "tests/test_evidence.py::test_validation_gate_requires_every_part_of_the_previous_term[j]",
+        "tests/test_evidence.py::test_validation_gate_requires_every_part_of_the_previous_term[w]",
+        "tests/test_evidence.py::test_validation_gate_requires_every_part_of_the_previous_term[PASS]",
+        "tests/test_evidence.py::test_validation_gate_requires_every_part_of_the_previous_term[sat_at_w_minus_1]",
+        "tests/test_evidence.py::test_validation_gate_requires_every_part_of_the_previous_term[unsat_at_w]"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "S05",
+      "module": "make_submit_pack.py",
+      "line": 151,
+      "old": "if sat and unsat:",
+      "new": "if sat or unsat:",
+      "before": {
+        "returncode": 0,
+        "seconds": 16.97
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 0.91
+      },
+      "killing_tests": [
+        "tests/test_evidence.py::test_probe_gate_requires_both_sides_and_an_authenticated_witness"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    },
+    {
+      "id": "S06",
+      "module": "make_submit_pack.py",
+      "line": 147,
+      "old": "and rec.get('witness_verified'):",
+      "new": "and True:",
+      "before": {
+        "returncode": 0,
+        "seconds": 16.41
+      },
+      "after_pytest": {
+        "returncode": 1,
+        "seconds": 0.91
+      },
+      "killing_tests": [
+        "tests/test_evidence.py::test_probe_gate_requires_both_sides_and_an_authenticated_witness"
+      ],
+      "killed_before": false,
+      "killed_after": true
+    }
+  ]
+}

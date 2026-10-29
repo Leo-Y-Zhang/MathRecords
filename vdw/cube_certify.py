@@ -167,12 +167,14 @@ def certify_cube(task):
         out = chk.stdout or ''
         # The checker's own verdict line, never its exit code (drat_certify.py
         # explains: the exit status has meant different things across builds).
-        if 's VERIFIED' in out:
-            rec['verdict'] = 'VERIFIED'
-        elif 's NOT VERIFIED' in out:
+        # Whole status lines only, failure first.
+        status = {line.strip() for line in out.splitlines()}
+        if 's NOT VERIFIED' in status:
             rec['verdict'] = 'NOT_VERIFIED'
             rec['detail'] = out.strip()[-400:]
             keep = True
+        elif 's VERIFIED' in status:
+            rec['verdict'] = 'VERIFIED'
         else:
             rec['verdict'] = 'SOLVER_ERROR'
             rec['detail'] = (out + (chk.stderr or '')).strip()[-400:]
