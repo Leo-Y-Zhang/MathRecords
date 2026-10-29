@@ -30,9 +30,9 @@ jobs:
     steps:
       # Same major as the gitleaks job below. Two checkout majors in one file
       # is not a pin, it is an accident that survived.
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.13'
 
@@ -90,9 +90,9 @@ jobs:
       KISSAT_TAG: rel-4.0.1
       KISSAT_COMMIT: 43f02cf3e992cb44653b35e5cb26f93281552ae0
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.13'
 
@@ -133,7 +133,7 @@ jobs:
     env:
       GITLEAKS_VERSION: "8.30.1"
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
       - name: Install gitleaks
