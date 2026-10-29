@@ -226,10 +226,12 @@ def check_tail(body, nvars, nclauses, cube_set, lemmas, v, drat_trim,
                          capture_output=True, text=True, timeout=timeout)
     secs = round(time.time() - t0, 2)
     out = chk.stdout or ''
-    if 's VERIFIED' in out:
-        verdict = 'VERIFIED'
-    elif 's NOT VERIFIED' in out:
+    # Whole status lines only, failure first (see drat_certify.certify).
+    status = {line.strip() for line in out.splitlines()}
+    if 's NOT VERIFIED' in status:
         verdict = 'NOT_VERIFIED'
+    elif 's VERIFIED' in status:
+        verdict = 'VERIFIED'
     else:
         verdict = 'CHECKER_ERROR'
     return {'verdict': verdict, 'check_s': secs,
