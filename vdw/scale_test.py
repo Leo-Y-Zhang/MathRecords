@@ -22,6 +22,10 @@ Usage:  python scale_test.py
 import random
 import sys
 
+if __name__ != '__main__':
+    import pytest
+    pytest.importorskip("pysat")
+
 from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
 from pysat.solvers import Cadical195

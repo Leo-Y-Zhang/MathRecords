@@ -4,6 +4,8 @@ from concurrent.futures.process import BrokenProcessPool
 
 import pytest
 
+pytest.importorskip("pysat")
+
 import vdw4
 
 
