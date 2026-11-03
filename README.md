@@ -31,10 +31,12 @@ answer looks right.
 
 **The paper.** [*Five mixed van der Waerden numbers, with machine-checked
 upper bounds*](paper/main.pdf) -- 17 pages -- is the write-up: the encoding, the
-certificates, and the cube-and-conquer refutations. **All five upper bounds are
-reduced to checked proof objects**: 23,851 per-cube DRAT proofs in total, every
+certificates, and the cube-and-conquer refutations. **All five upper bounds had
+DRAT proofs generated and checked**: 23,851 per-cube DRAT proofs in total, every
 one replayed to `s VERIFIED` by drat-trim, each family with a composition proof
-that its cube set covers the whole assignment tree. [LaTeX source](paper/main.tex).
+that its cube set covers the whole assignment tree. Passing per-cube proofs are
+deleted after checking by `vdw/cube_certify.py`; the verification records are stored.
+See [Reproducing](#reproducing) to regenerate them. [LaTeX source](paper/main.tex).
 
 The equal-target families were the hard ones and are worth a sentence. The cube
 generator dropped colour-permutation images, which is sound when you are
@@ -89,11 +91,11 @@ python vdw/verify_certificate.py --selftest     # controls, incl. negative ones
 ## Why the upper bound is believable
 
 "No colouring exists" asserts an *absence*, so it is only as good as the claim
-that the CNF handed to the solver really is the problem. Five independent
+that the CNF handed to the solver really is the problem. Five
 guards:
 
-1. **`encoding_audit.py` — the CNF is exactly the definition.** On instances
-   small enough to enumerate exhaustively, the set of colourings satisfying the
+1. **`encoding_audit.py` — the CNF was checked exhaustively against the
+   definition on 11 finite cases.** On instances small enough to enumerate exhaustively, the set of colourings satisfying the
    CNF is compared with the set a direct transcription of the definition
    accepts. Equal both ways on all 11 cases across 6 target shapes — one for
    every family claimed here: nothing invented, nothing lost.
@@ -104,9 +106,9 @@ guards:
 3. **`vdw_validate.py` — the engine reproduces what is already known.** For a
    published `a(j) = w`, it must find a verified witness at `w−1` *and* refute
    `w`. 29/29 published values across five families.
-4. **`cross_check.py` — a second, disjoint derivation.** The answer is
-   re-established with the older engine that has no reversal-symmetry
-   constraint, a different CDCL solver, and a different cube depth.
+4. **`cross_check.py` — re-derivation through a separate script.** It uses
+   `vdw/vdw2.py` without reversal symmetry, but reuses the same CaDiCaL solver
+   setup and a duplicated encoding; equal-target colour symmetry is still used.
 5. **`scale_test.py` — the wildcard budget at exact scale.** The exhaustive
    audit reaches only small instances, so the totalizer is tested directly at
    `n = 55..58`, `j = 12`, from both sides: 240 at-limit assignments accepted,
@@ -125,10 +127,10 @@ vdw/vdw4.py               engine: encoding, reversal symmetry, cube-and-conquer
 vdw/vdw_probe.py          decide one instance, durably, with its own log
 vdw/vdw_sat.py            randomised-restart portfolio for the satisfiable half
 vdw/vdw_run.py            resumable driver + crash-honest parallel solve
-vdw/encoding_audit.py     proves the CNF equals the definition, by exhaustion
+vdw/encoding_audit.py     checks the CNF against the definition on 11 finite cases
 vdw/vdw_validate.py       replays published values through the engine
 vdw/verify_certificate.py standalone checker, stdlib only, trusts nothing
-vdw/cross_check.py        independent re-derivation through a disjoint path
+vdw/cross_check.py        separate script reusing the solver setup and encoding
 vdw/vdw2.py               earlier engine, kept as the cross-check's second opinion
 maxvol/                   closed thread, kept for the record; nothing below
                           depends on it
@@ -202,6 +204,13 @@ as well a full run re-proves one recorded cube per family from scratch, the
 cheapest spending at most two wildcards. That is a spot-check of the pipeline,
 not a replay of the 23,851 proofs, which would take some 180 CPU-hours.
 
+To regenerate the per-cube proofs, install `kissat` and `drat-trim` as described
+in [vdw/DRAT.md](vdw/DRAT.md), then run
+`python vdw/cube_certify.py --n N --j J --targets T1 T2 --k 8 --run-dir NEW_DIR`
+with the upper bound `N`, wildcard budget `J` and targets from the Results table,
+and a fresh `NEW_DIR` so existing VERIFIED records cannot cause cubes to be skipped.
+The command generates and checks each proof, then deletes passing proofs.
+
 The individual pieces, if you want them one at a time rather than through the
 gate:
 
@@ -264,8 +273,9 @@ What remains this repository's is the second derivation and the standard of
 proof. Ochocki's lower bounds are printed colourings, as here. His upper bounds
 rest on the exhaustive search itself: his checker confirms that each colouring
 is valid and that no single further position can be added, which does not by
-itself exclude a longer colouring. Here every upper bound is reduced to DRAT
-proofs replayed by drat-trim. Each of the five values now has two independent
+itself exclude a longer colouring. Here DRAT proofs for every upper bound were
+generated and checked with drat-trim, then passing per-cube proofs were deleted
+as described in [Reproducing](#reproducing). Each of the five values now has two independent
 derivations, by different methods, and one machine-checked proof.
 
 ### A217058(12) = 57
@@ -289,12 +299,13 @@ over in three symmetry configurations:
 | encoding | solver | cubes | verdict | time |
 |---|---|---|---|---|
 | vdw4, reversal symmetry **on** | CaDiCaL 1.9.5 | k=4 | UNSAT | 6257 s |
-| vdw2, **no symmetry breaking at all** | CaDiCaL 1.9.5 | k=4 | UNSAT | 8037 s |
+| vdw2, **no reversal symmetry** (equal-target colour symmetry retained) | CaDiCaL 1.9.5 | k=4 | UNSAT | 8037 s |
 | vdw4, reversal symmetry **off** | CaDiCaL 1.9.5 | k=4 | UNSAT | 8317 s |
 
-The middle row is the one that matters: it searches the full unreduced space,
-so it cannot inherit an error from the lex-leader constraint that is the only
-new mathematics in the engine. Separately, a randomised-restart portfolio spent
+The middle row is the one that matters: for these distinct targets, colour
+symmetry is inactive and it searches the full unreduced space, so it cannot
+inherit an error from the reversal lex-leader constraint that is the only new
+mathematics in the engine. Separately, a randomised-restart portfolio spent
 8 rounds × 5 seeds × 3M conflicts hunting a witness at `n=57` and found none.
 
 These runs do not check the encoding. All three build the formula the same way —
@@ -440,7 +451,7 @@ strong prior either way.
 | published values replayed through the engine | 29/29 across 5 families |
 | full-scale gate: `a(11) = 55` reproduced at `j = 11` | both halves |
 | full-scale gate: `a(3) = 79` reproduced at `j = 3` | both halves |
-| every new term's refutation re-derived along two disjoint paths | 5/5 AGREE |
+| every new term's refutation re-derived through separate scripts sharing the solver setup and encoding | 5/5 AGREE |
 | certificate under the standalone verifier | ACCEPTED |
 
 Each `SUBMISSION_*.md` is generated mechanically from the result files — the

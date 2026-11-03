@@ -41,10 +41,7 @@ def copyright_holder():
 
 # Read the claims table rather than restating it, so this file cannot disagree
 # with the harness that verifies the repository.
-_src = open(os.path.join(HERE, 'verify_all.py'), encoding='utf-8').read()
-_ns = {}
-exec(_src[_src.index('CLAIMS = {'):_src.index('_fail = []')], _ns)
-CLAIMS = _ns['CLAIMS']
+from verify_all import CLAIMS
 
 
 def _submit_date():
