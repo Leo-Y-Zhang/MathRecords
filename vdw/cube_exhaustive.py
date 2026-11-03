@@ -36,7 +36,8 @@ non-RUP; a wrongly KEPT cube is merely an extra per-cube obligation.
     python vdw/cube_exhaustive.py --n 45 --j 8 --targets 3 4 --k 6 \
         --cubes vdw/cube_run_n45_j8_k6/results.jsonl
 
-Exit codes: 0 the check passed; 1 it failed (a counterexample is named);
+Exit codes: 0 the check passed (composition only if no per-cube results were
+loaded); 1 it failed or loaded cube results have undischarged obligations;
 3 drat-trim is not installed (the enumeration alone is not the full check,
 so callers SKIP, exactly as with drat_certify.py). `--no-tail` runs just the
 enumeration and never returns 3.
@@ -279,6 +280,13 @@ def load_cubes(path, k, expect_sha=None):
     return [tuple(c) for c in data], None, None
 
 
+def composition_verdict(tail_verdict, nonverified):
+    """A verified tail proves the theorem only with verified per-cube results."""
+    if tail_verdict != 'VERIFIED':
+        return 'FAIL'
+    return 'PASS' if nonverified == 0 else 'PASS_COMPOSITION_ONLY'
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--n', type=int, required=True)
@@ -408,12 +416,7 @@ def main():
             # tree is exhaustive AND every cube's UNSAT obligation is
             # discharged against this same formula. Reporting PASS while cubes
             # are outstanding would let a caller read "composed" as "proved".
-            if failed:
-                cert['verdict'] = 'FAIL'
-            elif nonverified:
-                cert['verdict'] = 'PASS_COMPOSITION_ONLY'
-            else:
-                cert['verdict'] = 'PASS'
+            cert['verdict'] = composition_verdict(tail['verdict'], nonverified)
 
     out_path = args.out or os.path.join(
         os.path.dirname(os.path.abspath(__file__)),

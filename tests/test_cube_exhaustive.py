@@ -3,8 +3,24 @@ import json
 
 import pytest
 
+pytest.importorskip("pysat")
+
 import cube_exhaustive as exhaustive
 from vdw4 import build
+
+
+@pytest.mark.parametrize(('tail_verdict', 'nonverified', 'expected'), [
+    ('VERIFIED', None, 'PASS_COMPOSITION_ONLY'),
+    ('VERIFIED', 0, 'PASS'),
+    ('VERIFIED', 1, 'PASS_COMPOSITION_ONLY'),
+    ('NOT_VERIFIED', None, 'FAIL'),
+    ('NOT_VERIFIED', 0, 'FAIL'),
+    ('NOT_VERIFIED', 1, 'FAIL'),
+    ('CHECKER_ERROR', 0, 'FAIL'),
+])
+def test_composition_verdict_requires_per_cube_results(
+        tail_verdict, nonverified, expected):
+    assert exhaustive.composition_verdict(tail_verdict, nonverified) == expected
 
 
 def small_cover():

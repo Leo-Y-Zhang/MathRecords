@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pytest
 
+pytest.importorskip("pysat")
+
 import cube_certify
 import cube_exhaustive
 import drat_certify
