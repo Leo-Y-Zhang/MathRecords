@@ -112,6 +112,40 @@ def section(t):
     print(f'\n=== {t} ===', flush=True)
 
 
+def others_terms(seq, jnew, provenance, author):
+    """The b-file rows after the claimed a(jnew), as oeis_provenance.json
+    records them, and every reason that record does not hold together.
+
+    Those rows are other people's terms, copied from the OEIS so the b-files
+    match it. A row is accepted only as the record states it: contiguous from
+    a(jnew+1), one value per index, under the EXTENSIONS line that credits it,
+    and never credited to this repository's author, since nothing here derives
+    or checks them.
+    """
+    rows, problems = [], []
+    nxt = jnew + 1
+    for rec in provenance.get(seq, []):
+        lo, hi = rec['indices']
+        values, who = rec['values'], rec['contributor']
+        if lo != nxt:
+            problems.append(f'{seq}: a recorded range starts at a({lo}), not at '
+                            f'the next index a({nxt})')
+        if hi - lo + 1 != len(values):
+            problems.append(f'{seq}: a({lo})-a({hi}) is {hi - lo + 1} indices '
+                            f'but {len(values)} values')
+        if who == author:
+            problems.append(f'{seq}: a({lo})-a({hi}) is recorded as the work of '
+                            f"this repository's author, with no evidence here")
+        span = f'a({lo})' if lo == hi else f'a({lo})-a({hi})'
+        if not re.fullmatch(rf'{re.escape(span)} (from|added by) _{re.escape(who)}_, '
+                            r'[A-Z][a-z]{2} \d{2} \d{4}', rec['extensions']):
+            problems.append(f'{seq}: EXTENSIONS line "{rec["extensions"]}" does not '
+                            f'credit {span} to {who}')
+        rows += list(zip(range(lo, hi + 1), values))
+        nxt = hi + 1
+    return rows, problems
+
+
 def main():
     global REQUIRE_DRAT
     fast = '--fast' in sys.argv
@@ -316,8 +350,21 @@ def main():
     # which meant that in practice no b-file content was ever checked anywhere.
     # Measured: rewriting the last row of b217058.txt to "12 58" left the gate
     # at 0 failed, still printing that every claim is supported.
+    #
+    # Since October 2026 the OEIS entries also carry later terms added by other
+    # contributors, and the b-files carry them so that they match the OEIS.
+    # Those rows are not claims of this repository. Each must appear, value for
+    # value, in oeis_provenance.json under the EXTENSIONS line that credits it,
+    # so a b-file is exactly the claimed sequence followed by recorded terms.
     section('committed b-files match the claims')
     ready_seqs = {seq for seq, _j, _v in ready}
+    prov_path = os.path.join(ROOT, 'oeis_provenance.json')
+    provenance = (json.load(open(prov_path, encoding='utf-8'))['terms']
+                  if os.path.exists(prov_path) else {})
+    author = make_submit_pack.copyright_holder()
+    check('oeis_provenance.json records only sequences claimed here',
+          set(provenance) <= set(CLAIMS),
+          fail_detail=f'unknown: {sorted(set(provenance) - set(CLAIMS))}')
     for seq, (targets, published, jnew, value, wf, rf) in CLAIMS.items():
         bpath = os.path.join(ROOT, f'b{seq[1:]}.txt')
         if not check(f'{seq}: b{seq[1:]}.txt is committed', os.path.exists(bpath),
@@ -334,18 +381,30 @@ def main():
 
         if seq not in ready_seqs:
             check(f'{seq}: committed b-file does not carry the withheld a({jnew})',
-                  not got or got[-1] != (jnew, value), 'withheld term absent',
+                  (jnew, value) not in got, 'withheld term absent',
                   fail_detail=f'{seq} is blocked (its evidence is incomplete) but '
-                              f'b{seq[1:]}.txt ends a({jnew})={value}, ready to hand '
-                              f'to an editor')
+                              f'b{seq[1:]}.txt carries a({jnew})={value}, ready to '
+                              f'hand to an editor')
             continue
 
         want = list(enumerate(published + [value], start=jnew - len(published)))
+        head = got[:len(want)]
         check(f'{seq}: b-file rows equal the claimed sequence',
-              got == want, f'{len(got)} rows, last a({got[-1][0]})={got[-1][1]}'
-              if got else 'empty',
+              head == want, f'{len(head)} rows, last a({head[-1][0]})={head[-1][1]}'
+              if head else 'empty',
               fail_detail=f'b{seq[1:]}.txt disagrees with CLAIMS: got '
-                          f'{got[:3]}...{got[-1:]} want {want[:3]}...{want[-1:]}')
+                          f'{head[:3]}...{head[-1:]} want {want[:3]}...{want[-1:]}')
+        tail, problems = others_terms(seq, jnew, provenance, author)
+        credited = sorted({r['contributor'] for r in provenance.get(seq, [])})
+        check(f'{seq}: b-file rows after a({jnew}) are the OEIS terms recorded in '
+              f'oeis_provenance.json',
+              got[len(want):] == tail and not problems,
+              f'{len(tail)} rows, credited to {", ".join(credited)}' if tail
+              else 'none',
+              fail_detail='; '.join(problems) or
+                          f'b{seq[1:]}.txt after a({jnew}): got '
+                          f'{got[len(want):][:3]}...{got[len(want):][-1:]} '
+                          f'recorded {tail[:3]}...{tail[-1:]}')
 
     # The b-file is the DATA that is uploaded to OEIS. The gate checked
     # certificates, prose and SUBMIT.md and never opened one, so the only

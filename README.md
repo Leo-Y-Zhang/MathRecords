@@ -150,10 +150,10 @@ python verify_all.py
 That second line is the whole thing. It re-checks every claim in this repository
 against the evidence committed beside it and prints `EVERY CLAIM IN THIS
 REPOSITORY IS SUPPORTED BY EVIDENCE ON DISK` only if all of them hold; anything
-else means do not believe the numbers below. From a bare clone it is **135
+else means do not believe the numbers below. From a bare clone it is **141
 passed, 0 failed, 25 skipped**; `python verify_all.py --fast` drops the two
-re-executed audits and the per-cube re-proofs for 133 passed, 17 skipped. With
-`kissat` and `drat-trim` present nothing skips: 165 passed.
+re-executed audits and the per-cube re-proofs for 139 passed, 17 skipped. With
+`kissat` and `drat-trim` present nothing skips: 171 passed.
 `.github/workflows/ci.yml` runs the full gate on every push twice: the `gate`
 job on a bare runner, after `python scrub_paths.py --check`, and the `drat` job
 with both binaries built from pinned source.
@@ -246,6 +246,10 @@ A217059:  22, 32, 43, 44, 50, 55, 61, 65, 70, 74
 A217236:  55, 71, 75, 79, 84
 ```
 
+Those are the sequences up to the terms derived here. The OEIS entries now go
+further, with later terms added by Marek Ochocki; see
+[Prior computation](#prior-computation).
+
 ## Prior computation
 
 Novelty for all five was checked against the live OEIS API, not against the
@@ -267,7 +271,19 @@ nobody submitted any, not that nobody computed any.
 All five agree with the values derived here. Ochocki's four printed colourings
 pass `vdw/verify_certificate.py`. His tables also go well past this repository
 in the same families: A217058 to a(21), A217005 to a(33), A217007 to a(11),
-A217059 to a(17) and A217236 to a(6).
+A217059 to a(17) and A217236 to a(6). He has since added all of those terms to
+the OEIS himself, 37 in total, credited to him in each entry's EXTENSIONS
+lines: A217005 a(20)-a(33) dated 16 October 2026, A217058 a(13)-a(21),
+A217007 a(8)-a(11) and A217059 a(10)-a(17) dated 5 November, and A217236
+a(5)-a(6) dated 10 November.
+
+The b-files committed here match the OEIS, so they carry his terms after the
+five derived here. They are his, not this repository's: nothing here derives
+or checks them. [`oeis_provenance.json`](oeis_provenance.json) records each one
+with its value, the EXTENSIONS line that credits it and the OEIS revision that
+approved it, as read from the OEIS on 23 November 2026, and `verify_all.py`
+accepts a b-file only if it is the claimed sequence followed by exactly those
+recorded terms.
 
 What remains this repository's is the second derivation and the standard of
 proof. Ochocki's lower bounds are printed colourings, as here. His upper bounds
@@ -460,8 +476,9 @@ verifier before writing. **All five are now approved and live in the OEIS**:
 A217058(12) on 30 July 2026, A217005(19), A217007(7) and A217236(4) on 7 August,
 and A217059(9) on 13 August, each credited in the entry's extensions line.
 Those lines were written before the prior computations above were known here.
-Ochocki plans to add his values to the OEIS himself, so the entries' credit is
-left to him.
+Ochocki has since added his values to the OEIS himself, between 16 October and
+10 November 2026, under his own extensions lines, so the entries' credit for
+them is his.
 
 The entries themselves are the live state; this paragraph is checked against
 them rather than remembered, and the way to check it is to search OEIS for the
